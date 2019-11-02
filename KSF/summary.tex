@@ -7,9 +7,9 @@
 % - get down to one page
 
 \documentclass[12pt, fullpage, letterpaper]{article}
-\usepackage{fancyheadings, graphicx}
-\setlength{\headheight}{0ex}
-\setlength{\headsep}{0ex}
+\usepackage{fancyheadings}
+\setlength{\headheight}{0ex} % must be *before* \input{hogg_nsf}
+\setlength{\headsep}{0ex} % must be *before* \input{hogg_nsf}
 \input{hogg_nsf}
 \renewcommand{\headrulewidth}{0pt}
 \pagestyle{empty}
