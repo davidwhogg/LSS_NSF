@@ -13,26 +13,107 @@
 \begin{document}
 \section{Introduction}
 
-Observational cosmology is moving from percent-level precision on
-fundamental parameters to sub-percent.
-It is a mature field! With a very successful standard model
-(\LCDM).
-New projects either have to obtain \textbf{substantially more
-  precision} in measurements, or else look for subtle
-\textbf{departures from predictions}.
-At the same time, new observational projects are mapping much larger
-volumes with much more distant targets, with consequently noisier and
-more complex data.
-As we simultaneously push to more challenging data and greater
-precisions, we will encounter systematic errors and complexities that
-have never mattered previously.
+The cold-dark-matter-with-a-cosmological-constant (\LCDM) model is
+very well established observationally, having explained many different
+kinds of data with a small number of free parameters, and having made
+some ab-initio predictions (like the baryon acoustic feature; CITE)
+prior to the observations.
+It's almost certainly \emph{not the true model}.
+It seems unlikely that the dark sector is a single species, with no
+non-gravitational interactions, and no interesting thermodymamic or
+dynamical features.
+However, what is well established is the following:
+Whatever \emph{is} the true model \emph{is very well approximated} by
+\LCDM\ over a wide range of scales in length and density.
+So the \LCDM\ deserves our respect and our attention.
+And it also deserves our criticism and our scrutiny.
+Here we proceed with both.
 
-This project is to build and exercise general-purpose tools that will
+In addition to the importance and success of the \LCDM\ model---or
+really because of it---the principal cosmological parameters (which
+can be thought of as the age, the densities in various components, and
+the power spectrum of the initial conditions) are measured in data
+with percent-level precision.
+And maybe the over-arching theme of astrophysics, historically, is
+that with new precision comes new opportunities!
+The current and next generations of surveys hope to
+make measurements of effects which enter at sub-percent levels:
+For example, it's looking likely that we can measure the total mass in
+neutrinos just from observations of large-scale structure and the
+cosmic microwave background, when this is truly a trace component,
+dynamically.
+This would answer questions that direct mass measurement experiments
+can't answer yet, or ever if there are contributions from sterile
+neutrinos.
+For another example, if the cosmological constant turns out to be a particle rather
+than a term in general relativity, we now know, observationally, that
+the differences that makes will appear at sub-percent level in the
+expansion history and the growth of structure.
+
+For us, these are just examples of things we might be doing in the
+coming decade.
+Here we propose to design, build, and exercise tools that will be
+valuable no matter what the questions of cosmology become.
+In our view, given the success and precision of the current
+cosmological model, new projects either have to obtain
+\textbf{substantially more precision}, or else look for subtle
+\textbf{departures from predictions}.
+That is, we want to see small effects, and in particular, small
+effects that might call into question the deep assumptions of the
+\LCDM\ model.
+
+Doing better than has ever been done before will require work along
+multiple axes.
+The first axis is \emph{volume}: We need to observe more volume. This
+is happening now, with projects like HOGG, KSF: PROJECT LIST WITH
+CITATIONS.
+But of course this new volume comes at a cost: As we look to larger
+distances and larger volumes with denser tracers, we push our
+observations to noisier targets with less-well-measured individual
+properties.
+That is, as the data get better in a global sense (more volume, more
+modes measured), it gets worse in an individual-object sense (fewer
+bits per target, more contamination from foregrounds and backgrounds).
+
+This all leads to the second axis along which we have to work, which
+is calibration, contamination, and window functions:
+As the data get harder to use at the individual-object level, it is
+harder to know that we have surveyed the volume uniformly, or, more
+importantly, do we understand the non-uniformity of our sampling?
+Survey window function knowledge starts to depend on things about the
+observational projects that we can't know well, like small-scale
+variations of the point-spread function or temporal variability of the
+photometric bandpasses.
+In this context we are pushed to data-driven techniques for
+understanding the selection, which connect to ideas of
+self-calibration, where the PI has been a pioneer.
+
+And the third axis is statistical sophistication.
+
+As we simultaneously move to higher precision requirements, and larger
+volumes of data, and with lower-precision individual-object data
+
+...HOGG
+
+This proposal is to build and exercise general-purpose tools that will
 make the next generation of (galaxy, quasar, and intensity-mapping)
 large-scale structure (\LSS) surveys more precise, more powerful, and
-more capable of making truly new discoveries:
+more capable of making truly new discoveries.
+The project has three themes, which connect to the three axes above in
+various ways.
+In the first theme, we replace the standard estimator for clustering or
+correlation functions with something far more flexible, which permits us
+to do more with more cosmological volume at fixed computation.
+In the second, we analyze, attack, and re-build the self-calibration 
+methods for window function estimation.
+In the third, we perform a very false-positive-safe search for anomalies
+in the large-scale structure, to identify departures that might point to
+new physics.
 
 \section{A new estimator for galaxy clustering}
+
+KSF: I have copied in what I wrote in the summary, but can ou replace
+this with two-ish pages about what we are doing and why?
 
 The project will build and operate a new estimator for
 galaxy clustering that obviates binning of objects (galaxies or
@@ -54,6 +135,8 @@ incorporated into current and future analysis pipelines. And: less computing!
 Call out \textbf{Broader impacts}.
 
 \section{Adversarial approaches to systematics}
+
+
 
 The project will build adversarial simulated data that is
 designed to defeat current methodologies for finding and correcting
