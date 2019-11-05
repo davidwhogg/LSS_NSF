@@ -18,7 +18,6 @@
 \cfoot{}
 
 \begin{document}
-\section{Introduction}
 
 The cold-dark-matter-with-a-cosmological-constant (\LCDM) model is
 very well established observationally, having explained many different
@@ -96,11 +95,24 @@ understanding the selection, which connect to ideas of
 self-calibration, where the PI has been a pioneer.
 
 And the third axis is statistical sophistication.
-
 As we simultaneously move to higher precision requirements, and larger
-volumes of data, and with lower-precision individual-object data
-
-...HOGG
+volumes of data, and with lower-precision individual-object data, it is 
+easier and easier to get fooled.
+This fooling can come in the form of systematic effects (like
+photometric calibration or foregrounds) in the data projecting onto
+tiny physical effects (like neutrino masses) in the clustering.
+Or it can come in the form of anomalies appearing: If the volume is
+huge, the effective size of any search is huge.
+We \emph{will} discover anomalies; the hard question will be whether
+they are statistically significant or worth further study.
+This gets into issues of multiple hypothesis testing, which we will
+discuss below.
+But these two issues directly combine, because unmodeled or
+incorrectly modeled systematic issues in the data will project onto
+discoverable anomalies.
+So if we are going to search the next generation of surveys for
+interesting new departures from baseline theoretical expectations,
+we better have a very solid statistical plan.
 
 This proposal is to build and exercise general-purpose tools that will
 make the next generation of (galaxy, quasar, and intensity-mapping)
@@ -117,7 +129,7 @@ In the third, we perform a very false-positive-safe search for anomalies
 in the large-scale structure, to identify departures that might point to
 new physics.
 
-\section{A new estimator for galaxy clustering}
+\section{First theme: A new estimator for galaxy clustering}
 
 KSF: I have copied in what I wrote in the summary, but can ou replace
 this with two-ish pages about what we are doing and why?
@@ -141,7 +153,7 @@ incorporated into current and future analysis pipelines. And: less computing!
 
 Call out \textbf{Broader impacts}.
 
-\section{Adversarial approaches to systematics}
+\section{Second theme: Adversarial approaches to systematics}
 
 
 
@@ -157,7 +169,7 @@ This project will make NSF-funded cosmology projects (including
 \SDSSIV, \DESI, and \LSST) more productive, more precise, and more
 capable of making ground-breaking discoveries.
 
-\section{Searches for anomalies}
+\section{Third theme: Searches for anomalies}
 
 The project will build methodologies that perform (and perform
 ourselves) statistically principled brute-force searches of \LSS\ 
