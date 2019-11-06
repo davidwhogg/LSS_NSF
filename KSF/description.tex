@@ -7,6 +7,7 @@
 
 \documentclass[12pt, fullpage, letterpaper]{article}
 \usepackage{fancyheadings}
+\usepackage{xspace}
 \input{hogg_nsf}
 
 % headers and footers
@@ -17,6 +18,9 @@
 \lhead{\textcolor{darkgrey}{\textsf{Hogg \& Storey-Fisher / \thistitle}}}
 \rhead{\textcolor{darkgrey}{\textsf{\thepage}}}
 \cfoot{}
+\newcommand{\KSF}[1]{\textcolor{teal}{KSF: #1}}
+\newcommand{\cf}{2pcf\xspace}
+
 
 \begin{document}
 
@@ -132,9 +136,6 @@ new physics.
 
 \section{First theme: A new estimator for galaxy clustering}
 
-KSF: I have copied in what I wrote in the summary, but can ou replace
-this with two-ish pages about what we are doing and why?
-
 The project will build and operate a new estimator for
 galaxy clustering that obviates binning of objects (galaxies or
 quasars or pixels) or pairs into bins; instead it estimates continuous
@@ -147,6 +148,79 @@ This in turn lets it make more powerful measurements with less data,
 and with less of the computation that is used to do uncertainty
 propagation.
 
+
+\subsection{Background and Motivation: The Two-Point Correlation Function}
+
+\KSF{We should discuss how to use subsections}
+
+Galaxy clustering is one of the most important tracers of the large-scale structure of the universe.
+The distribution of galaxies contains information about the universe's evolution and fundamental components, as well as the evolution of the galaxies themselves.
+To study the clustering of galaxies, we use observational galaxy surveys that range from hundreds to millions, and soon billions, of galaxies, and are pushing to even higher redshifts.
+\textbf{Due to the increased size and complexity of next-generation galaxy surveys, the tools currently used to characterize galaxy clustering will not be sufficient}.
+We propose to address this problem by developing new methods for the analysis of galaxy clustering from observational surveys.
+
+The distribution of galaxies in a volume of sky can be modeled as a spatial point process.
+We can use the statistics of point processes to characterize their clustering, giving us insight into the physical processes that produce this distribution.
+One of the most common statistics used to analyze galaxy surveys is the two-point correlation function (\cf). 
+\textbf{The \cf is critical for inferring certain cosmological parameters, determining the distance scale in the early universe, and constraining galaxy formation by examining how clustering depends on galaxy properties.}
+ 
+The canonical estimator for the galaxy \cf, originally proposed by \citep{LandySzalay1993}, estimates the excess number of galaxies in bins of spatial separation $r$, compared to a statistically random distribution.
+However, this estimator suffers from several limitations. 
+It is computed in bins of radial separation between pairs, and choosing the number of bins is a trade-off between bias and variance.
+Furthermore, for any finite binning in separation, this estimator contains a statistical bias when applied to highly clustered data (e.g. \citealt{Kerscher1998}).
+Another binned dimension is often used to characterize the dependence on galaxy properties: the galaxies are divided into subsamples to analyze the relationship between their properties and clustering. 
+\KSF{I'm not convinced about this application yet so may want to cut, or only mention briefly as a possibility}
+One tool developed to address this is the marked correlation function, in which galaxies are weighted by the desired property.
+Li \& White (2010) showed that luminosity-weighting can place tighter constraints on galaxy formation, but this approach still requires $r$-binning and doesn't account for the survey window.
+While these estimators have been sufficient for past analyses, an improved estimator is necessary for future surveys.
+
+\subsection{The Continuous-Function Estimator}
+
+In order to avoid the issues introduced by finite binning with current estimators, we have developed an approach based on continuous basis functions. 
+Inspired by linear least-squares fitting, it replaces scalar pair counts with a vector of the values output by the basis function, and the normalization term by a tensor of these values.
+For the case of tophat (rectangular) basis functions, this reduces to the standard Landy-Szalay estimator.
+A set of basis functions can be chosen specific to the scales, features and properties of interest.
+For example, higher order spline basis functions could be chosen to achieve a smooth statistic. 
+A set of functions that select expected features in the correlation function, such as the baryon acoustic feature, would allow for a more direct measurement of that feature.
+Additionally, basis functions can depend on other properties of the tracer, such as galaxy luminosity or redshift.
+Thus our estimator not only removes the need for binning in spatial separation, but can also be used where subsample approaches are currently needed.
+
+We have implemented an initial version of the continuous-function correlation function estimator.
+The estimator is built in C within the \texttt{corrfunc} package \citep{Sinha2017}, which performs fast pair-counting on a lattice.
+To test the estimator, we have generated lognormal catalogs with a known correlation functions. 
+\textbf{We expect these to show that, compared to the Landy-Szalay estimator, my estimator produces a smoother \cf with lower bias and lower variance with respect to the true correlation function.} \KSF{What tense should we be working in? Mix of "have found this already" and "expect to find this"?}
+
+Due to this smoothness, this estimator should be able to not only produce a more accurate correlation function, but do so with fewer basis functions.
+This means that fewer mock catalogs will be needed to produce a covariance matrix, reducing the computational cost of computing the \cf.
+The expensive simulations required to build a set of mock catalogs for each dataset is one of the limiting factors in correlation function analyses.
+Our estimator will significantly reduce this requirement and allow for faster and more accurate analyses.
+
+Alongside this work, we have revisited the statistical literature and identified how the bias due to binning and edge correction is entering. 
+We will use this understanding to develop an estimator that doesn't suffer from this bias.
+We will combine these two approaches to develop and implement an estimator for galaxy clustering that is fundamentally unbiased and can be tailored for specific science use cases.
+\KSF{This is referring to "Barnett things" - do we want to mention?}
+
+\subsection{Applications: The BAO Peak and Galaxy Evolution}
+
+The clustering of galaxies is a critical probe of the baryon acoustic feature. 
+This is a signature of Baryon Acoustic Oscillations (BAO) in the early universe, acoustic waves of photon-baryon fluid that traveled through the universe. 
+When the universe cooled enough to cause their decoupling, extra matter was deposited at the scale corresponding to the distance travelled. 
+Today this overdensity should be at a scale of around 120 Mpc/h, and indeed we see a peak there in the correlation function. 
+The exact BAO scale can be extracted from the binned \cf by comparing it to theoretical models of the correlation function. 
+With our estimator, we can directly project the galaxy pairs onto these models. 
+Specifically, we will use as one of my basis functions a canonical model of the correlation function with the Planck best-fit cosmological parameters. 
+The other basis functions are derivatives of this model with respect to the parameters we are interested in, in this case the matter density, baryon density and spectral index. \KSF{There are multiple ways to do this and I'm not yet sure which is best / we will do so maybe we shouldn't get this specific}
+\textbf{This eliminates potential error due to the arbitrary choice of bins, and allows for a direct estimation of the cosmological parameters and the BAO scale.} \KSF{These might be more separate measurements than I'm describing}
+We will compare this method to the traditional technique, and expect to show that this method produces more precise measurements of the sound horizon with fewer components.
+
+Galaxy evolution is one of the biggest open research topics in modern astrophysics.
+The two-point correlation function allows us to ask questions about how the formation of galaxies is related to the evolution of structure in the universe.
+The dependence of galaxy clustering on the properties of galaxies, such as their line luminosity and star formation rate, gives insight into this relation.
+Our proposed estimator will allow us to extract even more information about this dependence. 
+We plan to construct basis functions that contain a dependence on the galaxy property, allowing for a combined encoding of both separation and luminosity. 
+We can then quickly evaluate the estimator at any set of luminosities and produce a smooth correlation function for each. 
+We will compare this method to the common subsampling approach; \textbf{we expect to show that this method will allow us to interpret the luminosity dependence in more detail and with higher precision.}
+
 Call out \textbf{Intellectual merit}.
 This project will deliver both general methods and specific, released,
 open-source code that works efficiently on current data and can be
@@ -154,9 +228,9 @@ incorporated into current and future analysis pipelines. And: less computing!
 
 Call out \textbf{Broader impacts}.
 
+
+
 \section{Second theme: Adversarial approaches to systematics}
-
-
 
 The project will build adversarial simulated data that is
 designed to defeat current methodologies for finding and correcting
@@ -169,6 +243,8 @@ Call out \textbf{Intellectual merit}.
 This project will make NSF-funded cosmology projects (including
 \SDSSIV, \DESI, and \LSST) more productive, more precise, and more
 capable of making ground-breaking discoveries.
+
+
 
 \section{Third theme: Searches for anomalies}
 
