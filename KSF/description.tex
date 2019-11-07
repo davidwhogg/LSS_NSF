@@ -25,28 +25,29 @@
 \begin{document}
 
 The cold-dark-matter-with-a-cosmological-constant (\LCDM) model is
-very well established observationally, having explained many different
-kinds of data with a small number of free parameters, and having made
+very well established observationally.
+It has explained many different
+kinds of data with a small number of free parameters, and has made
 some ab-initio predictions (like the baryon acoustic feature; CITE)
 prior to the observations.
-It's almost certainly \emph{not the true model}.
+However, it's almost certainly \emph{not the true model}.
 It seems unlikely that the dark sector is a single species, with no
 non-gravitational interactions, and no interesting thermodymamic or
 dynamical features.
 However, what is well established is the following:
 Whatever \emph{is} the true model \emph{is very well approximated} by
 \LCDM\ over a wide range of scales in length and density.
-So the \LCDM\ deserves our respect and our attention.
-And it also deserves our criticism and our scrutiny.
+The \LCDM\ model, then, deserves our respect and our attention. \KSF{i feel like ``respect'' is a bit funny in this context - our recognition?}
+By the same token, it deserves our criticism and our scrutiny.
 Here we proceed with both.
 
 In addition to the importance and success of the \LCDM\ model---or
 really because of it---the principal cosmological parameters (which
 can be thought of as the age, the densities in various components, and
 the power spectrum of the initial conditions) are measured in data
-with percent-level precision.
-And maybe the over-arching theme of astrophysics, historically, is
-that with new precision comes new opportunities!
+with percent-level precision. \KSF{This (previous sentence) is an important sentence but is hard to understand, haven't yet figured out how to break it down}
+The history of astrophysics has demonstrated, time and again, that
+that with new precision comes new opportunities.
 The current and next generations of surveys hope to
 make measurements of effects which enter at sub-percent levels:
 For example, it's looking likely that we can measure the total mass in
@@ -54,30 +55,29 @@ neutrinos just from observations of large-scale structure and the
 cosmic microwave background, when this is truly a trace component,
 dynamically.
 This would answer questions that direct mass measurement experiments
-can't answer yet, or ever if there are contributions from sterile
-neutrinos.
-For another example, if the cosmological constant turns out to be a particle rather
+can't answer yet (or will ever be able to, if there are contributions from sterile neutrinos).
+As another example, if the cosmological constant turns out to be a particle rather
 than a term in general relativity, we now know, observationally, that
-the differences that makes will appear at sub-percent level in the
-expansion history and the growth of structure.
+this signature will appear at sub-percent level in the
+expansion history and the growth of structure. \KSF{How do we know this observationally when we don't have the observations?}
 
-For us, these are just examples of things we might be doing in the
-coming decade.
+\KSF{I think it's odd that the reader doesn't know what we're proposing even broadly until the 3rd paragraph. Consider adding general ``thesis'' sentence at end of 1st / beginning of 2nd?}
+%For us, these are just examples of things we might be doing in the coming decade.
 Here we propose to design, build, and exercise tools that will be
-valuable no matter what the questions of cosmology become.
+valuable for answering these types of cosmological questions, even as the questions themselves evolve and expand.
 In our view, given the success and precision of the current
 cosmological model, new projects either have to obtain
 \textbf{substantially more precision}, or else look for subtle
-\textbf{departures from predictions}.
+\textbf{departures from predictions}. \KSF{Do we need the qualifier ``in our view,'' and others elsewhere?}
 That is, we want to see small effects, and in particular, small
 effects that might call into question the deep assumptions of the
-\LCDM\ model.
+\LCDM\ model. \KSF{I really like this paragraph!}
 
 Doing better than has ever been done before will require work along
-multiple axes.
-The first axis is \emph{volume}: We need to observe more volume. This
-is happening now, with projects like HOGG, KSF: PROJECT LIST WITH
-CITATIONS.
+multiple axes. \KSF{Don't love the general-ness of ``doing'' but hard to think of alternative. ``Making measurements that give this next level of insight will require...''}
+The first axis is \emph{volume}: We need to observe more volume. 
+This is happening now, with projects like the eBOSS survey within the Sloan Digital Sky Survey (SDSS) surveying the largest volume to date \citep{Dawson2015}. 
+Upcoming wide-field surveys include DESI \citep{Aghamousa2016}, which will begin taking data in 2019, followed by NASA's Euclid mission \citep{Amiaux2012} and LSST \citep{Ivezic2018} in 2021, and WFIRST in the mid-2020s \citep{Spergel2015}.
 But of course this new volume comes at a cost: As we look to larger
 distances and larger volumes with denser tracers, we push our
 observations to noisier targets with less-well-measured individual
@@ -86,27 +86,28 @@ That is, as the data get better in a global sense (more volume, more
 modes measured), it gets worse in an individual-object sense (fewer
 bits per target, more contamination from foregrounds and backgrounds).
 
-This all leads to the second axis along which we have to work, which
-is calibration, contamination, and window functions:
+This leads to the second axis along which we have to work, which
+is calibration, contamination, and window functions.
 As the data get harder to use at the individual-object level, it is
 harder to know that we have surveyed the volume uniformly, or, more
-importantly, do we understand the non-uniformity of our sampling?
+realistically, that we understand the non-uniformity of our sampling.
 Survey window function knowledge starts to depend on things about the
 observational projects that we can't know well, like small-scale
 variations of the point-spread function or temporal variability of the
 photometric bandpasses.
 In this context we are pushed to data-driven techniques for
-understanding the selection, which connect to ideas of
+understanding the selection.
+This connect to ideas of
 self-calibration, where the PI has been a pioneer.
 
-And the third axis is statistical sophistication.
-As we simultaneously move to higher precision requirements, and larger
-volumes of data, and with lower-precision individual-object data, it is 
+The third axis is statistical sophistication.
+As we simultaneously move to higher precision requirements, larger
+volumes of data, and lower-precision individual-object data, it is 
 easier and easier to get fooled.
 This fooling can come in the form of systematic effects (like
 photometric calibration or foregrounds) in the data projecting onto
 tiny physical effects (like neutrino masses) in the clustering.
-Or it can come in the form of anomalies appearing: If the volume is
+Alternatively it can come in the form of anomalies appearing: If the volume is
 huge, the effective size of any search is huge.
 We \emph{will} discover anomalies; the hard question will be whether
 they are statistically significant or worth further study.
@@ -114,10 +115,10 @@ This gets into issues of multiple hypothesis testing, which we will
 discuss below.
 But these two issues directly combine, because unmodeled or
 incorrectly modeled systematic issues in the data will project onto
-discoverable anomalies.
+discoverable anomalies. \KSF{Which two issues? Unclear}
 So if we are going to search the next generation of surveys for
 interesting new departures from baseline theoretical expectations,
-we better have a very solid statistical plan.
+we need to have a very solid statistical plan. \KSF{These three axes: Big Bad Wolf (Big data, bad data, trickster data) :)}
 
 This proposal is to build and exercise general-purpose tools that will
 make the next generation of (galaxy, quasar, and intensity-mapping)
@@ -127,17 +128,12 @@ The project has three themes, which connect to the three axes above in
 various ways.
 In the first theme, we replace the standard estimator for clustering or
 correlation functions with something far more flexible, which permits us
-to do more with more cosmological volume at fixed computation.
+to do more with more cosmological volume at fixed computational cost.
 In the second, we analyze, attack, and re-build the self-calibration 
-methods for window function estimation.
+methods for window function estimation. \KSF{for systematics correction? is window function the main operator here?}
 In the third, we perform a very false-positive-safe search for anomalies
 in the large-scale structure, to identify departures that might point to
 new physics.
-
-Improved methods will be critical for current and future missions.
-The eBOSS survey within the Sloan Digital Sky Survey (SDSS) is now observing the largest volume to date \citep{Dawson2015}. 
-DESI \citep{Aghamousa2016} will begin taking data in 2019, followed by NASA's Euclid mission \citep{Amiaux2012} and LSST \citep{Ivezic2018} in 2021. \KSF{add WFIRST}
-\textbf{Our methods will improve the level of precision and accuracy on all of these surveys, permitting better constraints on large-scale structure and creating discovery potential.}
 
 \section{First theme: A new estimator for galaxy clustering}
 
@@ -194,7 +190,7 @@ Thus our estimator not only removes the need for binning in spatial separation, 
 We have implemented an initial version of the continuous-function correlation function estimator.
 The estimator is built in C within the \texttt{corrfunc} package \citep{Sinha2017}, which performs fast pair-counting on a lattice.
 To test the estimator, we have generated lognormal catalogs with a known correlation functions. 
-\textbf{We expect these to show that, compared to the Landy-Szalay estimator, my estimator produces a smoother \cf with lower bias and lower variance with respect to the true correlation function.} \KSF{What tense should we be working in? Mix of "have found this already" and "expect to find this"?}
+\textbf{We expect these to show that, compared to the Landy-Szalay estimator, my estimator produces a smoother \cf with lower bias and lower variance with respect to the true correlation function.} \KSF{What tense should we be working in? Mix of ``have found this already'' and ``expect to find this"?}
 
 Due to this smoothness, this estimator should be able to not only produce a more accurate correlation function, but do so with fewer basis functions.
 This means that fewer mock catalogs will be needed to produce a covariance matrix, reducing the computational cost of computing the \cf.
@@ -204,7 +200,7 @@ Our estimator will significantly reduce this requirement and allow for faster an
 Alongside this work, we have revisited the statistical literature and identified how the bias due to binning and edge correction is entering. 
 We will use this understanding to develop an estimator that doesn't suffer from this bias.
 We will combine these two approaches to develop and implement an estimator for galaxy clustering that is fundamentally unbiased and can be tailored for specific science use cases.
-\KSF{This is referring to "Barnett things" - do we want to mention?}
+\KSF{This is referring to ``Barnett things'' - do we want to mention?}
 
 \subsection{Applications: The BAO Peak and Galaxy Evolution}
 
