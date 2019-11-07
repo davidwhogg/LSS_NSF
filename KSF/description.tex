@@ -134,6 +134,11 @@ In the third, we perform a very false-positive-safe search for anomalies
 in the large-scale structure, to identify departures that might point to
 new physics.
 
+Improved methods will be critical for current and future missions.
+The eBOSS survey within the Sloan Digital Sky Survey (SDSS) is now observing the largest volume to date \citep{Dawson2015}. 
+DESI \citep{Aghamousa2016} will begin taking data in 2019, followed by NASA's Euclid mission \citep{Amiaux2012} and LSST \citep{Ivezic2018} in 2021. \KSF{add WFIRST}
+\textbf{Our methods will improve the level of precision and accuracy on all of these surveys, permitting better constraints on large-scale structure and creating discovery potential.}
+
 \section{First theme: A new estimator for galaxy clustering}
 
 The project will build and operate a new estimator for
@@ -147,7 +152,6 @@ fewer clustering-model components.
 This in turn lets it make more powerful measurements with less data,
 and with less of the computation that is used to do uncertainty
 propagation.
-
 
 \subsection{Background and Motivation: The Two-Point Correlation Function}
 
@@ -222,25 +226,6 @@ Our proposed estimator will allow us to extract even more information about this
 We plan to construct basis functions that contain a dependence on the galaxy property, allowing for a combined encoding of both separation and luminosity. 
 We can then quickly evaluate the estimator at any set of luminosities and produce a smooth correlation function for each. 
 We will compare this method to the common subsampling approach; \textbf{we expect to show that this method will allow us to interpret the luminosity dependence in more detail and with higher precision.}
-
-In order to characterize the clustering from these surveys, we must remove systematic effects.
-Systematics are any issues with the data that produce variations in the density or redshift distribution of the sample, therefore imprinting non-cosmological signals on large-scale structure analyses.
-For instance, the galaxy number density varies with the width of the point spread function (PSF), as observations with a wider PSF may obscure galaxies.
-Even small systematic effects, such as those from airmass and stellar contamination, can bias large surveys like WFIRST. 
-Objects in high-redshift surveys may be particularly sensitive to issues like color selection and instrument calibration.
-Current methods assume simple systematics models that don't capture nonlinearities in these effects.
-While linear corrections are adequate for most of today's surveys, next-generation surveys will have a combination of more complicated window functions, noisier foregrounds, and complex observational and instrumental effects.
-Failure to fully correct for systematics in future analyses will propagate through clustering analyses and give biased results.
-
-The methods used to characterize the clustering can also introduces biases.
-The two-point correlation function (\cf), the most important statistic used to measure spatial clustering, cannot be computed exactly due to edge effects from the survey window.
-We use estimators of the \cf to account for this, but these introduce their own issues, including a bias due to finite spatial binning.
-
-We propose new methods to address galaxy clustering challenges for WFIRST and LAGER.
-These will also be important for other current and future missions.
-The eBOSS survey within the Sloan Digital Sky Survey (SDSS) is now observing the largest volume to date \citep{Dawson2015}. 
-DESI \citep{Aghamousa2016} will begin taking data in 2019, followed by NASA's Euclid mission \citep{Amiaux2012} and LSST \citep{Ivezic2018} in 2021.
-\textbf{Our methods will improve the level of precision and accuracy on all of these surveys, permitting better constraints on large-scale structure and creating discovery potential.}
 
 Call out \textbf{Intellectual merit}.
 This project will deliver both general methods and specific, released,
