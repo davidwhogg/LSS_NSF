@@ -153,6 +153,8 @@ propagation.
 
 \KSF{We should discuss how to use subsections}
 
+\KSF{Haven't added in my bibtex yet will do!}
+
 Galaxy clustering is one of the most important tracers of the large-scale structure of the universe.
 The distribution of galaxies contains information about the universe's evolution and fundamental components, as well as the evolution of the galaxies themselves.
 To study the clustering of galaxies, we use observational galaxy surveys that range from hundreds to millions, and soon billions, of galaxies, and are pushing to even higher redshifts.
@@ -221,6 +223,25 @@ We plan to construct basis functions that contain a dependence on the galaxy pro
 We can then quickly evaluate the estimator at any set of luminosities and produce a smooth correlation function for each. 
 We will compare this method to the common subsampling approach; \textbf{we expect to show that this method will allow us to interpret the luminosity dependence in more detail and with higher precision.}
 
+In order to characterize the clustering from these surveys, we must remove systematic effects.
+Systematics are any issues with the data that produce variations in the density or redshift distribution of the sample, therefore imprinting non-cosmological signals on large-scale structure analyses.
+For instance, the galaxy number density varies with the width of the point spread function (PSF), as observations with a wider PSF may obscure galaxies.
+Even small systematic effects, such as those from airmass and stellar contamination, can bias large surveys like WFIRST. 
+Objects in high-redshift surveys may be particularly sensitive to issues like color selection and instrument calibration.
+Current methods assume simple systematics models that don't capture nonlinearities in these effects.
+While linear corrections are adequate for most of today's surveys, next-generation surveys will have a combination of more complicated window functions, noisier foregrounds, and complex observational and instrumental effects.
+Failure to fully correct for systematics in future analyses will propagate through clustering analyses and give biased results.
+
+The methods used to characterize the clustering can also introduces biases.
+The two-point correlation function (\cf), the most important statistic used to measure spatial clustering, cannot be computed exactly due to edge effects from the survey window.
+We use estimators of the \cf to account for this, but these introduce their own issues, including a bias due to finite spatial binning.
+
+We propose new methods to address galaxy clustering challenges for WFIRST and LAGER.
+These will also be important for other current and future missions.
+The eBOSS survey within the Sloan Digital Sky Survey (SDSS) is now observing the largest volume to date \citep{Dawson2015}. 
+DESI \citep{Aghamousa2016} will begin taking data in 2019, followed by NASA's Euclid mission \citep{Amiaux2012} and LSST \citep{Ivezic2018} in 2021.
+\textbf{Our methods will improve the level of precision and accuracy on all of these surveys, permitting better constraints on large-scale structure and creating discovery potential.}
+
 Call out \textbf{Intellectual merit}.
 This project will deliver both general methods and specific, released,
 open-source code that works efficiently on current data and can be
@@ -238,6 +259,66 @@ systematic effects of calibration and target selection in \LSS\
 surveys. And then build far more general calibration
 programs, based on non-parametric models, that can defeat the
 adversaries.
+
+To remove biases that enter through systematic effects, we are developing an approach inspired by adversarial machine learning methods. 
+We will generate survey-specific catalogs with ``adversarial'' data that contains density variations due to nonlinear combinations of systematics.
+We will then use probabilistic machine learning techniques to interpolate these nonlinear functions.
+
+\subsection{Background: Systematics correction in galaxy surveys}
+
+To make accurate cosmological measurements and detect potential deviations from the predicted model, we require not only robust statistics, but clean, unbiased datasets on which to apply them.
+Observed galaxy catalogs are necessarily imperfect due to systematic effects in observation and instrumentation. 
+In order to characterize the clustering from these surveys, we must remove these effects.
+
+Systematics are any issues with the data that produce variations in the density or redshift distribution of the sample, therefore imprinting non-cosmological signals on large-scale structure analyses.
+For instance, the galaxy number density varies with the width of the point spread function (PSF), as observations with a wider PSF may obscure galaxies.
+Even small systematic effects, such as those from airmass and stellar contamination, can bias large surveys. 
+Objects in high-redshift surveys may be particularly sensitive to issues like color selection and instrument calibration.
+Current methods assume simple systematics models that don't capture nonlinearities in these effects.
+While linear corrections are adequate for most of today's surveys, next-generation surveys will have a combination of more complicated window functions, noisier foregrounds, and complex observational and instrumental effects.
+Failure to fully correct for systematics in future analyses will propagate through clustering analyses and give biased results.
+
+One common approach to correcting survey systematics is with regression-based techniques (see e.g. \citealt{Ross2010}). \KSF{At least mention other methods (mode projection and monte carlo)}
+Weights for important systematic parameters are determined by performing a fit, typically linear or quadratic, to adjust for dependencies between galaxy density and each parameter.
+These are combined into a single weight for each galaxy, which are then used in computing the \cf.
+\textbf{The standard technique is unable to account for higher order corrections or interdependence between systematic parameters; these complexities may propagate through analyses and bias galaxy clustering results.}
+
+\subsection{Motivating new correction methods: adversarial mock catalogs}
+
+In order to address complex systematics, we will build a comprehensive testing suite of mock galaxy catalogs, injected with artificial systematic effects.
+With these, we will demonstrate the regimes in which current systematics correction methods become insufficient.
+These are ``adversarial'' in that there is a tension between hiding systematics in the dataset and detecting these effects, and we can exploit this to improve our detection.
+The systematics will be designed to be difficult to detect, and our detection method will be challenged to correct for these systematics. 
+We expect to show that our approach to systematics correction addresses some of the insufficiencies of current methods, resulting in less biased measurements and the ability to detect subtle signals in the distribution.
+
+Our testing suite will include toy models as well as catalogs modeled after target surveys, with the appropriate window function.
+We will inject systematic biases in density by subsampling the galaxies based on adversarially complex functions of the metadata.
+The result will be comprehensive testing suites that cover many systematic effects and range from simple combinations to extreme variation.
+\textbf{These adversarial extremes will create discovery potential by showing that systematics may be obscuring physical information.}
+We plan to explore observables that are motivated by current theoretical models.
+For example, deviations at the largest scales could indicate primordial non-Gaussianities \citep{Dalal2008}. \KSF{Connect to anomalies section here!}
+
+
+\subsection{Defeating adversarial systematics: probabilistic machine learning methods}
+
+Ideally, systematics and clustering should be modeled simultaneously. 
+However, even forward modelling these individually is currently untenable. \KSF{Suchyta 2016 was cited by Rezaie 2019 wrt forward modelling systematics, dig into lit here} 
+While likelihood-free inference could provide an eventual path forward, for the near-future we can develop more sophisticated methods to calibrate out systematics before performing clustering analyses.
+Machine learning methods have already shown promise in systematics removal in other subfields.
+Adversarial neural networks have been used to remove the jet background in particle collision data at the Large Hadron Collider \citep{Shimmin2017}.
+Gaussian processes (GPs) have been used to correct for instrumental systematics in exoplanet transit surveys \citep{Gibson2012, Aigrain2016}. 
+GPs lend themselves to this type of problem, as they allow for nonlinear interpolation over the data space; we propose to use GPs to remove systematics in galaxy surveys.
+
+GPs are a Bayesian approach to modeling data; they define a prior distribution over a function space, and then use the known data to produce a posterior probability distribution over unknown values. 
+In practice, GPs learn the labels of a training set and generate hyperparameters characterizing the data.
+These can then be used to label previously unseen data by performing a nonlinear regression over the training data space.
+In our application, we will model the galaxy density and redshift distribution as complex functions of observational metadata, as described above.
+\textbf{We will train the GP on the adversarial mock catalog, and then use it predict the functions that generated the systematic effects by performing a regression over the training data space.}
+We can then correct for these systematics in new surveys by assigning the galaxies weights determined by these functions.
+
+We expect to show that our GP approach does better at recovering unbiased clustering statistics for a typical level of systematics, compared to traditional methods.
+Further, we will perform this test on catalogs with extreme systematics that could be obscuring interesting clustering features; we expect traditional methods to be unable to detect these features, while our method should reveal this information.
+Our systematics calibration method will improve current measurements by reducing systematic biases and open up more discovery space in galaxy clustering analyses.
 
 Call out \textbf{Intellectual merit}.
 This project will make NSF-funded cosmology projects (including
