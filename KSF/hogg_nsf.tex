@@ -4,6 +4,7 @@
 %----- set up some colors
 \definecolor{darkgrey}{rgb}{0.3,0.3,0.3}
 \definecolor{lightgrey}{rgb}{0.95,0.95,0.95}
+\newcommand{\deemph}[1]{\textcolor{darkgrey}{\footnotesize{#1}}}
 
 %----- exact 1-in margins
 % NB: headheight and headsep MUST exist and be set
@@ -80,6 +81,20 @@
   \setlength{\itemsep}{0.0ex}%
   \setlength{\leftmargin}{2.0\parindent}}}{\end{list}}
 
+%----- Special Hogg list for references
+\newcommand{\hogglist}{%
+  \rightmargin=0in
+  \leftmargin=1em
+  \topsep=0ex
+  \partopsep=0pt
+  \itemsep=0ex
+  \parsep=0pt
+  \itemindent=-1.0\leftmargin
+  \listparindent=\leftmargin
+  \settowidth{\labelsep}{~}
+  \usecounter{enumi}
+}
+
 %----- mess with paragraph spacing!
 \makeatletter
 \renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
@@ -87,20 +102,6 @@
                                     {-1em}%
                                     {\normalfont\normalsize\bfseries}}
 \makeatother
-
-%----- Special Hogg list for references
-  \newcommand{\hogglist}{%
-    \rightmargin=0in
-    \leftmargin=0.25in
-    \topsep=0ex
-    \partopsep=0pt
-    \itemsep=0ex
-    \parsep=0pt
-    \itemindent=-1.0\leftmargin
-    \listparindent=\leftmargin
-    \settowidth{\labelsep}{~}
-    \usecounter{enumi}
-  }
 
 %----- side-to-side figure macro
 %------- make numbers add up to 94%
