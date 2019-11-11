@@ -211,10 +211,9 @@ This means that fewer mock catalogs will be needed to produce a covariance matri
 The expensive simulations required to build a set of mock catalogs for each dataset is one of the limiting factors in correlation function analyses.
 Our estimator will significantly reduce this requirement and allow for faster and more accurate analyses.
 
-Alongside this work, we have revisited the statistical literature and identified how the biases from binning and edge correction are entering. 
+Alongside this work, we have revisited the point-process literature (at the intersection of mathematics and statistics) and identified how the biases from binning and edge correction are entering. 
 We will use this understanding to develop an estimator that doesn't suffer from this bias.
 We will combine these two approaches to develop and implement an estimator for galaxy clustering that is fundamentally unbiased and can be tailored for specific science use cases.
-\KSF{This is referring to ``Barnett things'' - do we want to mention?}
 
 \subsection{Applications: The BAO Peak and Galaxy Evolution}
 
@@ -225,8 +224,8 @@ Today this overdensity should be at a scale of around 120 Mpc/h, and indeed we s
 The exact BAO scale can be extracted from the binned \cf by comparing it to theoretical models of the correlation function. 
 With our estimator, we can directly project the galaxy pairs onto these models. 
 Specifically, we will use as one of our basis functions a canonical model of the correlation function with the Planck best-fit cosmological parameters. 
-The other basis functions are derivatives of this model with respect to the parameters we are interested in, in this case the matter density, baryon density and spectral index. \KSF{There are multiple ways to do this and I'm not yet sure which is best / we will do so maybe we shouldn't get this specific}
-\textbf{This eliminates potential error due to the arbitrary choice of bins, and allows for a direct estimation of the cosmological parameters and the BAO scale.} \KSF{These might be more separate measurements than I'm describing}
+The other basis functions are derivatives of this model with respect to the parameters we are interested in, in this case the matter density, baryon density and spectral index.
+\textbf{This eliminates potential error due to the arbitrary choice of bins, and allows for a direct estimation of the cosmological parameters and the BAO scale.}
 We will compare this method to the traditional technique, and expect to show that this method produces more precise measurements of the sound horizon with fewer components.
 
 Galaxy evolution is one of the biggest open research topics in modern astrophysics.
