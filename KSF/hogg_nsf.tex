@@ -64,6 +64,22 @@
 \newcommand{\pasp}{Pubs.\,Astron.\,Soc.\,Pac.}
 \newcommand{\aap}{Astron.\,\&~Astrophys.}
 
+%----- Tighten up section headings
+\makeatletter
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-3.00ex \@plus -1ex \@minus -.2ex}%
+                                   {1.5ex \@plus.2ex}%
+                                   {\normalfont\large\bfseries}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                     {-2.75ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+                                    {2.75ex \@plus1ex \@minus.2ex}%
+                                    {-1em}%
+                                    {\normalfont\normalsize\bfseries}}
+\makeatother
+
 %----- Tighten up paragraphs and lists
 \setlength{\parskip}{0.0ex}
 \setlength{\parindent}{0.2in}
