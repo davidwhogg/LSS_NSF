@@ -165,14 +165,12 @@ This in turn lets it make more powerful measurements with less data,
 and with less of the computation that is used to do uncertainty
 propagation.
 
-\subsection{Background and Motivation: The Two-Point Correlation Function}
-
-\KSF{We should discuss how to use subsections} \HOGG{For now, write as you like; we can make things consistent and sensible at the end. I like how you used subsections in this section.}
+\subsection{The Two-Point Correlation Function}
 
 Galaxy clustering is one of the most important tracers of the large-scale structure of the universe.
 The distribution of galaxies contains information about the universe's evolution and fundamental components, as well as the evolution of the galaxies themselves.
 To study the clustering of galaxies, we use observational galaxy surveys that range from hundreds to millions, and soon billions, of galaxies, and are pushing to even higher redshifts.
-\textbf{Due to the increased size and complexity of next-generation galaxy surveys, the tools currently used to characterize galaxy clustering will not be sufficient}.
+\textbf{With the increased size and complexity of next-generation galaxy surveys, the tools currently used to characterize galaxy clustering will not be sufficient}.
 We propose to address this problem by developing new methods for the analysis of galaxy clustering from observational surveys.
 
 The distribution of galaxies in a volume of sky can be modeled as a spatial point process.
@@ -184,8 +182,9 @@ The canonical estimator for the galaxy \cf, originally proposed by \citep{LandyS
 However, this estimator suffers from several limitations. 
 It is computed in bins of radial separation between pairs, and choosing the number of bins is a trade-off between bias and variance.
 Furthermore, for any finite binning in separation, this estimator contains a statistical bias when applied to highly clustered data (e.g. \citealt{Kerscher1998}).
-Another binned dimension is often used to characterize the dependence on galaxy properties: the galaxies are divided into subsamples to analyze the relationship between their properties and clustering. 
-\KSF{I'm not convinced about this application yet so may want to cut, or only mention briefly as a possibility}
+Another binned dimension is often used to characterize the dependence
+on galaxy properties: the galaxies are divided into subsamples to
+analyze the relationship between their properties and clustering.
 One tool developed to address this is the marked correlation function, in which galaxies are weighted by the desired property.
 Li \& White (2010) showed that luminosity-weighting can place tighter constraints on galaxy formation, but this approach still requires $r$-binning and doesn't account for the survey window.
 While these estimators have been sufficient for past analyses, an improved estimator is necessary for future surveys.
@@ -204,14 +203,15 @@ Thus our estimator not only removes the need for binning in spatial separation, 
 We have implemented an initial version of the continuous-function correlation function estimator.
 The estimator is built in C within the \texttt{corrfunc} package \citep{Sinha2017}, which performs fast pair-counting on a lattice.
 To test the estimator, we have generated lognormal catalogs with a known correlation functions. 
-\textbf{We expect these to show that, compared to the Landy-Szalay estimator, my estimator produces a smoother \cf with lower bias and lower variance with respect to the true correlation function.} \KSF{What tense should we be working in? Mix of ``have found this already'' and ``expect to find this"?}
-
-Due to this smoothness, this estimator should be able to not only produce a more accurate correlation function, but do so with fewer basis functions.
+\textbf{We expect these to show that, compared to the Landy-Szalay
+  estimator, the continuous-function estimator produces an estimate with lower bias and
+  lower variance with respect to the true correlation function.}
+Given the enforced smoothness, this estimator should be able to not only produce a more accurate correlation function, but do so with fewer basis functions.
 This means that fewer mock catalogs will be needed to produce a covariance matrix, reducing the computational cost of computing the \cf.
 The expensive simulations required to build a set of mock catalogs for each dataset is one of the limiting factors in correlation function analyses.
 Our estimator will significantly reduce this requirement and allow for faster and more accurate analyses.
 
-Alongside this work, we have revisited the statistical literature and identified how the bias due to binning and edge correction is entering. 
+Alongside this work, we have revisited the statistical literature and identified how the biases from binning and edge correction are entering. 
 We will use this understanding to develop an estimator that doesn't suffer from this bias.
 We will combine these two approaches to develop and implement an estimator for galaxy clustering that is fundamentally unbiased and can be tailored for specific science use cases.
 \KSF{This is referring to ``Barnett things'' - do we want to mention?}
@@ -224,7 +224,7 @@ When the universe cooled enough to cause their decoupling, extra matter was depo
 Today this overdensity should be at a scale of around 120 Mpc/h, and indeed we see a peak there in the correlation function. 
 The exact BAO scale can be extracted from the binned \cf by comparing it to theoretical models of the correlation function. 
 With our estimator, we can directly project the galaxy pairs onto these models. 
-Specifically, we will use as one of my basis functions a canonical model of the correlation function with the Planck best-fit cosmological parameters. 
+Specifically, we will use as one of our basis functions a canonical model of the correlation function with the Planck best-fit cosmological parameters. 
 The other basis functions are derivatives of this model with respect to the parameters we are interested in, in this case the matter density, baryon density and spectral index. \KSF{There are multiple ways to do this and I'm not yet sure which is best / we will do so maybe we shouldn't get this specific}
 \textbf{This eliminates potential error due to the arbitrary choice of bins, and allows for a direct estimation of the cosmological parameters and the BAO scale.} \KSF{These might be more separate measurements than I'm describing}
 We will compare this method to the traditional technique, and expect to show that this method produces more precise measurements of the sound horizon with fewer components.
@@ -243,8 +243,6 @@ open-source code that works efficiently on current data and can be
 incorporated into current and future analysis pipelines. And: less computing!
 
 Call out \textbf{Broader impacts}.
-
-
 
 \section{Second theme: Adversarial approaches to systematics}
 
@@ -293,8 +291,7 @@ The result will be comprehensive testing suites that cover many systematic effec
 We plan to explore observables that are motivated by current theoretical models.
 For example, deviations at the largest scales could indicate primordial non-Gaussianities \citep{Dalal2008}. \KSF{Connect to anomalies section here!}
 
-
-\subsection{Defeating adversarial systematics: probabilistic machine learning methods}
+\subsection{Defeating adversarial systematics with non-parametrics}
 
 Ideally, systematics and clustering should be modeled simultaneously. 
 However, even forward modelling these individually is currently untenable. \KSF{Suchyta 2016 was cited by Rezaie 2019 wrt forward modelling systematics, dig into lit here} 
@@ -320,9 +317,11 @@ This project will make NSF-funded cosmology projects (including
 \SDSSIV, \DESI, and \LSST) more productive, more precise, and more
 capable of making ground-breaking discoveries.
 
-
-
 \section{Third theme: Searches for anomalies}
+
+\HOGG{intro words here for consistency?}
+
+\subsection{Are there discoverable issues with \LCDM?}
 
 Contemporary observational large-scale structure science---and
 cosmology in general---is very focused on parameter estimation.
@@ -372,6 +371,10 @@ The second reason for the focus is....the \LCDM\ model is surely an
 approximation!
 
 \HOGG{Syntactical reference point}
+
+\subsection{Search for weakly broken homogeneity; hypothesis registration}
+
+\subsection{Comprehensive, theory-motivated searches}
 
 HOGG: MAKE SURE ALL THIS GETS SAID IN THIS SECTION, OR MODIFY THE SUMMARY:
 The project will build methodologies that perform (and perform
