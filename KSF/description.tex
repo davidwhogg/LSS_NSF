@@ -3,7 +3,9 @@
 
 % to-do
 % -----
-% - draft all sections
+% - deal with all HOGG and KSF
+% - answer all questions
+% - shorten into 15 pages + references
 
 \documentclass[12pt, fullpage, letterpaper]{article}
 \usepackage{fancyheadings}
@@ -565,24 +567,33 @@ community doing hard things in observational data.
 
 Above we said that it would be good if the anomalies for which we search are
 lexicographically ordered.
+That's because if we want to do a much bigger search, in a much bigger space
+than just spatial gradients of two-point statistics, the number of hypothesis
+tests might get large.
+It would be nice to see, in that case, that the p-values of the searches
+grow as expected as the number of tested hypotheses increases.
 
-....\HOGG{reference point}
+Right now we don't know how to enumerate all statistical tests, or even how
+to start. We would like a space of tests that at least includes as special cases
+the kinds of things that have been found in the \CMB, or the generalizations of
+those that would be relevant to \LSS.
+This means looking for overdensities (possibly as a function of size and shape), under-densities
+(possibly as a function of size and shape), which would be analogous to looking for
+hot and cold spots.
+It would also motivate looking at phase relationships between Fourier modes,
+which would be analogous to the axis of evil.
+It would also mean looking at things that are natural under theory-motivated
+changes to the dark-sector model or the initial conditions.
+That might mean looking for repeated structures, glasses, or other kinds of
+departures from independent draws of Gaussian amplitudes for Fourier modes.
+But we are open to discussion here with the theorists at NYU and elsewhere.
 
-\HOGG{MAKE SURE ALL THIS GETS SAID IN THIS SECTION, OR MODIFY THE SUMMARY:
-The project will build methodologies that perform (and perform
-ourselves) statistically principled brute-force searches of \LSS\ 
-surveys (current and future) for theory-motivated departures from
-predictions of the \LCDM\ model.
-The cosmological model is very successful.
-But the discovery of a departure at intermediate-to-large scales
-(where the physical model is extremely accurate) would be so important
-and significant that it is worth investing effort here.
-The principled aspects of the project will include pre-registration of
-hypotheses (that is, an enumeration of the specific forms and kinds of
-deviations) prior to search.
-And this tool category is related to the previous two, because we need
-to distinguish small departures from systematic effects, and we need
-to extract signatures at bound-saturating precision.}
+Our proposal is that we figure out how to enumerate large classes of sensible
+anomalies, and then run the bulleted list from the previous subsection:
+That is, we need to run on mocks, perform injection-recovery tests, pre-register
+code and plans, and then execute on real data.
+We propose to figure out this workflow, and also build our projects so that our
+workflow is general and can be used by others.
 
 \HOGG{Call out \textbf{Intellectual merit}.
 This project will establish methods for pre-registration of hypotheses that
