@@ -245,7 +245,7 @@ To test the estimator, we have generated lognormal catalogs with a known correla
   estimator, the continuous-function estimator produces an estimate with lower bias and
   lower variance with respect to the true correlation function.}
 Given the enforced smoothness, this estimator should be able to not only produce a more accurate correlation function, but do so with fewer basis functions.
-This means that fewer mock catalogs will be needed to produce a covariance matrix, reducing the computational cost of computing the \cf.
+As the error on the inverse covariance matrix scales with the ratio of the number of bins to the number of mock catalogs, our estimator can produce covariance matrices with fewer mock catalogs \citep{Hartlap2007}.
 The expensive simulations required to build a set of mock catalogs for each dataset is one of the limiting factors in correlation function analyses.
 Our estimator will significantly reduce this requirement and allow for faster and more accurate analyses.
 
@@ -719,7 +719,7 @@ proposal.
 
 \paragraph{Your clustering estimator seems so general, why are you spending so many words talking about how it relates to simulations?}
 
-One of the most limiting aspects of correlation function analyses is the mock catalogs required for error estimation, which must be built from expensive cosmological simulations. The error is computed from the covariance between separation bins of the correlation functions of the mocks, and the required number of mocks goes as the square 
+One of the most limiting aspects of correlation function analyses is the mock catalogs required for error estimation, which must be built from expensive cosmological simulations. The error is computed from the covariance between separation bins of the correlation functions of the mocks, and the required number of mocks scales with the number of bins. By reducing the necessary number of ``bins'' or basis functions in our case, our estimator lowers the requirements on high-cost simulations.
 
 \paragraph{Don't you still have to make choices about your basis functions for your estimator, so you're not totally eliminating binning?}
 
