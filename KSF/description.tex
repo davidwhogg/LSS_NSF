@@ -481,17 +481,24 @@ Write a comprehensive list of all statistics for which we are going to search
 for gradients. This must be chosen in advance.
 \item
 Choose a survey target. This could be
-\SDSSIV-\project{e\acronym{BOSS}}. Obtain a full set of mocks, along
+\SDSSIV\ \project{e\acronym{BOSS}}. Obtain a full set of mocks, along
 with realistic systematic issues and modeled empirically with
 systematics models as in the second theme.
 \item
 Search for the gradients in all of the statistics in the mock
 data. These searches should turn up null (since the simulations are
 homogeneous). This process will test all code, and give us an
-opportunity to check expectations. We should find that some gradient
-directions are better constrained than others.
+opportunity to check expectations.
 \item
-Pre-register the enumerated list of statistics and the data-analysis code.
+Perform injection-recovery tests, in which we inject statistical inhomogeneities
+(yes, we have ideas about how to do this by deleting and adding galaxies in a
+spatially biased way) and attempt to recover injected anomalies.
+This recovery needs to involve re-fitting of systematics as in the previous
+theme, because some anomalies will look like systematic issues (most won't though).
+We should find, in the end, that some gradient directions are better constrained than others.
+\item
+Pre-register the enumerated list of statistics and the data-analysis code that
+searches for them, after fitting the flexible systematics model.
 This pre-registration might involve a GitHub+Zenodo tag or it could be
 a full arXiv publication.
 \item
