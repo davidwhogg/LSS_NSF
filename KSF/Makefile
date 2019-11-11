@@ -7,6 +7,11 @@ CHECK_RERUN = grep Rerun $*.log
 
 all: summary.pdf description.pdf data.pdf facilities.pdf biosketch_hogg.pdf
 
+description.bbl: description.bib description.tex
+	${LATEX} description
+	bibtex description
+
+description.pdf: description.tex hogg_nsf.tex description.bbl
 
 %.pdf: %.tex hogg_nsf.tex
 	${LATEX} $<
