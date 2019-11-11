@@ -188,8 +188,16 @@ analyze the relationship between their properties and clustering.
 One tool developed to address this is the marked correlation function, in which galaxies are weighted by the desired property.
 Li \& White (2010) showed that luminosity-weighting can place tighter constraints on galaxy formation, but this approach still requires $r$-binning and doesn't account for the survey window.
 While these estimators have been sufficient for past analyses, an improved estimator is necessary for future surveys.
+\HOGG{I think maybe we should also anticipate and knock down a
+  ``kernelized'' correlation function estimator that would smooth the
+  field. Also, let's audit for the word ``smooth''. We return a smooth
+  function, but we have not SMOOTHED the corr fn at all. Indeed, our
+  estimator is technically a deconvolution, although I don't want to
+  use that word.}
 
 \subsection{The Continuous-Function Estimator}
+
+\HOGG{KSF: I think we need to give the math / formula for the estimator and say a few words about why the math has the form it does. I can help.}
 
 In order to avoid the issues introduced by finite binning with current estimators, we have developed an approach based on continuous basis functions. 
 Inspired by linear least-squares fitting, it replaces scalar pair counts with a vector of the values output by the basis function, and the normalization term by a tensor of these values.
@@ -320,7 +328,7 @@ capable of making ground-breaking discoveries.
 
 \HOGG{intro words here for consistency?}
 
-\subsection{Are there discoverable issues with \LCDM?}
+\subsection{Why search for issues in the large-scale structure?}
 
 Contemporary observational large-scale structure science---and
 cosmology in general---is very focused on parameter estimation.
@@ -472,8 +480,8 @@ Work on this grant established the career of Ross Fadely, who built unusual
 interdisciplinary expertise during the award period and who is now the
 Chief of Data Science at the \textit{Wall St Journal}.
 
-\paragraph{Other}
-In addition to the above, the PI's group has been supported by
+\paragraph{Others}
+In addition to the recent grants listed above, the PI's group has been supported by
 \acronym{AST-0908357}
 \project{Dynamical models from kinematic data: The Milky Way Disk and Halo} (2009-2011),
 and
@@ -494,7 +502,8 @@ including the Kavli Summer Program in Astrophysics and programs at the Aspen Cen
 
 In addition to being relevant to \NSF\ \acronym{AAG} Program, this project also
 connects strongly to the \NSF\ \acronym{CDS\&E} program.
-HOGG: What more should be said here?
+\HOGG{What more should be said here? Can we ALSO mention the \acronym{CDS\&E} relevance in
+the theme sections above?}
 
 This project touches on the following three \NSF\ themes:
 
@@ -511,7 +520,7 @@ For this reason, we have tried to anticipate and answer some of the
 questions that you, as a reviewer, may have, after reading this
 proposal.
 
-\paragraph{How is this a \acronym{CDS\&E} proposal?}
+\paragraph{Why does this proposal have two authors?}
 
 \paragraph{Isn't it ridiculous to look for anomalies in the large-scale structure?} \KSF{What kinds of anomalies would you be most likely to detect?}
 
@@ -531,6 +540,7 @@ proposal.
 
 \paragraph{Why this team?}
 
+\clearpage
 \bibliography{description}
 \bibliographystyle{apj}
 
