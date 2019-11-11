@@ -245,7 +245,7 @@ To test the estimator, we have generated lognormal catalogs with a known correla
   estimator, the continuous-function estimator produces an estimate with lower bias and
   lower variance with respect to the true correlation function.}
 Given the enforced smoothness, this estimator should be able to not only produce a more accurate correlation function, but do so with fewer basis functions.
-This means that fewer mock catalogs will be needed to produce a covariance matrix, reducing the computational cost of computing the \cf.
+As the error on the inverse covariance matrix scales with the ratio of the number of bins to the number of mock catalogs, our estimator can produce covariance matrices with fewer mock catalogs \citep{Hartlap2007}.
 The expensive simulations required to build a set of mock catalogs for each dataset is one of the limiting factors in correlation function analyses.
 Our estimator will significantly reduce this requirement and allow for faster and more accurate analyses.
 
@@ -274,12 +274,12 @@ We plan to construct basis functions that contain a dependence on the galaxy pro
 We can then quickly evaluate the estimator at any set of luminosities and produce a smooth correlation function for each. 
 We will compare this method to the common subsampling approach; \textbf{we expect to show that this method will allow us to interpret the luminosity dependence in more detail and with higher precision.}
 
-Call out \textbf{Intellectual merit}.
+\HOGG{Call out \textbf{Intellectual merit}.
 This project will deliver both general methods and specific, released,
 open-source code that works efficiently on current data and can be
-incorporated into current and future analysis pipelines. And: less computing!
+incorporated into current and future analysis pipelines. And: less computing!}
 
-Call out \textbf{Broader impacts}.
+\HOGG{Call out \textbf{Broader impacts}.}
 
 \section{Second theme: Adversarial approaches to systematics}
 
@@ -349,10 +349,10 @@ We expect to show that our GP approach does better at recovering unbiased cluste
 Further, we will perform this test on catalogs with extreme systematics that could be obscuring interesting clustering features; we expect traditional methods to be unable to detect these features, while our method should reveal this information.
 Our systematics calibration method will improve current measurements by reducing systematic biases and open up more discovery space in galaxy clustering analyses.
 
-Call out \textbf{Intellectual merit}.
+\HOGG{Call out \textbf{Intellectual merit}.
 This project will make NSF-funded cosmology projects (including
 \SDSSIV, \DESI, and \LSST) more productive, more precise, and more
-capable of making ground-breaking discoveries.
+capable of making ground-breaking discoveries.}
 
 \section{Third theme: Searches for anomalies}
 
@@ -578,12 +578,12 @@ Previous work has examined the variation of the cosmological parameters in spati
 Our approach will allow us to look systematically for spatial variations in clustering that are motivated by physical theory.
 This will probe deviations at the largest scales, which could indicate unseen effects such as primordial non-Gaussianities \citep{Dalal2008}.
 
-HOGG: Call out \textbf{Intellectual merit}.
+\HOGG{Call out \textbf{Intellectual merit}.
 This project will establish methods for pre-registration of hypotheses that
 will be of general value in cosmology and other areas in the natural
-sciences.
+sciences.}
 
-HOGG: Call out \textbf{Broader impacts}.
+\HOGG{Call out \textbf{Broader impacts}.}
 
 \section{Workshops and pedagogical publications}
 
@@ -610,9 +610,9 @@ We will design the workshops using these practices, to ensure that students are 
 The investigators have connections with groups in New York City to hold these workshops for, through the Institute for Science and Engineer Educators. \KSF{Throwing things around here, feel free to cut...}
 With feedback from these workshops, we will iterate on the materials, and finally advertise and distribute them online. 
 
-Call out \textbf{Intellectual merit}.
+\HOGG{Call out \textbf{Intellectual merit}.}
 
-Call out \textbf{Broader impacts}.
+\HOGG{Call out \textbf{Broader impacts}.}
 
 \section{Prior NSF support}
 
@@ -667,7 +667,7 @@ and (in ancient history) a \NSF\ graduate fellowship.
 The majority of the PI's 220 refereed publications have been at least partially supported
 by \NSF grants at a range of different institutions..
 
-Kate Storey-Fisher has been supported by two \NSF\ \acronym{REU} grants.
+Kate Storey-Fisher has been supported by three \NSF\ \acronym{REU} grants.
 Both Storey-Fisher and Hogg have benefitted from \NSF\ support of conferences and meetings,
 including the Kavli Summer Program in Astrophysics and programs at the Aspen Center for Physics.
 
@@ -743,7 +743,9 @@ proposal.
 
 \paragraph{Your clustering estimator seems so general, why are you spending so many words talking about how it relates to simulations?}
 
-\paragraph{Don't you still have to make choices about your basis functions for your estimator, so you're not totally eliminating bining?}
+One of the most limiting aspects of correlation function analyses is the mock catalogs required for error estimation, which must be built from expensive cosmological simulations. The error is computed from the covariance between separation bins of the correlation functions of the mocks, and the required number of mocks scales with the number of bins. By reducing the necessary number of ``bins'' or basis functions in our case, our estimator lowers the requirements on high-cost simulations.
+
+\paragraph{Don't you still have to make choices about your basis functions for your estimator, so you're not totally eliminating binning?}
 
 \paragraph{Are you saying that the canonical two-point correlation function estimator is wrong?} \KSF{Well kind of, but that's not what this estimator is solving}
 
@@ -751,7 +753,7 @@ proposal.
 
 \paragraph{What is the connection between systematics correction and anomaly detection?}
 
-\paragraph{Isn't a brute-force, comprehensive search for \LSS anomalies impossible due to computational cost?}
+\paragraph{Isn't a brute-force, comprehensive search for \LSS\ anomalies impossible due to computational cost?}
 
 \paragraph{Will pedagogical publications and workshops really have a broad impact?}
 
