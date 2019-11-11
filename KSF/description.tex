@@ -441,9 +441,96 @@ In some ways the most interesting of the \CMB\ anomalies is the
 North-South power asymmetry. It's interesting because it is also
 \emph{natural}: If statistical isotropy or homogeneity is weakly
 broken, it will show up first as an $\ell=1$ distortion (one half of
-the sky different from the other, slightly)....\HOGG{reference point}
+the sky different from the other, slightly).
+This motivates a search for anomalies in the \LSS\ that are small
+moves away from statistical homogeneity.
+To first order, in any finite survey volume, these will appear as
+\emph{gradients} of statistical properties with respect to three-space
+position.
+These kinds of anomalies are the first for which we will search, not
+because we think these anomalies are likely to appear, but because they
+are natural, and they are easily enumerated.
+
+Even in this small space of anomalies, there are subtleties. The first
+is that there are many two-point statistics (say), and each of these can
+show a gradient. For example, there is power at different spatial scales,
+or quantities (like cosmological parameters) derived from those power
+measurements. For example, we could look for a gradient in the variance at
+$20\,h^{-1}\,\Mpc$ scales. Or we could look for a gradient in the location
+of the baryon acoustic feature. Or in the inferred value of the amplitude
+$\sigma_8$ of the power spectrum for the initial conditions.
+We need to find an enumeration of the possibilities (and, preferably, an
+ordering for hypothesis registration; see below).
+
+The second subtlety is that there will be some gradients that are easier
+to measure than others. There are trivial considerations, like which
+quantities show high signal-to-noise in the data set. But there are less
+trivial considerations, like which kinds of gradients could be mocked or
+masked by systematic effects.
+This links this theme to the second theme of modeling systematics:
+The framework we build for modeling systematics will tell us which
+kinds of anomalies we can securely detect, and at what amplitudes we
+can detect them.
+
+So even in this tiny sandbox---looking only at weakly broken
+statistical homogeneity---there is quite a workflow. It looks
+something like this:
+\begin{itemize}
+\item
+Write a comprehensive list of all statistics for which we are going to search
+for gradients. This must be chosen in advance.
+\item
+Choose a survey target. This could be
+\SDSSIV-\project{e\acronym{BOSS}}. Obtain a full set of mocks, along
+with realistic systematic issues and modeled empirically with
+systematics models as in the second theme.
+\item
+Search for the gradients in all of the statistics in the mock
+data. These searches should turn up null (since the simulations are
+homogeneous). This process will test all code, and give us an
+opportunity to check expectations. We should find that some gradient
+directions are better constrained than others.
+\item
+Pre-register the enumerated list of statistics and the data-analysis code.
+This pre-registration might involve a GitHub+Zenodo tag or it could be
+a full arXiv publication.
+\item
+Operate on the data, visualize, write up and publish results of the
+analysis with the pre-registered code.
+\item
+If any anomalies appear in that analysis, follow them up with further
+investigation, but not contaminating or re-considering any of the results
+of the pre-registered analyses.
+\end{itemize}
+
+The nice thing about all this is that \textbf{the ideal tool for
+  finding cosmological gradients in power is the continuous
+  correlation-function estimator we are building} in the first theme:
+In the same way that it doesn't require bins in separation, it also
+doesn't require bins in any housekeeping data. That is, the pairs
+being counted in the terms can be projected not just onto a separation
+basis, but also a three-space location basis in the Hubble
+Volume. That is, every pair of galaxies will have not just a
+separation $s$ in (say) redshift space, it will also have a position
+(maybe the center-of-mass position $x$ in three-space inside the
+survey.  The correlation-function basis functions in $s$ can be
+multiplied by a constant function in $x$ and by three independent (orthogonal
+probably) linear functions of
+$x$ to make a new smooth basis $f(s,x)$. If the Universe is truly
+homogeneous, statistically, the part of the basis that depends on $x$
+will only be populated at a level expected by noise; all of the
+significantly non-zero amplitudes should be on the part of the basis
+that is constant in $x$.
+
+The execution of this theme depends on the products of the
+previous two themes.
+
+\HOGG{KSF: Can you look up what Blanton and co wrote about power gradients
+in the LSS and cite it?}
 
 \subsection{Comprehensive, theory-motivated searches}
+
+....\HOGG{reference point}
 
 \HOGG{MAKE SURE ALL THIS GETS SAID IN THIS SECTION, OR MODIFY THE SUMMARY:
 The project will build methodologies that perform (and perform
