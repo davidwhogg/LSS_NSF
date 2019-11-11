@@ -37,16 +37,17 @@ dynamical features.
 However, what is well established is the following:
 Whatever \emph{is} the true model \emph{is very well approximated} by
 \LCDM\ over a wide range of scales in length and density.
-The \LCDM\ model, then, deserves our respect and our attention. \KSF{i feel like ``respect'' is a bit funny in this context - our recognition?}
-By the same token, it deserves our criticism and our scrutiny.
-Here we proceed with both.
+The \LCDM\ model, then, deserves to be worked out, tested, and scrutinized at the
+limits of what's possible (or at least sensible!)
 
 In addition to the importance and success of the \LCDM\ model---or
-really because of it---the principal cosmological parameters (which
-can be thought of as the age, the densities in various components, and
-the power spectrum of the initial conditions) are measured in data
-with percent-level precision. \KSF{This (previous sentence) is an important sentence but is hard to understand, haven't yet figured out how to break it down}
-However, our 1\% precision measurements are not good enough to detect potential deviations from \LCDM\, or to understand subtle cosmological and astrophysical effects.
+really because of it---the principal cosmological parameters have been
+measured in data with percent-level precision.
+These parameters can be thought of as the age, the densities in
+various components, and the power spectrum of the initial conditions.
+However, our percent-precision measurements are not good enough to
+detect potential deviations from \LCDM\, or to understand subtle
+cosmological and astrophysical effects.
 The history of astrophysics has demonstrated, time and again, that
 that with new precision comes new opportunities.
 The current and next generations of surveys hope to
@@ -59,30 +60,36 @@ dynamically.
 This would answer questions that direct mass measurement experiments
 can't answer yet (or will ever be able to, if there are contributions from sterile neutrinos).
 As another example, if the cosmological constant turns out to be a particle rather
-than a term in general relativity, we now know, observationally, that
-this signature will appear at sub-percent level in the
-expansion history and the growth of structure. \KSF{How do we know this observationally when we don't have the observations?} \KSF{Galaxy formation is another example that will be more relevant in the rest of the proposal}
+than a term in general relativity, we now know that
+this signature cannot appear at percent level or greater (in the
+expansion history and the growth of structure).
 
-\KSF{I think it's odd that the reader doesn't know what we're proposing even broadly until the 3rd paragraph. Consider adding general ``thesis'' sentence at end of 1st / beginning of 2nd? Or is this standard for long proposals?}
-%For us, these are just examples of things we might be doing in the coming decade.
-Here we propose to design, build, and exercise tools that will be
-valuable for answering these types of cosmological questions, even as the questions themselves evolve and expand.
-In our view, given the success and precision of the current
+\textbf{Here we propose to design, build, and exercise tools for the
+analysis of large-scale structure that will
+  be valuable for answering very precise cosmological questions}, even
+as the questions themselves evolve and expand.
+Given the success and precision of the current
 cosmological model, new projects either have to obtain
 \textbf{substantially more precision}, or else look for subtle
-\textbf{departures from predictions}. \KSF{Do we need the qualifier ``in our view''?}
+\textbf{departures from predictions}.
 That is, we want to see small effects, and in particular, small
 effects that might call into question the deep assumptions of the
-\LCDM\ model. \KSF{I really like this paragraph!}
+\LCDM\ model.
 
-\KSF{Volume sort of implies large-scale structure or related (supernovae, lensing) probes, as opposed to other cosmological probes (CMB, GWs) - should mention the types of data we're focusing on in the previous paragraph? We say LSS at end but it seems like we're implying cosmology is LSS}
-
-Doing better than has ever been done before will require work along
-multiple axes. \KSF{Don't love the general-ness of ``doing'' but hard to think of alternative. ``Making measurements that give this next level of insight will require...''}
-The first axis is \emph{volume}: We need to observe more spatial volume. \KSF{data volume and spatial volume?}
-This is happening now, with projects like the eBOSS survey within the Sloan Digital Sky Survey (SDSS) surveying the largest volume to date \citep{Dawson2015}. 
-Upcoming wide-field surveys include DESI \citep{Aghamousa2016}, which will begin taking data in 2019, followed by NASA's Euclid mission \citep{Amiaux2012} and LSST \citep{Ivezic2018} in 2021, and WFIRST in the mid-2020s \citep{Akeson2019}. \KSF{Spell out acronyms?}
-These will observe 10-20 times more galaxies than current surveys,
+Measuring things better than they have ever been measured before will require work along
+multiple axes.
+The first axis is \emph{volume}: We need to observe more spatial volume, and with new kinds
+of tracers.
+This is happening now, with projects like the
+\project{e\acronym{BOSS}} survey within the \project{Sloan Digital Sky
+  Survey} (\SDSS) surveying the largest volume to date
+\citep{Dawson2015}.
+Upcoming wide-field surveys include \project{\acronym{DESI}}
+\citep{Aghamousa2016}, which will begin taking data in 2019, followed
+by \NASA\ \project{Euclid} \citep{Amiaux2012} and
+\LSST\ \citep{Ivezic2018} in 2021, and \NASA\ \project{\acronym{WFIRST}} in the mid-2020s
+\citep{Akeson2019}.
+These will observe 10 to 20 times more galaxies than current surveys,
 but this new volume comes at a cost. As we look to larger
 distances and larger volumes with denser tracers, we push our
 observations to noisier targets with less-well-measured individual
@@ -118,12 +125,13 @@ We \emph{will} discover anomalies; the hard question will be whether
 they are statistically significant or worth further study.
 This gets into issues of multiple hypothesis testing, which we will
 discuss below.
-But these two issues directly combine, because unmodeled or
-incorrectly modeled systematic issues in the data will project onto
-discoverable anomalies. \KSF{Which two issues? Unclear}
+But these two issues---systematic effects and multiple hypothesis
+testing---directly combine, because unmodeled or incorrectly modeled
+systematic issues in the data will project onto discoverable
+anomalies.
 So if we are going to search the next generation of surveys for
 interesting new departures from baseline theoretical expectations,
-we need to have a very solid statistical plan. \KSF{These three axes: Big Bad Wolf (Big data, bad data, trickster data) :)}
+we need to have a very solid statistical plan.
 
 This proposal is to build and exercise general-purpose tools that will
 make the next generation of (galaxy, quasar, and intensity-mapping)
@@ -135,11 +143,13 @@ In the first theme, we replace the standard estimator for clustering or
 correlation functions with something far more flexible, which permits us
 to do more with more cosmological volume at fixed computational cost.
 In the second, we analyze, attack, and re-build the self-calibration 
-methods for window function estimation. \KSF{for systematics correction? is window function the main operator here?}
+methods for handling systematics and window-function estimation.
 In the third, we perform a very false-positive-safe search for anomalies
 in the large-scale structure, to identify departures that might point to
 new physics.
-\KSF{Feel like need a powerful sentence to send off into the themes, but hard without repeating first sentence of this paragraph}
+These three themes work together to create new measurement and discovery space,
+increasing the scientific reach of the big investments we (as a community)
+are making in large-scale structure.
 
 \section{First theme: A new estimator for galaxy clustering}
 
@@ -361,6 +371,8 @@ The first is....productivity of CMB anomalies
 The second reason for the focus is....the \LCDM\ model is surely an
 approximation!
 
+\HOGG{Syntactical reference point}
+
 HOGG: MAKE SURE ALL THIS GETS SAID IN THIS SECTION, OR MODIFY THE SUMMARY:
 The project will build methodologies that perform (and perform
 ourselves) statistically principled brute-force searches of \LSS\ 
@@ -514,6 +526,8 @@ proposal.
 \paragraph{Isn't a brute-force, comprehensive search for \LSS anomalies impossible due to computational cost?}
 
 \paragraph{Will pedagogical publications and workshops really have a broad impact?}
+
+\paragraph{Why this team?}
 
 \bibliography{description}
 \bibliographystyle{apj}
