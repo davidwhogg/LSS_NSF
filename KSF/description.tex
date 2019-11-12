@@ -364,8 +364,8 @@ capable of making ground-breaking discoveries.}
 As we have emphasized, the \LCDM\ model of cosmology is incredibly successful.
 But we expect it to be an approximation to the true model.
 Are there already visible anomalies, or will anomalies appear soon?
-The challenges are statistical: How can we find them reliably, given
-non-trivial systematics and the multiple-hypotheses problems.
+The challenges are statistical: our goal is to find these anomalies reliably, given
+non-trivial systematics and multiple-hypotheses problems.
 
 \subsection{Why search for issues in the large-scale structure?}
 
@@ -373,7 +373,7 @@ Contemporary observational large-scale structure science---and
 cosmology in general---is very focused on parameter estimation.
 And rightly so!
 The cosmological parameters are known now to incredible precision.
-And new effects are coming visible in the near future, which will add
+And new effects are becoming visible in the near future, which will add
 new parameters to the list and permit us to estimate current
 parameters even more precisely.
 
@@ -384,6 +384,7 @@ The best-fit (or measured or estimated) parameter values are those at
 (or near) the peak in the log-likelihood function, or the (log)
 probability of the data given the parameters and the fundamental
 physical assumptions.
+\KSF{all the parenthetical make this difficult to read, don't think you need all}
 The best possible precision with which the parameters can be measured
 is related to the Fisher information, which is (in turn) the second
 derivative of that log-likelihood function.
@@ -392,6 +393,7 @@ worked out and justified procedure in classical statistics, and it
 delivers results that can be judged in the framework of information
 theory.
 And we are really, really good at it.
+\KSF{What does this mean? Who is we and in what contexts are we ``good'' at it?}
 
 Interestingly and importantly to our story,
 parameter estimation can proceed \emph{whether or not the fundamental theory
@@ -399,11 +401,13 @@ is in fact a good fit to the data}.
 That is, it doesn't depend on the model being \emph{good}.
 It depends only on the data being precise, and the parameters showing
 effects in our expections for the data (as encoded by the log-likelihood function).
+\KSF{Combine these two paragraphs above and below?}
 
 But we believe that it makes sense to think about the goodness-of-fit,
 or the respects in which the data do and do not fit the model.
 This question is as old (in statistics) as the question of parameter
 estimation, and older, even in the history of cosmology.
+\KSF{above sentence is confusing. suggest: The question of whether data fits a model is a statistics question as old as the question of parameter estimation, and has even deeper roots in cosmology.}
 But it is a harder question, because it involves comparing
 qualitatively different models or paradigms.
 
@@ -422,12 +426,13 @@ they were discovered in an \foreign{ad hoc} way, which is hard to
 assess in any \foreign{a posteriori} statistical analysis.
 The productivity of these results is to be admired, but the statistical
 context needs to be fixed. That's what we propose to do here.
+\KSF{fixed-->reconsidered? revisited?}
 
 The second reason for a focus on anomalies is the fact (mentioned
 above) that the \LCDM\ model must sure surely be an approximation to a
 more intricate theory.
 Complexity isn't \emph{required}.
-But it would be odd that the light sector of quarks and leptons and
+But it would be odd, for example, that the light sector of quarks and leptons and
 force carriers would show so much phenomenology and the dark sector of
 dark matter would show none.
 What we know from years of \LCDM\ is that if anomalies exist, they are
@@ -435,8 +440,9 @@ hiding: There are no obviously wrong predictions of \LCDM\ known at
 scales larger than 10-ish Mpc, and the issues at smaller scales are
 all consistent at the present day with the interference of baryonic
 physics (\HOGG{CITE}).
-So that says that we need to look for subtle effects, or effects that
-don't project strongly onto two-point-function measurements.
+\KSF{What does interference mean here?}
+This leads to the conclusion we need to look for subtle effects, or effects that
+don't project strongly onto standard two-point-function measurements.
 
 \subsection{Search for weakly broken homogeneity; hypothesis registration}
 
@@ -457,8 +463,8 @@ These kinds of anomalies are the first for which we will search, not
 because we think these anomalies are likely to appear, but because they
 are natural, and they are easily enumerated.
 
-And indeed this kind of weakly broken homogeneity has been investigated previously,
-but different methods.
+This kind of weakly broken homogeneity has been investigated previously,
+using various methods.
 One project looked at the variation of the cosmological parameters in spatial patches \citep{Mukherjee2018}.
 Another made forecasts for detecting a hemispherical power asymmetry, similar to that seen in the CMB, in redshift surveys \citep{Zhai2017}.
 
@@ -475,38 +481,46 @@ ordering for hypothesis registration; see below).
 
 The second subtlety is that there will be some gradients that are easier
 to measure than others. There are trivial considerations, like which
-quantities show high signal-to-noise in the data set. But there are less
+quantities show high signal-to-noise in the data set. But there are also less
 trivial considerations, like which kinds of gradients could be mocked or
 masked by systematic effects.
+\KSF{mocked-->denerate with? imitated by? confused with?}
 This links this theme to the second theme of modeling systematics:
 The framework we build for modeling systematics will tell us which
 kinds of anomalies we can securely detect, and at what amplitudes we
 can detect them.
 
 So even in this tiny sandbox---looking only at weakly broken
-statistical homogeneity---there is quite a workflow. It looks
-something like this:
+statistical homogeneity---there is quite a workflow.
+\KSF{You're making it sound less concrete than it is (though still not very!) suggest ``there is significant work to be done.''}
+Our approach for this search is as follows:
 \begin{itemize}
 \item
 Write a comprehensive list of all statistics for which we are going to search
 for gradients. This must be chosen in advance.
+\KSF{This is the vaguest part, if we can elaborate at all or give examples of how we will come up with this I think that would help}
 \item
 Choose a survey target. This could be
 \SDSSIV\ \project{e\acronym{BOSS}}. Obtain a full set of mocks, along
 with realistic systematic issues and modeled empirically with
 systematics models as in the second theme.
+\KSF{Can we just choose this for now to make this more concrete}
 \item
 Search for the gradients in all of the statistics in the mock
 data. These searches should turn up null (since the simulations are
 homogeneous). This process will test all code, and give us an
 opportunity to check expectations.
+\KSF{Null if the mocks were noiseless, but we will detect weird things due to random noise/fluctuations, no?}
+\KSF{I don't know if we need to say test code? Maybe ``will act as a check of our methodology''?}
 \item
 Perform injection-recovery tests, in which we inject statistical inhomogeneities
-(yes, we have ideas about how to do this by deleting and adding galaxies in a
-spatially biased way) and attempt to recover injected anomalies.
-This recovery needs to involve re-fitting of systematics as in the previous
-theme, because some anomalies will look like systematic issues (most won't though).
+and attempt to recover injected anomalies.
+We will do the injection by deleting and adding galaxies in a
+spatially biased way.
+The recovery will involve re-fitting of systematics as in the previous
+theme, because some anomalies will look like systematic issues.
 We should find, in the end, that some gradient directions are better constrained than others.
+\KSF{This might need to be elaborated on, I know what you mean only because we've discussed}
 \item
 Pre-register the enumerated list of statistics and the data-analysis code that
 searches for them, after fitting the flexible systematics model.
@@ -514,17 +528,18 @@ This pre-registration might involve a GitHub+Zenodo tag or it could be
 a full arXiv publication. It is possible that a complete refereed paper
 is merited, given the sophistication that our injection--recovery tests will require.
 \item
-Operate on the data, visualize, write up and publish results of the
+Operate on the real data, visualize, write up and publish results of the
 analysis with the pre-registered code.
+\KSF{say eBOSS data here?}
 \item
 If any anomalies appear in that analysis, follow them up with further
 investigation, but not contaminating or re-considering any of the results
 of the pre-registered analyses.
 \end{itemize}
 
-The nice thing about all this is that \textbf{the ideal tool for
+We are well-poised to perform this analysis, as \textbf{the ideal tool for
   finding cosmological gradients in power is the continuous
-  correlation-function estimator we are building} in the first theme:
+  correlation-function estimator we are building} as described in the first theme.
 In the same way that it doesn't require bins in separation, it also
 doesn't require bins in any housekeeping data. That is, the pairs
 being counted in the terms can be projected not just onto a separation
@@ -540,12 +555,14 @@ homogeneous, statistically, the part of the basis that depends on $x$
 will only be populated at a level expected by noise; all of the
 significantly non-zero amplitudes should be on the part of the basis
 that is constant in $x$.
+\KSF{kill or rephrase ``orthogonal probably''}
 
 The execution of this theme depends on the products of the
 previous two themes.
+\KSF{why is this sentence hanging out here by itself}
 
 \textbf{One challenge of this theme is the pre-registration requirement.}
-The arXiv explicitly rejects papers that it regards as ``proposals''. Will a
+The arXiv explicitly rejects papers that it regards as ``proposals.'' Will a
 pre-registration document or paper be regarded as a proposal? In principle
 tagged GitHub code represents a pre-registration. But of course it is possible
 to modify past history, so it isn't as secure as an arXiv posting.
@@ -557,24 +574,27 @@ Solving the pre-registration problem is explicitly part of what we are proposing
 We don't know the best solution but we are explicitly proposing to work through possibilities
 and find a solution that could be used not just by us but by the whole natural-science
 community doing hard things in observational data.
+\KSF{I understand why this paragraph is written so speculatively but that does make it weak. I think some ordering and language changes would strenghthen it while still emphasizing that part of the proposal is figuring out how to do this.}
 
 \subsection{Comprehensive, theory-motivated searches}
 
 Above we said that it would be good if the anomalies for which we search are
 lexicographically ordered.
+\KSF{Think we need to define what we mean by ``lexicographically ordered''}
 That's because if we want to do a much bigger search, in a much bigger space
 than just spatial gradients of two-point statistics, the number of hypothesis
-tests might get large.
+tests will get large.
 It would be nice to see, in that case, that the p-values of the searches
 grow as expected as the number of tested hypotheses increases.
+\KSF{change it would be nice language to something concrete and that says what you mean - we expect? the ordering should show that?}
 
 Right now we don't know how to enumerate all statistical tests, or even how
 to start. We would like a space of tests that at least includes as special cases
 the kinds of things that have been found in the \CMB, or the generalizations of
 those that would be relevant to \LSS.
-This means looking for overdensities (possibly as a function of size and shape), under-densities
-(possibly as a function of size and shape), which would be analogous to looking for
-hot and cold spots.
+This means looking for overdensities and under-densities,
+possibly as a function of size and shape, which would be analogous to looking for
+hot and cold spots in the \CMB.
 It would also motivate looking at phase relationships between Fourier modes,
 which would be analogous to the axis of evil.
 It would also mean looking at things that are natural under theory-motivated
@@ -582,13 +602,14 @@ changes to the dark-sector model or the initial conditions.
 That might mean looking for repeated structures, glasses, or other kinds of
 departures from independent draws of Gaussian amplitudes for Fourier modes.
 But we are open to discussion here with the theorists at NYU and elsewhere.
+\KSF{We can do a lot more with this paragraph, giving examples of theory-motivated anomalies and how they would fit into our ordering. Can discuss how these, as well as \CMB\ anomalies, can help us think about how to enumerate and order our searches, without letting them bias the search.}
 
 Our proposal is that we figure out how to enumerate large classes of sensible
 anomalies, and then run the bulleted list from the previous subsection:
 That is, we need to run on mocks, perform injection-recovery tests, pre-register
 code and plans, and then execute on real data.
-We propose to figure out this workflow, and also build our projects so that our
-workflow is general and can be used by others.
+We propose to figure out this workflow, and build our projects so that our
+workflow is general and can be used by others in the community.
 
 \HOGG{Call out \textbf{Intellectual merit}.
 This project will establish methods for pre-registration of hypotheses that
@@ -753,7 +774,7 @@ proposal.
 
 \paragraph{Isn't it ridiculous to look for anomalies in the large-scale structure?} \KSF{What kinds of anomalies would you be most likely to detect?}
 
-To some extent yes, but it is still worthwhile! We don't \emph{expect} to find anomalies in clustering. However, we do have reason to believe that the \LCDM model is an approximation, and deviations should appear at some level. We thus have a responsibility to scrutinize \LSS\ data, while approaching our anomaly search with skepticism and pragmatism. 
+To some extent yes, but it is still worthwhile! We don't \emph{expect} to find anomalies in clustering. However, we do have reason to believe that the \LCDM\ model is an approximation, and deviations should appear at some level. We thus have a responsibility to scrutinize \LSS\ data, while approaching our anomaly search with skepticism and pragmatism. 
 
 \paragraph{Isn't a brute-force, comprehensive search for \LSS\ anomalies impossible due to computational cost?}
 
