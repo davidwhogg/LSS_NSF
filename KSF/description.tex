@@ -3,6 +3,7 @@
 
 % to-do
 % -----
+% - deal with all CITE
 % - deal with all HOGG and KSF
 % - answer all questions
 % - shorten into 15 pages + references
@@ -25,7 +26,7 @@
 \newcommand{\KSF}[1]{\textcolor{teal}{KSF says: #1}}
 \newcommand{\HOGG}[1]{\textcolor{orange}{HOGG says: #1}}
 \newcommand{\cf}{2pcf\xspace}
-\newcommand{\LS}{LS\xspace}
+\newcommand{\LS}{\acronym{LS}\xspace}
 \newcommand{\inv}{^{-1}}
 \newcommand{\T}{^{\mathsf{T}}}
 
@@ -52,8 +53,8 @@ really because of it---the principal cosmological parameters have been
 measured in data with percent-level precision.
 These parameters can be thought of as the age, the densities in
 various components, and the power spectrum of the initial conditions.
-However, our percent-precision measurements are not good enough to
-detect potential deviations from \LCDM\, or to understand subtle
+However, our percent-precision measurements have not been good enough to
+detect potential deviations from \LCDM\, or to find new
 cosmological and astrophysical effects.
 The history of astrophysics has demonstrated, time and again,
 that with new precision comes new opportunities.
@@ -68,7 +69,7 @@ This would answer questions that direct mass measurement experiments
 can't answer yet (or will ever be able to, if there are contributions from sterile neutrinos).
 As another example, if the cosmological constant turns out to be a particle rather
 than a term in general relativity, we now know that
-this signature cannot appear at percent level or greater (in the
+this signature does not appear at percent level or greater (in the
 expansion history and the growth of structure).
 
 \textbf{Here we propose to design, build, and exercise tools for the
@@ -80,7 +81,7 @@ cosmological model, new projects either have to obtain
 \textbf{substantially more precision}, or else look for subtle
 \textbf{departures from predictions}.
 That is, we want to see small effects, and in particular, small
-effects that might call into question the deep assumptions of the
+effects that might call into question the core (or simplifying) assumptions of the
 \LCDM\ model.
 
 Measuring things better than they have ever been measured before will require work along
@@ -96,8 +97,8 @@ Upcoming wide-field surveys include \DESI\
 by \NASA\ \project{Euclid} \citep{Amiaux2012} and
 \LSST\ \citep{Ivezic2018} in 2021, and \NASA\ \project{\acronym{WFIRST}} in the mid-2020s
 \citep{Akeson2019}.
-These will observe 10 to 20 times more galaxies than current surveys,
-but this new volume comes at a cost. As we look to larger
+These will observe 10 to 20 times more galaxies than current surveys.
+But this new volume comes at a cost. As we look to larger
 distances and larger volumes with denser tracers, we push our
 observations to noisier targets with less-well-measured individual
 properties, with more elaborate window functions and hard-to-model foregrounds.
@@ -106,7 +107,7 @@ modes measured), it gets worse in an individual-object sense (fewer
 bits per target, more contamination from foregrounds and backgrounds).
 
 This leads to the second axis along which we have to work, which
-is calibration, contamination, and window functions.
+is \emph{calibration, contamination, and window functions}.
 As the data get harder to use at the individual-object level, it is
 harder to know that we have surveyed the volume uniformly, or, more
 realistically, that we understand the non-uniformity of our sampling.
@@ -119,7 +120,7 @@ understanding the selection.
 This connect to ideas of
 self-calibration, where the PI has been a pioneer.
 
-The third axis is statistical sophistication.
+The third axis is \emph{statistical sophistication}.
 As we simultaneously move to higher precision requirements, larger
 volumes of data, and lower-precision individual-object data, it is 
 easier and easier to get fooled.
@@ -174,8 +175,8 @@ propagation.
 
 \subsection{The Two-Point Correlation Function}
 
-Galaxy clustering is one of the most important tracers of the large-scale structure of the universe.
-The distribution of galaxies contains information about the universe's evolution and fundamental components, as well as the evolution of the galaxies themselves.
+Galaxy clustering is one of the most important tracers of the large-scale structure of the Universe.
+The distribution of galaxies contains information about the Universe's evolution and fundamental components, as well as the evolution of the galaxies themselves.
 To study the clustering of galaxies, we use observational galaxy surveys that range from hundreds to millions, and soon billions, of galaxies, and are pushing to even higher redshifts.
 \textbf{With the increased size and complexity of next-generation galaxy surveys, the tools currently used to characterize galaxy clustering will not be sufficient}.
 We propose to address this problem by developing new methods for the analysis of galaxy clustering from observational surveys.
@@ -183,7 +184,7 @@ We propose to address this problem by developing new methods for the analysis of
 The distribution of galaxies in a volume of sky can be modeled as a spatial point process.
 We can use the statistics of point processes to characterize their clustering, giving us insight into the physical processes that produce this distribution.
 One of the most common statistics used to analyze galaxy surveys is the two-point correlation function (\cf). 
-\textbf{The \cf is critical for inferring certain cosmological parameters, determining the distance scale in the early universe, and constraining galaxy formation by examining how clustering depends on galaxy properties.}
+\textbf{The \cf is critical for inferring cosmological parameters, determining the distance scale in the early Universe, and constraining galaxy formation by examining how clustering depends on galaxy properties.}
  
 The canonical estimator for the galaxy \cf, originally proposed by \cite{LandySzalay1993} (\LS), estimates the excess number of galaxies in bins of spatial separation $r$, compared to a statistically random distribution.
 Given a set of $K$ bins, the \LS estimator counts the number of galaxy pairs $DD$ with a separation in each bin, and counts ``random'' pairs $RR$ from a uniformly distributed catalog  to correct for the survey boundary, as well as cross-pairs $DR$.
@@ -216,21 +217,21 @@ In order to avoid the issues introduced by finite binning with current estimator
 Inspired by linear least-squares fitting, we replace the scalar pair counts of \LS with a vector of the values output by the basis function, and the normalization term by a tensor of these values.
 We generalize the \LS estimator above to any set of $K$ basis functions $f$ of the pair, so we now have
 \begin{eqnarray}\displaystyle
-DD &\equiv& \sum_{n n'} f(T_n, T_{n'}) \\
-DR &\equiv& \sum_{n m} f(T_n, T_{m}) \\
-RR &\equiv& \sum_{m m'} f(T_m, T_{m'}) \\
-QQ &\equiv& \sum_{m m'} f(T_m, T_{m'}) \cdot f\T(T_m, T_{m'}),
+DD \equiv \sum_{n n'} f(T_n, T_{n'}) &\quad&
+DR \equiv \sum_{n m} f(T_n, T_{m}) \nonumber\\
+RR \equiv \sum_{m m'} f(T_m, T_{m'}) &\quad&
+QQ \equiv \sum_{m m'} f(T_m, T_{m'}) \cdot f\T(T_m, T_{m'}),
 \end{eqnarray}
 where $DD$, $DR$, and $RR$ are vectors of length $K$, $T$ refers to the data (position and other information) for the given tracer, and $QQ$ is a $K$-by-$K$ matrix defined as the outer product of basis function evaluations of the random--random pairs.
-
-From these, we can compute the \cf:
+The matrix $QQ$ encodes the non-orthonormality of the basis functions and is used to correct the projections, as follows:
+From these statistics, we compute the \cf by
 \begin{eqnarray}\displaystyle
 a &\equiv& QQ\inv \cdot (DD + 2DR - RR) \\
-\xi(T_l, T_{l'}) &\equiv& a\T \cdot f(T_l, T_{l'})
+\xi(T_l, T_{l'}) &\equiv& a\T \cdot f(T_l, T_{l'}) \quad ,
 \end{eqnarray}
 where $a$ is a $K$-vector of the ``amplitudes'' of the basis functions, and $T_l$ and $T_{l'}$ contain the data values at which to evaluate $\xi$.
 Thus our estimator allows $\xi$ to be evaluated at \emph{any} separation, as well as at any other value of the data property used in the basis functions.
-We have also shown that it is invariant under affine transformations.
+We have also shown that it is invariant under affine transformations of the basis (rotations and shears in the $f$ space or $a$ space).
 
 This generalized two-point estimator removes the need for binning as the basis functions can be continuous.
 For the case of tophat (rectangular) basis functions, this reduces to the standard Landy-Szalay estimator.
@@ -238,7 +239,8 @@ A set of basis functions can be chosen specific to the scales, features and prop
 For example, higher order spline basis functions could be chosen to achieve a smooth statistic. 
 A set of functions that select expected features in the correlation function, such as the baryon acoustic feature, would allow for a more direct measurement of that feature.
 Additionally, basis functions can depend on other properties of the tracer, such as galaxy luminosity or redshift.
-Thus our estimator not only removes the need for binning in spatial separation, but can also be used where subsample approaches are currently needed.
+Thus our estimator not only removes the need for binning in spatial separation, but can also be used to obviate binning or cuts where subsample approaches are currently needed.
+This property of the estimator will come up below in the third theme (anomaly search).
 
 We have implemented an initial version of the continuous-function correlation function estimator.
 The estimator is built in C within the \texttt{corrfunc} package \citep{Sinha2017}, which performs fast pair-counting on a lattice.
@@ -247,7 +249,7 @@ To test the estimator, we have generated lognormal catalogs with a known correla
   estimator, the continuous-function estimator produces an estimate with lower bias and
   lower variance with respect to the true correlation function.}
 Given the enforced smoothness, this estimator should be able to not only produce a more accurate correlation function, but do so with fewer basis functions.
-As the error on the inverse covariance matrix scales with the ratio of the number of bins to the number of mock catalogs, our estimator can produce covariance matrices with fewer mock catalogs \citep{Hartlap2007}.
+As the error on the inverse covariance matrix scales with the ratio of some power of the number of bins to the number of mock catalogs, our estimator can produce covariance matrices with fewer mock catalogs \citep{Hartlap2007}.
 The expensive simulations required to build a set of mock catalogs for each dataset is one of the limiting factors in correlation function analyses.
 Our estimator will significantly reduce this requirement and allow for faster and more accurate analyses.
 
@@ -258,8 +260,8 @@ We will combine these two approaches to develop and implement an estimator for g
 \subsection{Applications: The BAO Peak and Galaxy Evolution}
 
 The clustering of galaxies is a critical probe of the baryon acoustic feature. 
-This is a signature of Baryon Acoustic Oscillations (BAO) in the early universe, acoustic waves of photon-baryon fluid that traveled through the universe. 
-When the universe cooled enough to cause their decoupling, extra matter was deposited at the scale corresponding to the distance travelled. 
+This is a signature of Baryon Acoustic Oscillations (BAO) in the early Universe, acoustic waves of photon-baryon fluid that traveled through the Universe. 
+When the Universe cooled to decoupling, extra matter was deposited at the scale corresponding to the distance travelled. 
 Today this overdensity should be at a scale of around 120 Mpc/h, and indeed we see a peak there in the correlation function. 
 The exact BAO scale can be extracted from the binned \cf by comparing it to theoretical models of the correlation function. 
 With our estimator, we can directly project the galaxy pairs onto these models. 
@@ -269,7 +271,7 @@ The other basis functions are derivatives of this model with respect to the para
 We will compare this method to the traditional technique, and expect to show that this method produces more precise measurements of the sound horizon with fewer components.
 
 Galaxy evolution is one of the biggest open research topics in modern astrophysics.
-The two-point correlation function allows us to ask questions about how the formation of galaxies is related to the evolution of structure in the universe.
+The two-point correlation function allows us to ask questions about how the formation of galaxies is related to the evolution of structure in the Universe.
 The dependence of galaxy clustering on the properties of galaxies, such as their line luminosity and star formation rate, gives insight into this relation.
 Our proposed estimator will allow us to extract even more information about this dependence. 
 We plan to construct basis functions that contain a dependence on the galaxy property, allowing for a combined encoding of both separation and luminosity. 
@@ -296,19 +298,19 @@ adversaries.
 
 To remove biases that enter through systematic effects, we are developing an approach inspired by adversarial machine learning methods. 
 We will generate survey-specific catalogs with ``adversarial'' data that contains density variations due to nonlinear combinations of systematics.
-We will then use probabilistic machine learning techniques to interpolate these nonlinear functions.
+We will then use probabilistic machine learning techniques to learn these nonlinear functions from the observed data directly.
 
 \subsection{Background: Systematics correction in galaxy surveys}
 
-To make accurate cosmological measurements and detect potential deviations from the predicted model, we require not only robust statistics, but clean, unbiased datasets on which to apply them.
+To make accurate cosmological measurements and detect potential deviations from the model, we require clean, unbiased datasets.
 Observed galaxy catalogs are necessarily imperfect due to systematic effects in observation and instrumentation. 
-In order to characterize the clustering from these surveys, we must remove these effects.
+In order to characterize the clustering from these surveys, we must model, fit, and remove these effects.
 
 Systematics are any issues with the data that produce variations in the density or redshift distribution of the sample, therefore imprinting non-cosmological signals on large-scale structure analyses.
-For instance, the galaxy number density varies with the width of the point spread function (PSF), as observations with a wider PSF may obscure galaxies.
-Even small systematic effects, such as those from airmass and stellar contamination, can bias large surveys. 
+For instance, the galaxy number density varies with the width of the point spread function (PSF), as observations with a wider PSF may confuse star--galaxy separation.
+Even small systematic effects, such as those from airmass and changing or variable photometric bandpasses, can bias large surveys. 
 Objects in high-redshift surveys may be particularly sensitive to issues like color selection and instrument calibration.
-Current methods assume simple systematics models that don't capture nonlinearities in these effects.
+Current methods assume simple linear systematics models that don't capture nonlinearities in these effects.
 While linear corrections are adequate for most of today's surveys, next-generation surveys will have a combination of more complicated window functions, noisier foregrounds, and complex observational and instrumental effects.
 Failure to fully correct for systematics in future analyses will propagate through clustering analyses and give biased results.
 
@@ -322,14 +324,14 @@ These are combined into a single weight for each galaxy, which are then used in 
 In order to address complex systematics, we will build a comprehensive testing suite of mock galaxy catalogs, injected with artificial systematic effects.
 With these, we will demonstrate the regimes in which current systematics correction methods become insufficient.
 These are ``adversarial'' in that there is a tension between hiding systematics in the dataset and detecting these effects, and we can exploit this to improve our detection.
-The systematics will be designed to be difficult to detect, and our detection method will be challenged to correct for these systematics. 
+The systematics will be designed to be difficult to detect under current linear methods, and our detection method will be challenged to correct for these systematics. 
 We expect to show that our approach to systematics correction addresses some of the insufficiencies of current methods, resulting in less biased measurements and the ability to detect subtle signals in the distribution.
 
 Our testing suite will include toy models as well as catalogs modeled after target surveys, with the appropriate window function.
 We will inject systematic biases in density by subsampling the galaxies based on adversarially complex functions of the metadata.
 The result will be comprehensive testing suites that cover many systematic effects and range from simple combinations to extreme variation.
 \textbf{These adversarial extremes will create discovery potential by showing that systematics may be obscuring physical information.}
-We plan to explore observables that are motivated by current theoretical models, as discussed further in the third theme. \KSF{Connect to anomalies section here!}
+We plan to explore observables that are motivated by current theoretical models, as discussed further in the third theme. \KSF{Connect to anomalies section here!} \HOGG{yes, do that!}
 
 \subsection{Defeating adversarial systematics with non-parametrics}
 
@@ -347,6 +349,8 @@ These can then be used to label previously unseen data by performing a nonlinear
 In our application, we will model the galaxy density and redshift distribution as complex functions of observational metadata, as described above.
 \textbf{We will train the GP on the adversarial mock catalog, and then use it predict the functions that generated the systematic effects by performing a regression over the training data space.}
 We can then correct for these systematics in new surveys by assigning the galaxies weights determined by these functions.
+
+\HOGG{In the above, we should talk about using cross-validation of various kinds to model select and validate kernel choice and other things.}
 
 We expect to show that our GP approach does better at recovering unbiased clustering statistics for a typical level of systematics, compared to traditional methods.
 Further, we will perform this test on catalogs with extreme systematics that could be obscuring interesting clustering features; we expect traditional methods to be unable to detect these features, while our method should reveal this information.
@@ -451,7 +455,7 @@ North-South power asymmetry. It's interesting because it is also
 \emph{natural}: If statistical isotropy or homogeneity is weakly
 broken, it will show up first as an $\ell=1$ distortion (one half of
 the sky different from the other, slightly).
-For example, it might be expected in universes with certain kinds
+For example, it might be expected in Universes with certain kinds
 of primordial non-Gaussianities \citep{Dalal2008} or if our patch is
 near (in a Hubble sense) to a domain wall.
 This motivates a search for anomalies in the \LSS\ that are small
@@ -774,6 +778,8 @@ questions that you, as a reviewer, may have, after reading this
 proposal.
 
 \paragraph{Why does this proposal have two authors?}
+Hogg is the \PI; Kate Storey-Fisher is the graduate student at NYU who would be supported on this grant as the \GRA.
+Storey-Fisher contributed substantially to the writing of this proposal; she is a co-author, a proposed beneficiary, and a supervisor (for the undergraduate researcher) of this project.
 
 \paragraph{Isn't it ridiculous to look for anomalies in the large-scale structure?} \KSF{What kinds of anomalies would you be most likely to detect?}
 
@@ -782,7 +788,6 @@ To some extent yes, but it is still worthwhile! We don't \emph{expect} to find a
 \paragraph{Isn't a brute-force, comprehensive search for \LSS\ anomalies impossible due to computational cost?}
 
 \paragraph{Your clustering estimator seems so general, why are you spending so many words talking about how it relates to simulations?}
-
 One of the most limiting aspects of correlation function analyses is the mock catalogs required for error estimation, which must be built from expensive cosmological simulations. The error is computed from the covariance between separation bins of the correlation functions of the mocks, and the required number of mocks scales with the number of bins. By reducing the necessary number of ``bins'' or basis functions in our case, our estimator lowers the requirements on high-cost simulations.
 
 \paragraph{Don't you still have to make choices about your basis functions for your estimator, so you're not totally eliminating binning?}
@@ -794,11 +799,10 @@ One of the most limiting aspects of correlation function analyses is the mock ca
 \paragraph{What is the connection between systematics correction and anomaly detection?}
 
 \paragraph{Will pedagogical publications and workshops really have a broad impact?}
-
 The materials we produce are designed to impact students at a critical point in their careers. Access to these materials, alongside well-taught workshops to guide students through the content, have the potential to give students with less experience and resources the necessary grounding to do high-quality research in data-driven astrophysics.
 
-
 \paragraph{Why this team?}
+\HOGG{Say stuff about self-calibration, statistics, machine learning, and so on.}
 
 \clearpage
 \bibliography{description}
