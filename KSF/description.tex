@@ -329,7 +329,11 @@ In our application, we will model the galaxy density and redshift distribution a
 \textbf{We will train the \GP\ on the adversarial mock catalog, and then use it predict the functions that generated the systematic effects by performing a regression over the training data space.}
 We can then correct for these systematics in new surveys by assigning the galaxies weights determined by these functions.
 
-\HOGG{In the above, we should talk about using cross-validation of various kinds to model select and validate kernel choice and other things.}
+\GP s replace a parametric choice (polynomials or sines and cosines, for example) with a kernel choice.
+This kernel choice represents model complexity.
+This has to be chosen carefully, since there are kernels that will overfit any systematics, and others that will underfit.
+We propose to use leave-out cross-validation to set the kernel parameters.
+This is a well-tested, safe method for kernel choice, and is a reliable machinery in many of the \PI's projects.
 
 We expect to show that our \GP\ approach does better at recovering unbiased clustering statistics for a typical level of systematics, compared to traditional methods.
 Further, we will perform this test on catalogs with extreme systematics that could be obscuring interesting clustering features; we expect traditional methods to be unable to detect these features, while our method should reveal this information.
