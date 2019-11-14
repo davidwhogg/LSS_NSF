@@ -809,37 +809,34 @@ The statistical methods we develop for correlation function analyses will be qui
 
 \section{Not-so-frequently asked questions}
 
-We recognize that reviewing NSF proposals can be challenging.
-For this reason, we have tried to anticipate and answer some of the
-questions that you, as a reviewer, may have, after reading this
-proposal.
+We have tried to anticipate and answer some of the
+questions that you might have:
 
 \paragraph{Why does this proposal have two authors?}
 Hogg is the \PI; Kate Storey-Fisher is the graduate student at NYU who would be supported on this grant as the \GRA.
 Storey-Fisher contributed substantially to the writing of this proposal; she is a co-author, a proposed beneficiary, and a supervisor (for the undergraduate researcher) of this project.
 
-\paragraph{Isn't it ridiculous to look for anomalies in the large-scale structure?} \KSF{What kinds of anomalies would you be most likely to detect?}
-
-To some extent yes, but it is still worthwhile! We don't \emph{expect} to find anomalies in clustering. However, we do have reason to believe that the \LCDM\ model is an approximation, and deviations should appear at some level. We thus have a responsibility to scrutinize \LSS\ data, while approaching our anomaly search with skepticism and pragmatism. 
-
-\paragraph{Isn't a brute-force, comprehensive search for \LSS\ anomalies impossible due to computational cost?}
+\paragraph{Isn't it ridiculous to look for anomalies in the large-scale structure?}
+No! Okay well to some extent yes. But it is precisely when a theory or model is most successful that it's predictions become most critical to test. Besides, we \emph{do} think that \LCDM\ is an \emph{approximation} to the true theory.
 
 \paragraph{Your clustering estimator seems so general, why are you spending so many words talking about how it relates to simulations?}
-One of the most limiting aspects of correlation function analyses is the mock catalogs required for error estimation, which must be built from expensive cosmological simulations. The error is computed from the covariance between separation bins of the correlation functions of the mocks, and the required number of mocks scales with the number of bins. By reducing the necessary number of ``bins'' or basis functions in our case, our estimator lowers the requirements on high-cost simulations.
+One of the most limiting aspects of correlation function analyses is the mock catalogs required for error estimation, which must be built from expensive cosmological simulations. The error is computed from the covariance between separation bins of the correlation functions of the mocks, and the required number of mocks increases with the number of bins. By reducing the necessary number of ``bins'' or basis functions in our case, our estimator lowers the requirements on high-cost simulations.
 
 \paragraph{Don't you still have to make choices about your basis functions for your estimator, so you're not totally eliminating binning?}
+Yes! There are still choices. But those choices don't require hard-edged bins, and don't require that we approximate smooth functions with clunky boxes.
 
-\paragraph{Are you saying that the canonical two-point correlation function estimator is wrong?} \KSF{Well kind of, but that's not what this estimator is solving}
+\paragraph{Are you saying that the canonical two-point correlation function estimator is wrong?}
+Not yet. We do think it has issues! But all we are addressing in this project is its (current) marriage to top-hat function spaces (zeroth order spline, you might say).
 
 \paragraph{Aren't there already methods for dealing with nonlinear systematics?} Yes - while recent analyses still use linear systematics models, there has been significant work on correcting for nonlinear systematics. But these are less flexible than the approach we are proposing, and none of them deal directly with \emph{combinations} of different systematic effects.
 
 \paragraph{What is the connection between systematics correction and anomaly detection?}
+These are highly related, because an anomaly might be ``explainable'' as a systematics issue, or an uncorrected systematic might appear as an anomaly. So we have to do both well, simultaneously, if we want to be conservative.
 
 \paragraph{Will pedagogical publications and workshops really have a broad impact?}
-The materials we produce are designed to impact students at a critical point in their careers. Access to these materials, alongside well-taught workshops to guide students through the content, have the potential to give students with less experience and resources the necessary grounding to do high-quality research in data-driven astrophysics.
+The materials we produce are designed to impact students at a critical point in their careers. Access to these materials, alongside well-taught workshops to guide students through the content, have the potential to give students with less experience and resources the necessary grounding to do high-quality research in data-driven astrophysics. And some of the \PI's pedagogical contributions (especially on cosmological distances and fitting models) have had very wide impact.
 
-\paragraph{Why this team?}
-\HOGG{Say stuff about self-calibration, statistics, machine learning, and so on.}
+\HOGG{Why this team?}
 
 \clearpage
 \bibliography{description}
