@@ -83,18 +83,15 @@ This is happening now, with projects like the \eBOSS\ survey within the \project
   Survey \acronym{IV}} (\SDSSIV) surveying the largest volume to date
 \citep{Dawson2015}.
 Upcoming wide-field surveys include \DESI\ 
-\citep{Aghamousa2016}, which will begin taking data in 2019, followed
+\citep{Aghamousa2016}, which starts observations in 2020, followed
 by \NASA\ \project{Euclid} \citep{Amiaux2012} and
 \LSST\ \citep{Ivezic2018} in 2021, and \NASA\ \project{\acronym{WFIRST}} in the mid-2020s
 \citep{Akeson2019}.
-These will observe 10 to 20 times more galaxies than current surveys.
-But this new volume comes at a cost. As we look to larger
-distances and larger volumes with denser tracers, we push our
+These will observe 10 to 20 times more galaxies than current surveys---but this comes at a cost. As we look to larger
+distances with denser tracers, we push our
 observations to noisier targets with less-well-measured individual
-properties, with more elaborate window functions and hard-to-model foregrounds.
-That is, as the data get better in a global sense (more volume, more
-modes measured), it gets worse in an individual-object sense (fewer
-bits per target, more contamination from foregrounds and backgrounds).
+properties, as well as more elaborate window functions and hard-to-model foregrounds.
+That is, as the data get better in a global sense, it gets worse in an individual-object sense.
 
 This leads to the second axis along which we have to work, which
 is \emph{calibration, contamination, and window functions}.
@@ -109,6 +106,7 @@ In this context we are pushed to data-driven techniques for
 understanding the selection.
 This connect to ideas of
 self-calibration, where the PI has been a pioneer.
+\KSF{Move this sentence to systematics section?}
 
 The third axis is \emph{statistical sophistication}.
 As we simultaneously move to higher precision requirements, larger
@@ -178,7 +176,7 @@ One of the most common statistics used to analyze galaxy surveys is the two-poin
  
 The canonical estimator for the galaxy \cf, originally proposed by \cite{LandySzalay1993} (\LS), estimates the excess number of galaxies in bins of spatial separation $r$, compared to a statistically random distribution.
 Given a set of $K$ bins, the \LS estimator counts the number of galaxy pairs $DD$ with a separation in each bin, and counts ``random'' pairs $RR$ from a uniformly distributed catalog  to correct for the survey boundary, as well as cross-pairs $DR$.
-The estimator is then defined as $\xi(r) = [DD(r) - 2DR(r) + RR(r)]/RR(r)$
+The estimator is then defined as $\xi(r) = [DD(r) - 2DR(r) + RR(r)]/RR(r)$,
 where the terms are normalized vectors of pair counts in each bin, each having length $K$.
 
 While the \LS estimator has better overall variance properties than the naive clustering estimator, it still suffers from several limitations. 
@@ -266,20 +264,14 @@ We plan to construct basis functions that contain a dependence on the galaxy pro
 We can then quickly evaluate the estimator at any set of luminosities and produce a smooth correlation function for each. 
 We will compare this method to the common subsampling approach; \textbf{we expect to show that this method will allow us to interpret the luminosity dependence in more detail and with higher precision.}
 
-\KSF{Figure here about need for better estimator?}
-
 \section{Second theme: Adversarial approaches to systematics}
 
 The project will build adversarial simulated data that is
 designed to defeat current methodologies for finding and correcting
 systematic effects of calibration and target selection in \LSS\ 
-surveys. And then build far more general calibration
-programs, based on non-parametric models, that can defeat the
-adversaries.
-
-To remove biases that enter through systematic effects, we are developing an approach inspired by adversarial machine learning methods. 
-We will generate survey-specific catalogs with ``adversarial'' data that contains density variations due to nonlinear combinations of systematics.
-We will then use probabilistic machine learning techniques to learn these nonlinear functions from the observed data directly.
+surveys. 
+In tandem, we will build far more general calibration
+programs, based on non-parametric models, that can detect these complex systematics and correct for them without
 
 \subsection{Background: Systematics correction in galaxy surveys}
 
@@ -302,14 +294,15 @@ These are combined into a single weight for each galaxy, which are then used in 
 
 \subsection{Motivating new correction methods: adversarial mock catalogs}
 
-In order to address complex systematics, we will build a comprehensive testing suite of mock galaxy catalogs, injected with artificial systematic effects.
+Inspired by adversarial machine learning methods, we will construct artificial datasets with deliberately adversarial systematics, alongside the means to defeat them.
+These datasets will form a comprehensive testing suite of mock galaxy catalogs.
 With these, we will demonstrate the regimes in which current systematics correction methods become insufficient.
 These are ``adversarial'' in that there is a tension between hiding systematics in the dataset and detecting these effects, and we can exploit this to improve our detection.
 The systematics will be designed to be difficult to detect under current linear methods, and our detection method will be challenged to correct for these systematics. 
 We expect to show that our approach to systematics correction addresses some of the insufficiencies of current methods, resulting in less biased measurements and the ability to detect subtle signals in the distribution.
 
 Our testing suite will include toy models as well as catalogs modeled after target surveys, with the appropriate window function.
-We will inject systematic biases in density by subsampling the galaxies based on adversarially complex functions of the metadata.
+We will inject systematic biases in density by introducing density variations in the galaxies based on adversarially complex functions of the metadata.
 The result will be comprehensive testing suites that cover many systematic effects and range from simple combinations to extreme variation.
 \textbf{These adversarial extremes will create discovery potential by showing that systematics may be obscuring physical information.}
 We plan to explore observables that are motivated by current theoretical models, as discussed further in the third theme. \KSF{Connect to anomalies section here!} \HOGG{yes, do that!}
@@ -328,8 +321,9 @@ Gaussian processes (\GP s) have been used to correct for instrumental systematic
 In practice, \GP s learn the labels of a training set and generate hyperparameters characterizing the data.
 These can then be used to label previously unseen data by performing a nonlinear regression over the training data space.
 In our application, we will model the galaxy density and redshift distribution as complex functions of observational metadata, as described above.
-\textbf{We will train the \GP\ on the adversarial mock catalog, and then use it predict the functions that generated the systematic effects by performing a regression over the training data space.}
-We can then correct for these systematics in new surveys by assigning the galaxies weights determined by these functions.
+\textbf{We will train the \GP\ on the adversarial mock catalog, which will learn the nonlinear variations from the data.
+We will then use the \GP\ to predict the functions that generated the systematic effects by performing a regression over the training data space.}
+It is then straightforward to correct for these systematics in new surveys by assigning the galaxies weights determined by these functions.
 
 \GP s replace a parametric choice (polynomials or sines and cosines, for example) with a kernel choice.
 This kernel choice represents model complexity.
@@ -341,7 +335,6 @@ We expect to show that our \GP\ approach does better at recovering unbiased clus
 Further, we will perform this test on catalogs with extreme systematics that could be obscuring interesting clustering features; we expect traditional methods to be unable to detect these features, while our method should reveal this information.
 Our systematics calibration method will improve current measurements by reducing systematic biases and open up more discovery space in galaxy clustering analyses.
 \KSF{Discuss specific survey application: \SDSSIV\ \eBOSS}
-\KSF{Show figure here? I think I have one}
 
 \section{Third theme: Searches for anomalies}
 
@@ -414,9 +407,10 @@ force carriers would show so much phenomenology and the dark sector of
 dark matter would show none.
 What we know from years of \LCDM\ is that if anomalies exist, they are
 hiding: There are no obviously wrong predictions of \LCDM\ known at
-scales larger than 10-ish Mpc, and the issues at smaller scales are
+scales larger than 10-ish Mpc, and while there are some issues at smaller scales \citep{Bullock2017}, these are
 all consistent at the present day with the non-linear effects of baryonic
-physics (like star formation and feedback and so on; \HOGG{CITE}).
+physics, such as star formation and feedback.
+\KSF{Added bullock citation here but not sure if this is what you were thinking - its ``Small-Scale Challenges to the LCDM Paradigm''}
 This leads to the conclusion we need to look for subtle effects, or effects that
 don't project strongly onto standard two-point-function measurements.
 
@@ -592,7 +586,7 @@ Our goal is to create materials that help prepare students
 in the physical sciences to have better data-science, applied-mathematics, and statistics
 skills and therefore better PhD preparations.
 Contexts for using these materials include undergraduate-to-PhD bridge programs, courses for advanced undergraduate and early graduate students, and existing research experience programs. 
-We will test and refine these curricular materials in workshops for
+We will test and refine these curricular materials in multi-day workshops for
 students of broad backgrounds in New York City.
 All of the materials we create will be open-source and available online. 
 
@@ -601,8 +595,8 @@ These include data analysis, statistics, and data science, which are fundamental
 Graduate students are expected to pick up these concepts, yet there is a lack of pedagogical materials for understanding them at a high level with applications to astrophysics.
 To fill this gap, we will create materials that contain exercises and examples following best pedagogical practices, while also serving as reference materials for students and active researchers.
 
-We will use the pedagogical materials to teach workshops on these topics for our target audience of advanced undergraduates.
-The investigators are well-versed in inquiry-based teaching practices, which are shown to increase engagement and understanding, with a focus on equity and inclusivity.
+We will use the pedagogical materials to teach intensive workshops on these topics for our target audience of advanced undergraduates; the PI has experience designing effective workshops \citep{Huppenkothen2018}.
+The investigators are well-versed in inquiry-based teaching practices, which are shown to increase engagement and understanding, with a focus on equity and inclusivity \citep{Ball2010}.
 We will design the workshops using these practices, to ensure that students are building their knowledge regardless of their prior experience.
 The investigators have connections with groups in New York City to hold these workshops for, through the Institute for Science and Engineer Educators. 
 With feedback from these workshops, we will iterate on the materials, and finally advertise and distribute them online. 
@@ -820,7 +814,7 @@ Storey-Fisher contributed substantially to the writing of this proposal; she is 
 No! Okay well to some extent yes. But it is precisely when a theory or model is most successful that it's predictions become most critical to test. Besides, we \emph{do} think that \LCDM\ is an \emph{approximation} to the true theory.
 
 \paragraph{Your clustering estimator seems so general, why are you spending so many words talking about how it relates to simulations?}
-One of the most limiting aspects of correlation function analyses is the mock catalogs required for error estimation, which must be built from expensive cosmological simulations. The error is computed from the covariance between separation bins of the correlation functions of the mocks, and the required number of mocks increases with the number of bins. By reducing the necessary number of ``bins'' or basis functions in our case, our estimator lowers the requirements on high-cost simulations.
+One of the most limiting aspects of \cf analyses is the number of mock catalogs required for error estimation, which are built from expensive cosmological simulations. This depends on the number of bins or basis functions; our estimator reduces this without sacrificing accuracy, significantly reducing cost.
 
 \paragraph{Don't you still have to make choices about your basis functions for your estimator, so you're not totally eliminating binning?}
 Yes! There are still choices. But those choices don't require hard-edged bins, and don't require that we approximate smooth functions with clunky boxes.
@@ -828,13 +822,13 @@ Yes! There are still choices. But those choices don't require hard-edged bins, a
 \paragraph{Are you saying that the canonical two-point correlation function estimator is wrong?}
 Not yet. We do think it has issues! But all we are addressing in this project is its (current) marriage to top-hat function spaces (zeroth order spline, you might say).
 
-\paragraph{Aren't there already methods for dealing with nonlinear systematics?} Yes - while recent analyses still use linear systematics models, there has been significant work on correcting for nonlinear systematics. But these are less flexible than the approach we are proposing, and none of them deal directly with \emph{combinations} of different systematic effects.
+\paragraph{Aren't there already methods for dealing with nonlinear systematics?} Yes - while some recent analyses still use linear systematics models, there has been significant work on correcting for nonlinear systematics. But these are less flexible than the approach we are proposing, and none of them deal directly with \emph{combinations} of different systematic effects.
 
 \paragraph{What is the connection between systematics correction and anomaly detection?}
 These are highly related, because an anomaly might be ``explainable'' as a systematics issue, or an uncorrected systematic might appear as an anomaly. So we have to do both well, simultaneously, if we want to be conservative.
 
 \paragraph{Will pedagogical publications and workshops really have a broad impact?}
-The materials we produce are designed to impact students at a critical point in their careers. Access to these materials, alongside well-taught workshops to guide students through the content, have the potential to give students with less experience and resources the necessary grounding to do high-quality research in data-driven astrophysics. And some of the \PI's pedagogical contributions (especially on cosmological distances and fitting models) have had very wide impact.
+The materials we produce are designed to impact students at a critical point in their careers. Access to these materials, alongside well-taught workshops, have the potential to give students with less experience and resources the necessary grounding to do high-quality research in data-driven astrophysics. Further, some of the \PI's pedagogical contributions (especially on cosmological distances and fitting models) have had very wide impact.
 
 \HOGG{Why this team?}
 
