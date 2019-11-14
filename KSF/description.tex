@@ -187,10 +187,7 @@ One of the most common statistics used to analyze galaxy surveys is the two-poin
  
 The canonical estimator for the galaxy \cf, originally proposed by \cite{LandySzalay1993} (\LS), estimates the excess number of galaxies in bins of spatial separation $r$, compared to a statistically random distribution.
 Given a set of $K$ bins, the \LS estimator counts the number of galaxy pairs $DD$ with a separation in each bin, and counts ``random'' pairs $RR$ from a uniformly distributed catalog  to correct for the survey boundary, as well as cross-pairs $DR$.
-The estimator is then defined as
-\begin{equation}
-\xi(r) = \frac{DD(r) - 2DR(r) + RR(r)}{RR(r)},
-\end{equation}
+The estimator is then defined as $\xi(r) = [DD(r) - 2DR(r) + RR(r)]/RR(r)$
 where the terms are normalized vectors of pair counts in each bin, each having length $K$.
 
 While the \LS estimator has better overall variance properties than the naive clustering estimator, it still suffers from several limitations. 
@@ -225,10 +222,9 @@ where $DD$, $DR$, and $RR$ are vectors of length $K$, $T$ refers to the data (po
 The matrix $QQ$ encodes the non-orthonormality of the basis functions and is used to correct the projections, as follows:
 From these statistics, we compute the \cf by
 \begin{eqnarray}\displaystyle
-a &\equiv& QQ\inv \cdot (DD + 2DR - RR) \\
-\xi(T_l, T_{l'}) &\equiv& a\T \cdot f(T_l, T_{l'}) \quad ,
+\xi(T_l, T_{l'}) &\equiv& [QQ\inv \cdot (DD + 2DR - RR)]\T \cdot f(T_l, T_{l'}) \quad ,
 \end{eqnarray}
-where $a$ is a $K$-vector of the ``amplitudes'' of the basis functions, and $T_l$ and $T_{l'}$ contain the data values at which to evaluate $\xi$.
+where $T_l$ and $T_{l'}$ contain the data values at which to evaluate $\xi$.
 Thus our estimator allows $\xi$ to be evaluated at \emph{any} separation, as well as at any other value of the data property used in the basis functions.
 We have also shown that it is invariant under affine transformations of the basis (rotations and shears in the $f$ space or $a$ space).
 
