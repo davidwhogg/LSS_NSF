@@ -188,15 +188,14 @@ The \LS estimator also can't account for properties besides spatial separation.
 Another binned dimension is often used to characterize the dependence
 on galaxy properties: the galaxies are divided into subsamples to
 analyze the relationship between their properties and clustering.
-One tool developed to address this is the marked correlation function, in which galaxies are weighted by the desired property.
-Li \& White (2010) showed that luminosity-weighting can place tighter constraints on galaxy formation, but this approach still requires $r$-binning and doesn't account for the survey window.
+One tool developed to address this is the marked correlation function \citep{WhitePadmanabhan2009}, in which galaxies are weighted by the desired property (e.g. luminosity), but this approach still requires $r$-binning and doesn't account for the survey window.
 While these estimators have been sufficient for past analyses, an improved estimator is necessary for future surveys.
-\HOGG{I think maybe we should also anticipate and knock down a
-  ``kernelized'' correlation function estimator that would smooth the
-  field. Also, let's audit for the word ``smooth''. We return a smooth
-  function, but we have not SMOOTHED the corr fn at all. Indeed, our
-  estimator is technically a deconvolution, although I don't want to
-  use that word.}
+%\HOGG{I think maybe we should also anticipate and knock down a
+%  ``kernelized'' correlation function estimator that would smooth the
+%  field. Also, let's audit for the word ``smooth''. We return a smooth
+%  function, but we have not SMOOTHED the corr fn at all. Indeed, our
+%  estimator is technically a deconvolution, although I don't want to
+%  use that word.} \KSF{I did this below (search ``kernel''), but check if we need bc space limits!}
 
 \subsection{The Continuous-Function Estimator}
 
@@ -261,7 +260,8 @@ The two-point correlation function allows us to ask questions about how the form
 The dependence of galaxy clustering on the properties of galaxies, such as their line luminosity and star formation rate, gives insight into this relation.
 Our proposed estimator will allow us to extract even more information about this dependence. 
 We plan to construct basis functions that contain a dependence on the galaxy property, allowing for a combined encoding of both separation and luminosity. 
-We can then quickly evaluate the estimator at any set of luminosities and produce a smooth correlation function for each. 
+We can then quickly evaluate the estimator at any set of luminosities and produce a continuous correlation function for each. 
+We note that, while continuous, the estimator does not smooth out features in the way that kernel-based estimators do, but preserves and possibly enhances these features.
 We will compare this method to the common subsampling approach; \textbf{we expect to show that this method will allow us to interpret the luminosity dependence in more detail and with higher precision.}
 
 \section{Second theme: Adversarial approaches to systematics}
