@@ -36,7 +36,7 @@ The cold-dark-matter-with-a-cosmological-constant (\LCDM) model is
 very well established observationally.
 It has explained many different
 kinds of data with a small number of free parameters, and has made
-some significant ab-initio predictions (like the baryon acoustic feature; CITE)
+some significant ab-initio predictions (like the baryon acoustic feature; \citealt{EisensteinHu1998})
 prior to the observations.
 However, it's almost certainly \emph{not the true model}.
 It seems unlikely that the dark sector is a single species, with no
@@ -166,7 +166,7 @@ propagation.
 \subsection{The Two-Point Correlation Function}
 
 Galaxy clustering is one of the most important tracers of the large-scale structure of the Universe.
-The distribution of galaxies contains information about the Universe's evolution and fundamental components, as well as the evolution of the galaxies themselves.
+The distribution of galaxies contains information about the Universe's evolution and fundamental components, as well as the evolution of the galaxies themselves \citealt{Hamilton1988}.
 To study the clustering of galaxies, we use observational galaxy surveys that range from hundreds to millions, and soon billions, of galaxies, and are pushing to even higher redshifts.
 \textbf{With the increased size and complexity of next-generation galaxy surveys, the tools currently used to characterize galaxy clustering will not be sufficient}.
 We propose to address this problem by developing new methods for the analysis of galaxy clustering from observational surveys.
@@ -183,7 +183,9 @@ where the terms are normalized vectors of pair counts in each bin, each having l
 
 While the \LS estimator has better overall variance properties than the naive clustering estimator, it still suffers from several limitations. 
 Choosing the number of bins requires a trade-off between bias and variance.
+Various works have addressed these by improving the random pair counting \citep{Demina2016}, optimizing the combination of pair counts \citep{VargasMagana2013}, and introdudining a maximum likelihood approach \citep{BaxterRozo2013}, but this trade-off remains as it is inherent to binning.
 Furthermore, for any finite binning in separation, this estimator contains a statistical bias when applied to highly clustered data (e.g. \citealt{Kerscher1998}).
+
 The \LS estimator also can't account for properties besides spatial separation.
 Another binned dimension is often used to characterize the dependence
 on galaxy properties: the galaxies are divided into subsamples to
