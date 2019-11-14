@@ -190,12 +190,6 @@ on galaxy properties: the galaxies are divided into subsamples to
 analyze the relationship between their properties and clustering.
 One tool developed to address this is the marked correlation function \citep{WhitePadmanabhan2009}, in which galaxies are weighted by the desired property (e.g. luminosity), but this approach still requires $r$-binning and doesn't account for the survey window.
 While these estimators have been sufficient for past analyses, an improved estimator is necessary for future surveys.
-%\HOGG{I think maybe we should also anticipate and knock down a
-%  ``kernelized'' correlation function estimator that would smooth the
-%  field. Also, let's audit for the word ``smooth''. We return a smooth
-%  function, but we have not SMOOTHED the corr fn at all. Indeed, our
-%  estimator is technically a deconvolution, although I don't want to
-%  use that word.} \KSF{I did this below (search ``kernel''), but check if we need bc space limits!}
 
 \subsection{The Continuous-Function Estimator}
 
@@ -629,13 +623,11 @@ The distribution and maintainance of the open-source code will be the joint resp
 
 \section{Prior NSF support}
 
-Here we list \NSF\ grants that have supported the \PI\ within the last five years.
-
 \paragraph{\acronym{OAC-1841594}
 \project{Collaborative Research: Community Planning for Scalable Cyberinfrastructure to Support Multi-Messenger Astrophysics} (2018-2020)}
 This one-year (plus extension) grant (for \$36K) is part of a multi-institutional project
 to design and propose a national center for multi-messenger astrophysics. The grant supported
-meetings, travel, and writing by \PI\ Hogg and Federica Bianco (now at University of Delaware).
+meetings, travel, and writing.
 
 \paragraph{\acronym{AST-1517237}
 \project{New Probabilistic Methods for Observational Cosmology}
@@ -643,8 +635,6 @@ meetings, travel, and writing by \PI\ Hogg and Federica Bianco (now at Universit
 methods for cosmology. It mainly supported research by \PI\ Hogg and
 Alex Malz (now at University of Bochum). The grant proposal was co-written
 by Dr Malz and established his career.
-Under this grant, Dr Malz became one of the leaders in planning cosmological
-observations with the \project{Large Synoptic Survey Telescope}.
 This grant supported or partially supported 24 publications
 in the refereed literature and one in preparation.
 
@@ -657,13 +647,10 @@ Hogg's group and the group of Prof Rob Fergus in Computer Science at
 NYU.
 The grant also supported research by multiple graduate students in the
 Hogg and Fergus groups at NYU.
-The grant supported both methodological and open-source software work
-on \acronym{MCMC} methods, image processing, and spectral analysis.
-It supported or partially supported
+The grant supported or partially supported
 more than 40 refereed publications in the astronomical and
 computer-vision literatures combined.
-Work on this grant established the career of Ross Fadely, who built unusual
-interdisciplinary expertise during the award period and who is now the
+Work on this grant established the career of Ross Fadely, who is now the
 Chief of Data Science at the \textit{Wall St Journal}.
 
 \paragraph{Others}
@@ -679,10 +666,6 @@ and
 and (in ancient history) a \NSF\ graduate fellowship.
 The majority of the \PI's 220 refereed publications have been at least partially supported
 by \NSF grants at a range of different institutions..
-
-Kate Storey-Fisher has been supported by three \NSF\ \acronym{REU} grants.
-Both Storey-Fisher and Hogg have benefitted from \NSF\ support of conferences and meetings,
-including the Kavli Summer Program in Astrophysics and programs at the Aspen Center for Physics.
 
 \section{Relevance to NSF priorities and programs}
 
@@ -701,39 +684,25 @@ With our hypothesis registation we also ``encourage adventurous ideas that gener
 new paradigms.'' In short, this proposal fits extremely well with the \acronym{CDS\&E} program
 criteria.
 
-In addition, this propoal connects to several high-level \NSF\ themes:
-
-\paragraph{Harnessing the Data Revolution:}
-This proposal is explicitly motivated by changes to the data landscape
-in cosmology.  As projects get larger and work to observe more volume,
-not only do the data sets grow in size, they also grow in complexity
-and challenge for the user.  For the large-scale structure analyses we are focusing on, as we look further, we look
+In addition, this propoal connects to several of the \NSF\ 10 Big Ideas themes:
+This proposal is explicitly motivated by changes to the data landscape,
+so it it connects to \textbf{Harnessing the Data Revolution}.
+For the large-scale structure analyses we are focusing on, as we look to larger volumes, we look
 to noisier tracers, through more foregrounds, and superimposed on
 stronger backgrounds. This proposal is to address these challenges
-directly, and build tools that will benefit all projects facing these
-challenges.  In general the challenge of making more and more precise
-\KSF{cut ``in general'' or this whole sentence?}
-measurements in larger and larger data is two-fold: The data get
-bigger, but the data also get harder to use responsibly as well. This
-work is as motivated by these challenges as it is by the cosmological
-science we are enabling.
-
-\paragraph{Growing Convergence Research:}
+directly.
 The work we are doing on correlation-function estimators connects
-directly to literature on point-processes. In comprehensive searches, we found almost no citations to the point-process
+directly to literature on point-processes, and the work on calibration
+connects to the machine-learning literature. Thus we are
+\textbf{Growing Convergence Research}.
+For example, we have found almost no citations to the point-process
 literature in the cosmological literature, and almost no citations to
-the cosmology literature in the point-process literature. That's odd,
-since cosmologists are among the biggest users of point-process
-statistics in the natural sciences. We intend to address and correct
-this disconnect between two communities that will benefit
-from one another. As subtleties in the data grow more important,
-subtleties in our methodological approaches might also grow more
-critical. We need interdisciplinarity at this interface.
-
-\paragraph{Windows on the Universe:}
+the cosmology literature in the point-process literature.
+We're fixing that problem!
 While this project is not explicitly multi-messenger, it supports
-multi-messenger goals around the dark sector and dark matter. If we
-find anomalies, they might have implications for direct (laboratory)
+multi-messenger goals around the dark sector and dark matter, which
+connects to \textbf{Windows on the Universe}.
+If we find anomalies, they might have implications for direct (laboratory)
 detection of dark matter, production of dark matter in colliders, or
 annihilation. If dark matter is composed of compact objects, this work
 will eventually connect to gravitational-wave astronomy. These
