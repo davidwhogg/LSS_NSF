@@ -318,19 +318,19 @@ However, even forward modelling these individually is currently untenable. \KSF{
 While likelihood-free inference could provide an eventual path forward, for the near-future we can develop more sophisticated methods to calibrate out systematics before performing clustering analyses.
 Machine learning methods have already shown promise in systematics removal in other subfields.
 Adversarial neural networks have been used to remove the jet background in particle collision data at the Large Hadron Collider \citep{Shimmin2017}.
-Gaussian processes (GPs) have been used to correct for instrumental systematics in exoplanet transit surveys \citep{Gibson2012, Aigrain2016}. 
-GPs lend themselves to this type of problem, as they allow for nonlinear interpolation over the data space; we propose to use GPs to remove systematics in galaxy surveys.
+Gaussian processes (\GP s) have been used to correct for instrumental systematics in exoplanet transit surveys \citep{Gibson2012, Aigrain2016}. 
+\GP s lend themselves to this type of problem, as they allow for nonlinear interpolation over the data space; we propose to use GPs to remove systematics in galaxy surveys.
 
-GPs are a Bayesian approach to modeling data; they define a prior distribution over a function space, and then use the known data to produce a posterior probability distribution over unknown values. 
-In practice, GPs learn the labels of a training set and generate hyperparameters characterizing the data.
+\GP s are a Bayesian approach to modeling data; they define a prior distribution over a function space, and then use the known data to produce a posterior probability distribution over unknown values. 
+In practice, \GP s learn the labels of a training set and generate hyperparameters characterizing the data.
 These can then be used to label previously unseen data by performing a nonlinear regression over the training data space.
 In our application, we will model the galaxy density and redshift distribution as complex functions of observational metadata, as described above.
-\textbf{We will train the GP on the adversarial mock catalog, and then use it predict the functions that generated the systematic effects by performing a regression over the training data space.}
+\textbf{We will train the \GP\ on the adversarial mock catalog, and then use it predict the functions that generated the systematic effects by performing a regression over the training data space.}
 We can then correct for these systematics in new surveys by assigning the galaxies weights determined by these functions.
 
 \HOGG{In the above, we should talk about using cross-validation of various kinds to model select and validate kernel choice and other things.}
 
-We expect to show that our GP approach does better at recovering unbiased clustering statistics for a typical level of systematics, compared to traditional methods.
+We expect to show that our \GP\ approach does better at recovering unbiased clustering statistics for a typical level of systematics, compared to traditional methods.
 Further, we will perform this test on catalogs with extreme systematics that could be obscuring interesting clustering features; we expect traditional methods to be unable to detect these features, while our method should reveal this information.
 Our systematics calibration method will improve current measurements by reducing systematic biases and open up more discovery space in galaxy clustering analyses.
 \KSF{Discuss specific survey application: \SDSSIV\ \eBOSS}
@@ -618,11 +618,11 @@ For this reason, we expect to work along all three themes in all years of the pr
 However, we will front-load the first theme into the first year, producing a functional
 unbinned estimator, and working open-source code, and a paper for the refereed literature in Year One.
 We will concentrate most of our effort in Year Two on the systematics modeling, and produce
-adversarial mocks, and a \acronym{GP}-based model, along with open-source code and a paper.
+adversarial mocks, and a \GP-based model, along with open-source code and a paper.
 In Year Three we will concentrate on the third theme, bringing together our work from Years One and Two.
 
 In each summer we will organize one 4.5-day workshop for senior undergraduate students and beginning
-graduate students. These will be hosted at the Flatiron Institute at no cost to the PI, as detailed
+graduate students. These will be hosted at the Flatiron Institute at no cost to the \PI, as detailed
 in the Facilities and Resources part of this proposal, and as supported in the letter of support from the director of the Center for Computational Astrophysics there.
 These workshops will be advertised through our New York networks, and especially the CUNY system, where the Flatiron Institute has a partnership for undergraduates performing astrophysics research.
 We will produce three pedagogical contributions, one for each of these summer workshops, which we will test and refine at the workshops before publishing on the arXiv.
@@ -636,18 +636,18 @@ The distribution and maintainance of the open-source code will be the joint resp
 
 \section{Prior NSF support}
 
-Here we list \NSF\ grants that have supported the PI within the last five years.
+Here we list \NSF\ grants that have supported the \PI\ within the last five years.
 
 \paragraph{\acronym{OAC-1841594}
 \project{Collaborative Research: Community Planning for Scalable Cyberinfrastructure to Support Multi-Messenger Astrophysics} (2018-2020)}
 This one-year (plus extension) grant (for \$36K) is part of a multi-institutional project
 to design and propose a national center for multi-messenger astrophysics. The grant supported
-meetings, travel, and writing by PI Hogg and Federica Bianco (now at University of Delaware).
+meetings, travel, and writing by \PI\ Hogg and Federica Bianco (now at University of Delaware).
 
 \paragraph{\acronym{AST-1517237}
 \project{New Probabilistic Methods for Observational Cosmology}
 (2015--2019)} This grant (for \$328K) supported research into Bayesian
-methods for cosmology. It mainly supported research by PI Hogg and
+methods for cosmology. It mainly supported research by \PI\ Hogg and
 Alex Malz (now at University of Bochum). The grant proposal was co-written
 by Dr Malz and established his career.
 Under this grant, Dr Malz became one of the leaders in planning cosmological
@@ -674,7 +674,7 @@ interdisciplinary expertise during the award period and who is now the
 Chief of Data Science at the \textit{Wall St Journal}.
 
 \paragraph{Others}
-In addition to the recent grants listed above, the PI's group has been supported by
+In addition to the recent grants listed above, the \PI's group has been supported by
 \acronym{AST-0908357}
 \project{Dynamical models from kinematic data: The Milky Way Disk and Halo} (2009-2011),
 and
@@ -684,7 +684,7 @@ and
 \acronym{PHY-0101738}
 \project{Theoretical Particle Physics, Astrophysics and Cosmology} (2001--2004).
 and (in ancient history) a \NSF\ graduate fellowship.
-The majority of the PI's 220 refereed publications have been at least partially supported
+The majority of the \PI's 220 refereed publications have been at least partially supported
 by \NSF grants at a range of different institutions..
 
 Kate Storey-Fisher has been supported by three \NSF\ \acronym{REU} grants.
@@ -782,12 +782,17 @@ While 10\% of Physics bachelor degree recipients are Hispanic American or Africa
 Our goal with these materials and workshops is to provide supportive learning environments and fundamental skills for students at this critical career junction, to ensure that all students are prepared for the transition to graduate school.
 
 This proposal will provide the opportunity for significant research mentorship.
-The PI will act as a research supervisor for the GRA, and the GRA will take on undergraduate students as mentees.
-Research experiences with quality mentorship have been shown to be critical to persistance in STEM for undergraduates from underrepresented backgrounds \citep{Estrada2018}.
+The \PI\ will act as a research supervisor for the \GRA, and the \GRA\ will take on undergraduate students as mentees.
+Research experiences with quality mentorship have been shown to be critical to persistance in \acronym{STEM} for undergraduates from underrepresented backgrounds \citep{Estrada2018}.
 
 The research products from this work will have an impact beyond astrophysics.
 The correlation function is commonly used across other disciplines, from examining patterns in DNA sequences to time-correlated expenditure in econometrics.
 The statistical methods we develop for correlation function analyses will be quite general could be formulated for these applications, allowing for improved understanding in a multitude of fields.
+
+And finally, the interdisciplinary nature of this research means that the educational environment for the \GRA\ and the undergraduate researchers is unique and valuable, especially now.
+Training in methods, statistics, applied mathematics, and data science are all critical to work in almost any computational scientific or engineering context.
+The former members of the \PI's group work in a wide array of industries, including academic, finance, online commerce, journalism, and public policy.
+Training of a diverse group of early-career scientists for a new world of technical work is one of the broader impacts of the work proposed in this proposal.
 
 \section{Not-so-frequently asked questions}
 
