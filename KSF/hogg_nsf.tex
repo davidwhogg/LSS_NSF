@@ -71,17 +71,13 @@
 %----- Tighten up section headings
 \makeatletter
 \renewcommand\section{\@startsection {section}{1}{\z@}%
-                                   {-2.00ex \@plus -1ex \@minus -.2ex}%
-                                   {1.0ex \@plus.2ex}%
+                                   {-1.0ex \@plus -1ex \@minus -.2ex}%
+                                   {0.8ex \@plus.2ex}%
                                    {\normalfont\large\bfseries}}
 \renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
-                                     {-1.75ex\@plus -1ex \@minus -.2ex}%
-                                     {1.0ex \@plus .2ex}%
+                                     {-1.0ex\@plus -1ex \@minus -.2ex}%
+                                     {0.8ex \@plus .2ex}%
                                      {\normalfont\normalsize\bfseries}}
-\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
-                                    {2.75ex \@plus1ex \@minus.2ex}%
-                                    {-1em}%
-                                    {\normalfont\normalsize\bfseries}}
 \makeatother
 
 %----- Tighten up paragraphs and lists
@@ -93,7 +89,7 @@
   \setlength{\parsep}{0.0ex}%
   \setlength{\partopsep}{0.0ex}%
   \setlength{\itemsep}{0.0ex}%
-  \setlength{\leftmargin}{2.0\parindent}}}{\end{list}}
+  \setlength{\leftmargin}{1.0\parindent}}}{\end{list}}
 \newcounter{actr}
 \renewenvironment{enumerate}{\begin{list}{{\textbf{\textsf{\arabic{actr}.}}}}{%
   \usecounter{actr}%
@@ -101,7 +97,7 @@
   \setlength{\parsep}{0.0ex}%
   \setlength{\partopsep}{0.0ex}%
   \setlength{\itemsep}{0.0ex}%
-  \setlength{\leftmargin}{2.0\parindent}}}{\end{list}}
+  \setlength{\leftmargin}{1.0\parindent}}}{\end{list}}
 
 %----- Special Hogg list for references
 \newcommand{\hogglist}{%
