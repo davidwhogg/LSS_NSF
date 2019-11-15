@@ -38,7 +38,7 @@ It has made significant ab-initio predictions (like the baryon acoustic feature;
 prior to the observations.
 However, it's almost certainly \emph{not the true model}.
 It seems unlikely that the dark sector contains no
-non-gravitational interactions, and no interesting dynamical features (e.g. \citealt{Billyard}, \citealt{Gonzalez2018}).
+non-gravitational interactions, and no interesting dynamical features (e.g. \citealt{Billyard2000}, \citealt{Gonzalez2018}).
 What is well established is the following:
 Whatever \emph{is} the true model \emph{is very well approximated} by
 \LCDM\ over a wide range of scales in length and density.
@@ -47,7 +47,7 @@ limits of what's possible (or at least sensible!).
 
 In addition to the success of the \LCDM\ model---or
 really because of it---the principal cosmological parameters have been
-measured in data with percent-level precision.
+measured in data with percent-level precision \citep{Planck2018}.
 These parameters can be thought of as the age, the densities in
 various components, and the power spectrum of the initial conditions.
 However, our percent-precision measurements have not been good enough to
@@ -91,7 +91,7 @@ This leads to the second axis along which we have to work, which
 is \emph{calibration, contamination, and window functions}.
 As the data get harder to use at the individual-object level, it is
 harder to know that we have surveyed the volume uniformly, or,
-that we understand the non-uniformity of our sampling.
+that we understand the non-uniformity of our sampling (e.g. \citealt{Sato2013}).
 Survey window function knowledge starts to depend on things about the
 observational projects that we can't know well, like small-scale
 variations of the point-spread function or temporal variability of the
@@ -170,7 +170,7 @@ The estimator is then defined as $\xi(r) = [DD(r) - 2DR(r) + RR(r)]/RR(r)$,
 where the terms are normalized vectors of pair counts in each bin, each having length $K$.
 
 While the \LS estimator has better overall variance properties than the naive clustering estimator, it still suffers from several limitations. 
-First, choosing the number of bins requires a trade-off between bias and variance.
+First, choosing the number of bins requires a trade-off between bias and variance \citep{Bailoni2016}.
 Various works have addressed these issues by improving the random pair counting \citep{Demina2016}, optimizing the combination of pair counts \citep{VargasMagana2013}, and introducing a maximum likelihood approach \citep{BaxterRozo2013}, but this trade-off remains as it is inherent to binning.
 Furthermore, for any finite binning in separation, this estimator contains a statistical bias when applied to highly clustered data (e.g. \citealt{Kerscher1998}). The \LS estimator also can't account for properties besides spatial separation.
 Another binned dimension is often used to characterize the dependence
@@ -228,7 +228,7 @@ We will combine these two approaches to develop and implement an estimator for g
 The clustering of galaxies is a critical probe of the baryon acoustic feature. 
 This is a signature of Baryon Acoustic Oscillations (BAO) in the early Universe, acoustic waves of photon-baryon fluid that traveled through the Universe. 
 When the Universe cooled to decoupling, extra matter was deposited at the scale corresponding to the distance travelled. 
-Today this overdensity should be at a scale of around 120 Mpc/h, and indeed we see a peak there in the correlation function. 
+Today this overdensity should be at a scale of around 120 Mpc/h, and indeed we see a peak there in the correlation function \citep{Eisenstein2005}. 
 The exact BAO scale can be extracted from the binned \cf by comparing it to theoretical models of the correlation function. 
 With our estimator, we can directly project the galaxy pairs onto these models. 
 Specifically, we will use as one of our basis functions a canonical model of the correlation function with the Planck best-fit cosmological parameters. 
@@ -258,7 +258,7 @@ programs, based on non-parametric models, that can detect these complex systemat
 
 To make accurate cosmological measurements and detect potential deviations from the model, we require clean, unbiased datasets.
 Observed galaxy catalogs are necessarily imperfect due to systematic effects in observation and instrumentation. 
-In order to characterize the clustering from these surveys, we must model, fit, and remove these effects.
+In order to characterize the clustering from these surveys, we must model, fit, and remove these effects (e.g. \citealt{Agarwal2014}).
 
 Systematics are any issues with the data that produce variations in the density or redshift distribution of the sample, therefore imprinting non-cosmological signals on large-scale structure analyses.
 For instance, the galaxy number density varies with the width of the point spread function (PSF), as observations with a wider PSF may confuse star--galaxy separation.
