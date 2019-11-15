@@ -34,22 +34,21 @@
 \begin{document}
 
 The cold-dark-matter-with-a-cosmological-constant (\LCDM) model is
-very well established observationally.
-It has explained many different
-kinds of data with a small number of free parameters, and has made
-some significant ab-initio predictions (like the baryon acoustic feature; \citealt{EisensteinHu1998})
+very well established observationally, having
+explained many different
+kinds of data with a small number of free parameters.
+It has made significant ab-initio predictions (like the baryon acoustic feature; \citealt{EisensteinHu1998})
 prior to the observations.
 However, it's almost certainly \emph{not the true model}.
-It seems unlikely that the dark sector is a single species, with no
-non-gravitational interactions, and no interesting thermodymamic or
-dynamical features.
+It seems unlikely that the dark sector contains no
+non-gravitational interactions, and no interesting dynamical features.
 What is well established is the following:
 Whatever \emph{is} the true model \emph{is very well approximated} by
 \LCDM\ over a wide range of scales in length and density.
 The \LCDM\ model, then, deserves to be worked out, tested, and scrutinized at the
 limits of what's possible (or at least sensible!).
 
-In addition to the importance and success of the \LCDM\ model---or
+In addition to the success of the \LCDM\ model---or
 really because of it---the principal cosmological parameters have been
 measured in data with percent-level precision.
 These parameters can be thought of as the age, the densities in
@@ -57,9 +56,6 @@ various components, and the power spectrum of the initial conditions.
 However, our percent-precision measurements have not been good enough to
 detect potential deviations from \LCDM\, or to find new
 cosmological and astrophysical effects.
-The history of astrophysics has demonstrated, time and again,
-that with new precision comes new opportunities.
-\KSF{could delete prev sentence}
 The current and next generations of surveys hope to
 make measurements of effects which enter at sub-percent levels,
 which may lead to new physical insights.
@@ -97,17 +93,14 @@ That is, as the data get better in a global sense, it gets worse in an individua
 This leads to the second axis along which we have to work, which
 is \emph{calibration, contamination, and window functions}.
 As the data get harder to use at the individual-object level, it is
-harder to know that we have surveyed the volume uniformly, or, more
-realistically, that we understand the non-uniformity of our sampling.
+harder to know that we have surveyed the volume uniformly, or,
+that we understand the non-uniformity of our sampling.
 Survey window function knowledge starts to depend on things about the
 observational projects that we can't know well, like small-scale
 variations of the point-spread function or temporal variability of the
 photometric bandpasses.
 In this context we are pushed to data-driven techniques for
 understanding the selection.
-This connect to ideas of
-self-calibration, where the PI has been a pioneer.
-\KSF{Move this sentence to systematics section?}
 
 The third axis is \emph{statistical sophistication}.
 As we simultaneously move to higher precision requirements, larger
@@ -301,15 +294,15 @@ This connects strongly to our search for anomalies in the third theme; we requir
 
 \subsection{Defeating adversarial systematics with non-parametrics}
 
-Ideally, systematics and clustering should be modeled simultaneously. 
-However, even forward modelling these individually is currently untenable. \KSF{Suchyta 2016 was cited by Rezaie 2019 wrt forward modelling systematics, dig into lit here} 
+Ideally, systematics and clustering are modeled simultaneously. 
+However, we don't have a a tractable likelihood for clustering analyses.
 While likelihood-free inference could provide an eventual path forward, for the near-future we can develop more sophisticated methods to calibrate out systematics before performing clustering analyses.
 Machine learning methods have already shown promise in systematics removal in other subfields.
 Adversarial neural networks have been used to remove the jet background in particle collision data at the Large Hadron Collider \citep{Shimmin2017}.
 Gaussian processes (\GP s) have been used to correct for instrumental systematics in exoplanet transit surveys \citep{Gibson2012, Aigrain2016}. 
 \GP s lend themselves to this type of problem, as they allow for nonlinear interpolation over the data space; we propose to use GPs to remove systematics in galaxy surveys.
 
-\GP s are a Bayesian approach to modeling data; they define a prior distribution over a function space, and then use the known data to produce a posterior probability distribution over unknown values. 
+\GP s provide a Bayesian approach to modeling data; they define a prior distribution over a function space, and then use the known data to produce a posterior probability distribution over unknown values. 
 In practice, \GP s learn the labels of a training set and generate hyperparameters characterizing the data.
 These can then be used to label previously unseen data by performing a nonlinear regression over the training data space.
 In our application, we will model the galaxy density and redshift distribution as complex functions of observational metadata, as described above.
@@ -361,12 +354,11 @@ delivers results that can be judged in the framework of information
 theory.
 And we (as a community of cosmologists) are really, really good at it.
 
-Interestingly and importantly to our story,
+Importantly,
 parameter estimation can proceed \emph{whether or not the fundamental theory
 is in fact a good fit to the data}.
-That is, it doesn't depend on the model being \emph{good}.
 It depends only on the data being precise, and the parameters showing
-effects in our expections for the data (as encoded by the log-likelihood function).
+effects in our expections for the data.
 \emph{But we believe that it makes sense to think about the goodness-of-fit,
 or the respects in which the data do and do not fit the model}.
 The question of whether data fits a model is a statistics question as old as the question of parameter estimation, and has even deeper roots in cosmology.
@@ -379,16 +371,15 @@ to the predictions of the dominant paradigm.
 We are suggesting this focus on anomalies for two connected reasons.
 The first is that there have been proposed or claimed anomalies in the
 cosmic microwave background (\CMB) \citep{Huterer2010}, and the conversation around them has been
-productive but flawed in important ways.
+productive but flawed.
 Indeed none of the proposed anomalies---for example the power
-asymmetry (\HOGG{CITE}), the axis of evil (\HOGG{CITE}), and the cold
-spots (\HOGG{CITE})---is a confident statistical result at this point.
+asymmetry, the axis of evil, and the cold
+spots---is a confident statistical result at this point.
 This is partly because these results are subtle. And partly because
 they were discovered in an \foreign{ad hoc} way, which is hard to
-assess in any \foreign{a posteriori} statistical analysis.
+assess in any \foreign{a posteriori} analysis.
 The productivity of these results is to be admired, but the statistical
 context needs to be reconsidered. That's what we propose to do here.
-\KSF{The two above paragraphs could be condensed into one}
 
 The second reason for a focus on anomalies is the fact (mentioned
 above) that the \LCDM\ model must sure surely be an approximation to a
@@ -402,7 +393,6 @@ hiding: There are no obviously wrong predictions of \LCDM\ known at
 scales larger than 10-ish Mpc, and while there are some issues at smaller scales \citep{Bullock2017}, these are
 all consistent at the present day with the non-linear effects of baryonic
 physics, such as star formation and feedback.
-\KSF{Added bullock citation here but not sure if this is what you were thinking - its ``Small-Scale Challenges to the LCDM Paradigm''}
 This leads to the conclusion we need to look for subtle effects, or effects that
 don't project strongly onto standard two-point-function measurements.
 
@@ -435,9 +425,7 @@ is that there are many stastics to search through.
 One way to enumerate these is to list all one-point statistics, then two-point statistics, three-point and so on. As examples, we could look for a gradient in the variance at
 $20\,h^{-1}\,\Mpc$ scales; a gradient in the location
 of the baryon acoustic feature; or a gradient in the inferred value of the amplitude
-$\sigma_8$ of the power spectrum for the initial conditions.
-\KSF{do we need ``for the intial conditions''?}
-\KSF{Reading further, i may have misunderstood - do you want to scope only to two-point statistics? if so we should be explicit about that}
+$\sigma_8$ of the power spectrum.
 We need to determine an enumeration of the possibilities (and, preferably, an
 ordering for hypothesis registration; see below).
 
@@ -453,7 +441,7 @@ can detect them.
 
 So even in this tiny sandbox---looking only at weakly broken
 statistical homogeneity---there is significant work to be done.
-Our approach for this search is as follows:
+Our approach is as follows:
 \begin{itemize}
 \item
 Write a comprehensive list of all statistics for which we are going to search
@@ -464,8 +452,9 @@ Choose a survey target. This will be
 with realistic systematic issues and modeled empirically with
 systematics models as in the second theme.
 \item
-Search for gradients in all of the statistics in the mock
-data. These searches should turn up null (since the simulations are
+Search for gradients in all of the statistics \emph{in the mock
+data} using our estimator from the first theme.
+These searches should turn up null (since the simulations are
 homogeneous). By ``null,'' we mean
 that we will get amplitudes and discoveries that are consistent with the noise, or with
 information-theoretic expectations.
@@ -476,7 +465,7 @@ Perform injection-recovery tests, in which we inject statistical inhomogeneities
 and attempt to recover them.
 We will do the injection by deleting and adding galaxies in a
 spatially biased way.
-The recovery will involve re-fitting of systematics as in the previous
+The recovery will involve re-fitting of systematics with the methods of the second
 theme, because some anomalies will look like systematic issues.
 We should find, in the end, that some gradients are better constrained than others.
 \item
@@ -494,26 +483,23 @@ investigation, but not contaminating or re-considering any of the results
 of the pre-registered analyses.
 \end{itemize}
 
+\noindent
 We are well-poised to perform this analysis, as \textbf{the ideal tool for
   finding cosmological gradients in power is the continuous
   correlation-function estimator we are building} as described in the first theme.
-The estimator is so flexible that the basis functions can be chosen to include not only separation, 
+The estimator is flexible; the basis can be chosen to include not only separation, 
 but also a three-space location basis in the Hubble
 Volume. That is, every pair of galaxies will have not just a
 separation $s$ in (say) redshift space, it will also have a position
 (maybe the center-of-mass position $x$) in three-space inside the
-survey.  The basis functions in $s$ can be
+survey.
+The basis functions in $s$ can be
 multiplied by independent linear functions of
 $x$ to make a new smooth basis $f(s,x)$. If the Universe is truly
 homogeneous, statistically, the part of the basis that depends on $x$
 will only be populated at a level expected by noise; all of the
 significantly non-zero amplitudes should be on the part of the basis
 that is constant in $x$.
-\KSF{I thought the expl was too confusing for someone who hasn't been thinking about these things, but lmk if i've changed the meaning too much.}
-Given that we need the systematics modeling for the injection tests,
-and our unbinned estimator to measure the gradients,
-the execution of this theme depends on the products of the
-previous two themes!
 
 \textbf{One challenge of this theme is the pre-registration requirement.}
 The arXiv explicitly rejects papers that it regards as ``proposals.'' Will a
@@ -523,7 +509,7 @@ to modify past history, so it isn't as secure as an arXiv posting.
 We don't expect anyone to attempt to do anything nefarious, but if we are
 going to try to be statistically principled, we probably ought to go fully principled!
 This is why we propose using Zenodo, since it can snapshot projects in a tagged
-state. \HOGG{CHECK THIS.}
+state.
 Solving the pre-registration problem is explicitly part of what we are proposing to do.
 We will work through the possibilities
 and find a solution to pre-registering hypotheses that could be used by the whole natural-science
@@ -729,14 +715,13 @@ This proposal will also connect and add value to advances in wide-ranging areas 
 Recent theoretical work has shown that new effects will become potentially observable with the next increase in precision.
 For example, it's looking likely that we can measure the total mass in
 neutrinos just from observations of \LSS\ and the
-\CMB. \HOGG{CITE}
+\CMB.
 This would answer questions that direct mass measurement experiments 
 can't yet answer.
 As another example, if the cosmological constant turns out to be a particle rather
 than a term in general relativity,
 this signature would appear at sub-percent level in the
-expansion history and the growth of structure. \HOGG{CITE}
-\KSF{I'm not sure if Intellectual Merit is the place for examples - would say cut, but does make it less concrete}
+expansion history and the growth of structure.
 
 Finally, this project creates new statistical methods and capabilities for the 
 cosmology community.
@@ -766,9 +751,6 @@ The statistical methods we develop for correlation function analyses will be qui
 
 \section{Not-so-frequently asked questions}
 
-We have tried to anticipate and answer some of the
-questions that you might have:
-
 \paragraph{Why does this proposal have two authors?}
 Hogg is the \PI; Kate Storey-Fisher is the graduate student at NYU who would be supported on this grant as the \GRA.
 Storey-Fisher contributed substantially to the writing of this proposal; she is a co-author, a proposed beneficiary, and a supervisor (for the undergraduate researcher) of this project.
@@ -782,20 +764,13 @@ One of the most limiting aspects of \cf analyses is the number of mock catalogs 
 \paragraph{Don't you still have to make choices about your basis functions for your estimator, so you're not totally eliminating binning?}
 Yes! There are still choices. But those choices don't require hard-edged bins, and don't require that we approximate smooth functions with clunky boxes.
 
-%\paragraph{Are you saying that the canonical two-point correlation function estimator is wrong?}
-%Not yet. We do think it has issues! But all we are addressing in this project is its (current) marriage to top-hat function spaces (zeroth order spline, you might say).
-\KSF{Propose cutting, address in text enough, and don't want to confuse reader}
-
-%\paragraph{Aren't there already methods for dealing with nonlinear systematics?} Yes - while some recent analyses still use linear systematics models, there has been significant work on correcting for nonlinear systematics. But these are less flexible than the approach we are proposing, and none of them deal directly with \emph{combinations} of different systematic effects.
-%\KSF{Propose cutting this, answered in text}
-
 \paragraph{What is the connection between systematics correction and anomaly detection?}
 These are highly related, because an anomaly might be ``explainable'' as a systematics issue, or an uncorrected systematic might appear as an anomaly. So we have to do both well, simultaneously, if we want to be conservative.
 
 \paragraph{Will pedagogical publications and workshops really have a broad impact?}
-The materials we produce are designed to impact students at a critical point in their careers. Access to these materials, alongside well-taught workshops, have the potential to give students with less experience and resources the necessary grounding to do high-quality research in data-driven astrophysics. Further, some of the \PI's pedagogical contributions (especially on cosmological distances and fitting models) have had very wide impact.
-
-\HOGG{Why this team?}
+The materials we produce are designed to impact students at a critical point in their careers.
+Access to these materials, alongside well-taught workshops, have the potential to give students with less experience and resources the necessary grounding to do high-quality research in data-driven astrophysics.
+Further, some of the \PI's pedagogical contributions (especially on cosmological distances and fitting models) are highly cited..
 
 \clearpage
 \bibliography{description}
