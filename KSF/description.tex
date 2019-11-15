@@ -3,11 +3,8 @@
 
 % to-do
 % -----
-% - deal with all CITE
+% - deal with all CITEs
 % - deal with all HOGG and KSF
-% - answer all questions
-% - shorten into 15 pages + references
-% - decide where to bold, if at all
 
 \documentclass[12pt, fullpage, letterpaper]{article}
 \usepackage{fancyheadings}
@@ -322,77 +319,60 @@ Our systematics calibration method will improve current measurements by reducing
 
 \section{Third theme: Searches for anomalies}
 
-As we have emphasized, the \LCDM\ model of cosmology is incredibly successful.
-But we expect it to be an approximation to the true model.
-Are there already visible anomalies, or will anomalies appear soon?
-The challenges are statistical: our goal is to find these anomalies reliably, given
-non-trivial systematics and multiple-hypotheses problems.
+We propose to create and implement a method for reliably finding (or ruling out) anomalies,
+or subtle departures of the observed \LSS\ from the \LCDM\ theoretical expectations.
 
 \subsection{Why search for issues in the large-scale structure?}
 
 Contemporary observational large-scale structure science---and
 cosmology in general---is very focused on parameter estimation.
-And rightly so!
 The cosmological parameters are known now to incredible precision.
 New effects will become visible in the near future, which will add
 new parameters to the list and permit us to estimate current
 ones even more precisely.
-
-In addition, parameter estimation is a very well-defined activity:
-Parameter estimation proceeds by performing likelihood-based or
-Bayesian inferences.
-The best-fit (or measured or estimated) parameter values are those at
+The best-fit (or measured or estimated) parameter values are those near
 the peak in the log-likelihood function, or the
 (log) probability of the data given the parameters and the fundamental
 physical assumptions.
 The best possible precision with which the parameters can be measured
-is related to the Fisher information, which is, in turn, the second
-derivative of that log-likelihood function.
+is related to the second derivative of that log-likelihood function.
 The activity of parameter estimation has the beauty that it is a fully
-worked out and justified procedure in classical statistics, and it
-delivers results that can be judged in the framework of information
-theory.
-And we (as a community of cosmologists) are really, really good at it.
+worked out and justified procedure in classical statistics.
 
-Importantly,
+But importantly,
 parameter estimation can proceed \emph{whether or not the fundamental theory
 is in fact a good fit to the data}.
 It depends only on the data being precise, and the parameters showing
 effects in our expections for the data.
 \emph{But we believe that it makes sense to think about the goodness-of-fit,
 or the respects in which the data do and do not fit the model}.
-The question of whether data fits a model is a statistics question as old as the question of parameter estimation, and has even deeper roots in cosmology.
-But it is a harder question, because it involves comparing
-qualitatively different models or paradigms.
+This is a problem than parameter estimation, because it involves comparing qualitatively different models.
 
-We are going to phrase these questions of goodness-of-fit in terms of
+We are going to simplify these questions of goodness-of-fit to questions about
 \emph{anomalies}, or respects in which the data \emph{do not conform}
-to the predictions of the dominant paradigm.
+to the predictions of \LCDM.
 We are suggesting this focus on anomalies for two connected reasons.
 The first is that there have been proposed or claimed anomalies in the
 cosmic microwave background (\CMB) \citep{Huterer2010}, and the conversation around them has been
 productive but flawed.
 Indeed none of the proposed anomalies---for example the power
 asymmetry, the axis of evil, and the cold
-spots---is a confident statistical result at this point.
-This is partly because these results are subtle. And partly because
-they were discovered in an \foreign{ad hoc} way, which is hard to
+spots---is a confident statistical result.
+This is partly because these results are subtle.
+And partly because they were discovered in an \foreign{ad hoc} way, which is hard to
 assess in any \foreign{a posteriori} analysis.
 The productivity of these results is to be admired, but the statistical
-context needs to be reconsidered. That's what we propose to do here.
+context needs to be reconsidered.
+That's what we propose.
 
-The second reason for a focus on anomalies is the fact (mentioned
-above) that the \LCDM\ model must sure surely be an approximation to a
-more intricate theory.
-Complexity isn't \emph{required}.
-But it would be odd, for example, that the light sector of quarks and leptons and
+The second reason for a focus on anomalies is the fact that the \LCDM\ model must sure surely be an approximation to a more intricate theory.
+Complexity isn't \emph{required}, but it would be odd if the light sector of quarks and leptons and
 force carriers would show so much phenomenology and the dark sector of
-dark matter would show none.
+dark matter would show \emph{none}.
 What we know from years of \LCDM\ is that if anomalies exist, they are
 hiding: There are no obviously wrong predictions of \LCDM\ known at
 scales larger than 10-ish Mpc, and while there are some issues at smaller scales \citep{Bullock2017}, these are
-all consistent at the present day with the non-linear effects of baryonic
-physics, such as star formation and feedback.
+all consistent at the present day with unmodeled baryon dynamics, such as star formation and feedback.
 This leads to the conclusion we need to look for subtle effects, or effects that
 don't project strongly onto standard two-point-function measurements.
 
