@@ -22,8 +22,8 @@
 \lhead{\textcolor{darkgrey}{\textsf{Hogg \& Storey-Fisher / \shorttitle}}}
 \rhead{\textcolor{darkgrey}{\textsf{\thepage}}}
 \cfoot{}
-%\newcommand{\KSF}[1]{}
-%\newcommand{\HOGG}[1]{}
+\newcommand{\KSF}[1]{}
+\newcommand{\HOGG}[1]{}
 \newcommand{\KSF}[1]{\textcolor{teal}{KSF says: #1}}
 \newcommand{\HOGG}[1]{\textcolor{orange}{HOGG says: #1}}
 \newcommand{\cf}{2pcf\xspace}
@@ -345,9 +345,9 @@ Contemporary observational large-scale structure science---and
 cosmology in general---is very focused on parameter estimation.
 And rightly so!
 The cosmological parameters are known now to incredible precision.
-And new effects are becoming visible in the near future, which will add
+New effects will become visible in the near future, which will add
 new parameters to the list and permit us to estimate current
-parameters even more precisely.
+ones even more precisely.
 
 In addition, parameter estimation is a very well-defined activity:
 Parameter estimation proceeds by performing likelihood-based or
@@ -357,7 +357,7 @@ the peak in the log-likelihood function, or the
 (log) probability of the data given the parameters and the fundamental
 physical assumptions.
 The best possible precision with which the parameters can be measured
-is related to the Fisher information, which is (in turn) the second
+is related to the Fisher information, which is, in turn, the second
 derivative of that log-likelihood function.
 The activity of parameter estimation has the beauty that it is a fully
 worked out and justified procedure in classical statistics, and it
@@ -392,6 +392,7 @@ they were discovered in an \foreign{ad hoc} way, which is hard to
 assess in any \foreign{a posteriori} statistical analysis.
 The productivity of these results is to be admired, but the statistical
 context needs to be reconsidered. That's what we propose to do here.
+\KSF{The two above paragraphs could be condensed into one}
 
 The second reason for a focus on anomalies is the fact (mentioned
 above) that the \LCDM\ model must sure surely be an approximation to a
@@ -430,18 +431,18 @@ are natural, and they are easily enumerated.
 
 This kind of weakly broken homogeneity has been investigated previously,
 using various methods.
-One project looked at the variation of the cosmological parameters in spatial patches \citep{Mukherjee2018}.
-Another made forecasts for detecting a hemispherical power asymmetry, similar to that seen in the CMB, in redshift surveys \citep{Zhai2017}.
+\cite{Mukherjee2018} looked at the variation of the cosmological parameters in spatial patches.
+\cite{Zhai2017} made forecasts for detecting a hemispherical power asymmetry (similar to that seen in the CMB) in redshift surveys.
 
 Even in this small space of anomalies (gradients), there are subtleties. The first
-is that there are many two-point statistics (say), and each of these can
-show a gradient. For example, there is power at different spatial scales,
-or quantities (like cosmological parameters) derived from those power
-measurements. For example, we could look for a gradient in the variance at
-$20\,h^{-1}\,\Mpc$ scales. Or we could look for a gradient in the location
-of the baryon acoustic feature. Or in the inferred value of the amplitude
+is that there are many stastics to search through.
+One way to enumerate these is to list all one-point statistics, then two-point statistics, three-point and so on. As examples, we could look for a gradient in the variance at
+$20\,h^{-1}\,\Mpc$ scales; a gradient in the location
+of the baryon acoustic feature; or a gradient in the inferred value of the amplitude
 $\sigma_8$ of the power spectrum for the initial conditions.
-We need to find an enumeration of the possibilities (and, preferably, an
+\KSF{do we need ``for the intial conditions''?}
+\KSF{Reading further, i may have misunderstood - do you want to scope only to two-point statistics? if so we should be explicit about that}
+We need to determine an enumeration of the possibilities (and, preferably, an
 ordering for hypothesis registration; see below).
 
 The second subtlety is that there will be some gradients that are easier
@@ -455,43 +456,41 @@ kinds of anomalies we can securely detect, and at what amplitudes we
 can detect them.
 
 So even in this tiny sandbox---looking only at weakly broken
-statistical homogeneity---there is there is significant work to be done.
+statistical homogeneity---there is significant work to be done.
 Our approach for this search is as follows:
 \begin{itemize}
 \item
 Write a comprehensive list of all statistics for which we are going to search
 for gradients. This must be chosen in advance.
-\KSF{This is the vaguest part, if we can elaborate at all or give examples of how we will come up with this I think that would help}
 \item
 Choose a survey target. This will be
 \SDSSIV\ \eBOSS. Obtain a full set of mocks (which are public, and besides which, we are collaborators on the project), along
 with realistic systematic issues and modeled empirically with
 systematics models as in the second theme.
 \item
-Search for the gradients in all of the statistics in the mock
+Search for gradients in all of the statistics in the mock
 data. These searches should turn up null (since the simulations are
-homogeneous). And by ``null'' we don't mean that we will get absolutely nothing; we mean
+homogeneous). By ``null,'' we mean
 that we will get amplitudes and discoveries that are consistent with the noise, or with
 information-theoretic expectations.
-This process will test all code, and give us an
-opportunity to check expectations and test our code.
+This process gives an
+opportunity to test our code and check expectations.
 \item
-Perform injection-recovery tests, in which we inject statistical inhomogeneities
-and attempt to recover injected anomalies.
+Perform injection-recovery tests, in which we inject statistical inhomogeneities (our anomalies)
+and attempt to recover them.
 We will do the injection by deleting and adding galaxies in a
 spatially biased way.
 The recovery will involve re-fitting of systematics as in the previous
 theme, because some anomalies will look like systematic issues.
-We should find, in the end, that some gradient directions are better constrained than others.
-\KSF{This might need to be elaborated on, I know what you mean only because we've discussed}
+We should find, in the end, that some gradients are better constrained than others.
 \item
 Pre-register the enumerated list of statistics and the data-analysis code that
-searches for them, after fitting the flexible systematics model.
+searches for them.
 This pre-registration might involve a GitHub+Zenodo tag or it could be
 a full arXiv publication. It is possible that a complete refereed paper
 is merited, given the sophistication that our injection--recovery tests will require.
 \item
-Operate on the real \eBOSS\ data, visualize, write up and publish results of the
+Operate on the real \eBOSS\ data. Visualize, write up and publish results of the
 analysis with the pre-registered code.
 \item
 If any anomalies appear in that analysis, follow them up with further
@@ -502,22 +501,21 @@ of the pre-registered analyses.
 We are well-poised to perform this analysis, as \textbf{the ideal tool for
   finding cosmological gradients in power is the continuous
   correlation-function estimator we are building} as described in the first theme.
-In the same way that it doesn't require bins in separation, it also
-doesn't require bins in any housekeeping data. That is, the pairs
-being counted in the terms can be projected not just onto a separation
-basis, but also a three-space location basis in the Hubble
+The estimator is so flexible that the basis functions can be chosen to include not only separation, 
+but also a three-space location basis in the Hubble
 Volume. That is, every pair of galaxies will have not just a
 separation $s$ in (say) redshift space, it will also have a position
-(maybe the center-of-mass position $x$ in three-space inside the
-survey.  The correlation-function basis functions in $s$ can be
-multiplied by a constant function in $x$ and by three independent linear functions of
+(maybe the center-of-mass position $x$) in three-space inside the
+survey.  The basis functions in $s$ can be
+multiplied by independent linear functions of
 $x$ to make a new smooth basis $f(s,x)$. If the Universe is truly
 homogeneous, statistically, the part of the basis that depends on $x$
 will only be populated at a level expected by noise; all of the
 significantly non-zero amplitudes should be on the part of the basis
 that is constant in $x$.
+\KSF{I thought the expl was too confusing for someone who hasn't been thinking about these things, but lmk if i've changed the meaning too much.}
 Given that we need the systematics modeling for the injection tests,
-and given that we need our unbinned estimator to measure the gradients,
+and our unbinned estimator to measure the gradients,
 the execution of this theme depends on the products of the
 previous two themes!
 
@@ -531,9 +529,9 @@ going to try to be statistically principled, we probably ought to go fully princ
 This is why we propose using Zenodo, since it can snapshot projects in a tagged
 state. \HOGG{CHECK THIS.}
 Solving the pre-registration problem is explicitly part of what we are proposing to do.
-We don't know the best solution but we are explicitly proposing to work through possibilities
-and find a solution that could be used not just by us but by the whole natural-science
-community doing hard things in observational data.
+We will work through the possibilities
+and find a solution to pre-registering hypotheses that could be used by the whole natural-science
+community.
 \KSF{I understand why this paragraph is written so speculatively but that does make it weak. I think some ordering and language changes would strenghthen it while still emphasizing that part of the proposal is figuring out how to do this.}
 
 \subsection{More comprehensive, or more theory-motivated searches}
@@ -542,8 +540,8 @@ There are many directions to go with anomaly detection.
 Our primary proposal goal is to execute a well-defined, statistically sound search for anomalies, using the weakly-broken symmetries (gradients) discussed above.
 There are many possible follow-on projects that we could explore if time and enthusiasm of the personnel permit, and depending on the evolving scientific context in the world and at NYU.
 
-For example, we could go to larger spaces of anomalies.
-If we go there, it would be good if the anomalies for which we search can be
+One avenue would be to go to larger spaces of anomalies.
+In this case, it would be good if the anomalies for which we search can be
 lexicographically ordered.
 That's because if we want to do a much bigger search, in a much bigger space
 than just spatial gradients of two-point statistics, the number of hypothesis
@@ -551,19 +549,19 @@ tests will get large.
 We expect---if no anomalies are real---that the p-values of the pre-registered searches should
 grow in a particular way as the number of tested hypotheses increases.
 
-For another example, we could go to searching for highly motivated anomalies, motivated by dark-matter or dark-sector phenomenology work in the theory community.
+Another avenue would be to search for highly motivated anomalies, motivated by dark-matter or dark-sector phenomenology work in the theory community.
 For example, in theories in which the initial conditions form a glass, there might be phase correlations that don't appear in the power spectrum, but which appear in the correlations among $k$ modes.
 For another, there could be dark-sector acoustic modes that appear at scales other than the baryon acoustic scale.
-For another, A dark-matter decay product or phase transition in the early could leave an imprint at a localized set of scales.
+For another, a dark-matter decay product or phase transition in the early universe could leave an imprint at a localized set of scales.
 For yet another, there could be tiny asymmetries in left-handed or right-handed composite modes in density--velocity space.
-What's interesting depends on what theories get worked out, and what theories have observable consequences.
-But as predictions come available, what we build here becomes relevant.
+The choice of searches will depend on the direction of theoretical work, and on which theories have observable consequences.
+Our framework will be flexible enough to perform these searches in a robust way as predictions come available.
 
 This proposal is to develop the statistical framework for anomaly detection.
 This involves enumeration of hypotheses,
 null tests and injection tests with mock data and systematics modeling,
 and pre-registration of hypotheses and code prior to work on real data.
-But once these things are in place, the Hubble Volume is our oyster.
+Once these things are in place, the Hubble Volume is our oyster.
 
 \section{Workshops and pedagogical publications}
 
