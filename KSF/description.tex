@@ -170,7 +170,7 @@ The estimator is then defined as $\xi(r) = [DD(r) - 2DR(r) + RR(r)]/RR(r)$,
 where the terms are normalized vectors of pair counts in each bin, each having length $K$.
 
 While the \LS estimator has better overall variance properties than the naive clustering estimator, it still suffers from several limitations. 
-First, choosing the number of bins requires a trade-off between bias and variance \citep{Bailoni2016}.
+First, choosing the number of bins requires a trade-off between bias and variance (e.g. \citealt{Bailoni2016}).
 Various works have addressed these issues by improving the random pair counting \citep{Demina2016}, optimizing the combination of pair counts \citep{VargasMagana2013}, and introducing a maximum likelihood approach \citep{BaxterRozo2013}, but this trade-off remains as it is inherent to binning.
 Furthermore, for any finite binning in separation, this estimator contains a statistical bias when applied to highly clustered data (e.g. \citealt{Kerscher1998}). The \LS estimator also can't account for properties besides spatial separation.
 Another binned dimension is often used to characterize the dependence
@@ -201,23 +201,22 @@ Thus our estimator allows $\xi$ to be evaluated at \emph{any} separation, as wel
 We have also shown that it is invariant under affine transformations of the basis (rotations and shears in the $f$ space).
 
 This generalized two-point estimator removes the need for binning, as the basis functions can be continuous.
-For the case of tophat (rectangular) basis functions, this reduces to the standard Landy-Szalay estimator.
+For the case of tophat (rectangular) basis functions, this reduces to the standard \LS\ estimator.
 A set of basis functions can be chosen specific to the scales, features and properties of interest.
 For example, higher order spline basis functions could be chosen to achieve a smooth statistic. 
-A set of functions that select expected features in the correlation function, such as the baryon acoustic feature, would allow for a more direct measurement of that feature.
+A set of functions that select expected features in the \cf, such as the baryon acoustic feature, would allow for a more direct measurement of that feature.
 Additionally, basis functions can depend on other properties of the tracer, such as galaxy luminosity or redshift.
 Thus our estimator not only removes the need for binning in spatial separation, but can also be used to obviate binning or cuts where subsample approaches are currently needed.
 This property of the estimator will come up below in the third theme (anomaly search).
 
-We have implemented an initial version of the continuous-function correlation function estimator.
-The estimator is built in C within the \texttt{corrfunc} package \citep{Sinha2017}, which performs fast pair-counting on a lattice.
+We have implemented an initial version of the continuous-function correlation function estimator, within the \texttt{corrfunc} package \citep{Sinha2017}, which performs fast pair-counting on a lattice.
 To test the estimator, we have generated lognormal catalogs with a known correlation functions. 
-We expect these to show that, compared to the Landy-Szalay
+We will run our estimator on these mocks and expect these to show that, compared to the \LS\
   estimator, the continuous-function estimator produces an estimate with lower bias and
-  lower variance with respect to the true correlation function.
+  lower variance with respect to the true \cf.
 Given the enforced smoothness, this estimator should be able to not only produce a more accurate correlation function, but do so with fewer basis functions.
 As the error on the inverse covariance matrix scales with the ratio of some power of the number of bins to the number of mock catalogs, our estimator can produce covariance matrices with fewer mock catalogs \citep{Hartlap2007}.
-\textbf{As the cost of cosmological simulations required to build a set of mock catalogs is one of the limiting factors in correlation function analyses; our estimator will significantly reduce this cost by containing more information in fewer basis functions.}
+\textbf{As the cost of cosmological simulations required to build a set of mock catalogs is one of the limiting factors in \cf analyses; our estimator will significantly reduce this cost by containing more information in fewer basis functions.}
 
 Alongside this work, we have revisited the point-process literature (at the intersection of mathematics and statistics) and identified how the biases from binning and edge correction are entering. 
 We will use this understanding to develop an estimator that doesn't suffer from this bias.
@@ -225,23 +224,22 @@ We will combine these two approaches to develop and implement an estimator for g
 
 \subsection{Applications: The BAO Peak and Galaxy Evolution}
 
-The clustering of galaxies is a critical probe of the baryon acoustic feature. 
-This is a signature of Baryon Acoustic Oscillations (BAO) in the early Universe, acoustic waves of photon-baryon fluid that traveled through the Universe. 
-When the Universe cooled to decoupling, extra matter was deposited at the scale corresponding to the distance travelled. 
-Today this overdensity should be at a scale of around 120 Mpc/h, and indeed we see a peak there in the correlation function \citep{Eisenstein2005}. 
-The exact BAO scale can be extracted from the binned \cf by comparing it to theoretical models of the correlation function. 
+The clustering of galaxies is a critical probe of the baryon acoustic oscillation (BAO) feature. 
+This is a matter overdensity caused by acoustic waves of photon-baryon fluid traveling through the early Universe. 
+The feature should appear at scale of around 120 Mpc/h today, and indeed we see a peak there in the \cf \citep{Eisenstein2005}. 
+The exact BAO scale can be extracted from the binned \cf by comparing it to theoretical models (e.g. \citealt{Anderson2014}). 
 With our estimator, we can directly project the galaxy pairs onto these models. 
-Specifically, we will use as one of our basis functions a canonical model of the correlation function with the Planck best-fit cosmological parameters. 
-The other basis functions are derivatives of this model with respect to the parameters we are interested in, in this case the matter density, baryon density and spectral index.
+Specifically, we will use as one of our basis functions a canonical model of the \cf with the Planck best-fit cosmological parameters. 
+The other basis functions are derivatives of this model with respect to the parameters we are interested in; we can then update our base model and iterate until we converge on the best-fit model.
 \textbf{This eliminates potential error due to the arbitrary choice of bins, and allows for a direct estimation of the cosmological parameters and the BAO scale.}
 We will compare this method to the traditional technique, and expect to show that this method produces more precise measurements of the sound horizon with fewer components.
 
-Galaxy evolution is one of the biggest open research topics in modern astrophysics.
-The two-point correlation function allows us to ask questions about how the formation of galaxies is related to the evolution of structure in the Universe.
+Another application is to galaxy evolution, one of the biggest open research topics in modern astrophysics.
+The \cf allows us to ask questions about how the formation of galaxies is related to the evolution of structure in the Universe.
 The dependence of galaxy clustering on the properties of galaxies, such as their line luminosity and star formation rate, gives insight into this relation \citep{Zehavi2004}.
-Our proposed estimator will allow us to extract even more information about this dependence. 
-We plan to construct basis functions that contain a dependence on the galaxy property, allowing for a combined encoding of both separation and luminosity. 
-We can then quickly evaluate the estimator at any set of luminosities and produce a continuous correlation function for each. 
+Our estimator will allow us to extract even more information about this dependence. 
+We plan to construct basis functions that contain a dependence on the galaxy luminosity, allowing for a combined encoding of both separation and luminosity. 
+We can then quickly evaluate the estimator at any set of luminosities and produce a continuous \cf for each. 
 We note that, while continuous, the estimator does not smooth out features in the way that kernel-based estimators do, but preserves and possibly enhances these features.
 We will compare this method to the common subsampling approach; \textbf{we expect to show that this method will allow us to interpret the luminosity dependence in more detail and with higher precision.}
 
@@ -339,14 +337,14 @@ is related to the second derivative of that log-likelihood function.
 The activity of parameter estimation has the beauty that it is a fully
 worked out and justified procedure in classical statistics.
 
-But importantly,
+Importantly,
 parameter estimation can proceed \emph{whether or not the fundamental theory
-is in fact a good fit to the data}.
-It depends only on the data being precise, and the parameters showing
+is a good fit to the data}.
+It depends only that the data be precise, and that the parameters show
 effects in our expections for the data.
-\emph{But we believe that it makes sense to think about the goodness-of-fit,
+\emph{But we must also think about the goodness-of-fit,
 or the respects in which the data do and do not fit the model}.
-This is a problem than parameter estimation, because it involves comparing qualitatively different models.
+This is a problem bigger than parameter estimation, as it involves comparing qualitatively different models.
 
 We are going to simplify these questions of goodness-of-fit to questions about
 \emph{anomalies}, or respects in which the data \emph{do not conform}
@@ -404,10 +402,10 @@ Even in this small space of anomalies (gradients), there are subtleties. The fir
 is that there are many stastics to search through.
 One way to enumerate these is to list all one-point statistics, then two-point statistics, three-point and so on. As examples, we could look for a gradient in the variance at
 $20\,h^{-1}\,\Mpc$ scales; a gradient in the location
-of the baryon acoustic feature; or a gradient in the inferred value of the amplitude
+of the BAO feature; or a gradient in the inferred value of the amplitude
 $\sigma_8$ of the power spectrum.
 We need to determine an enumeration of the possibilities (and, preferably, an
-ordering for hypothesis registration; see below).
+ordering; see below).
 
 The second subtlety is that there will be some gradients that are easier
 to measure than others. There are trivial considerations, like which
@@ -661,10 +659,10 @@ This proposal is literally to ``promote the creation,
 development, and application of the next generation of mathematical,
 computational and statistical theories and tools that are essential
 for addressing the challenges presented [by] \ldots the explosion and production of digital
-experimental and observational data.'' This exactly describes the work we will produce.
+experimental and observational data.''
 We are developing statistical tools that are imperative to address the complexities of the upcoming deluge of large-scale structure survey data.
 We also match the other \acronym{CDS\&E} criteria:
-We ``create, develop, and apply novel \ldots statistical methods, algorithms, software,'' and will make these available to the community so they can become part of standard large-scale analyis pipelines.
+We will ``create, develop, and apply novel \ldots statistical methods, algorithms, software,'' and will make these available to the community so they can become part of standard large-scale analyis pipelines.
 With our hypothesis registation we also ``encourage adventurous ideas that generate
 new paradigms.'' In short, this proposal fits extremely well with the \acronym{CDS\&E} program
 criteria.
@@ -752,7 +750,7 @@ Training of a diverse group of early-career scientists for a new world of techni
 
 Finally, the research products from this work will have an impact beyond astrophysics.
 The correlation function is commonly used across other disciplines, from examining patterns in DNA sequences to time-correlated expenditure in econometrics.
-The statistical methods we develop for correlation function analyses will be quite general could be formulated for these applications, allowing for improved understanding in a multitude of fields.
+The statistical methods we develop for \cf\ analyses will be quite general could be formulated for these applications, allowing for improved understanding in a multitude of fields.
 
 \section{Not-so-frequently asked questions}
 
