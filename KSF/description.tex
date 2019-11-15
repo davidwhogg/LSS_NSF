@@ -209,15 +209,14 @@ Additionally, basis functions can depend on other properties of the tracer, such
 Thus our estimator not only removes the need for binning in spatial separation, but can also be used to obviate binning or cuts where subsample approaches are currently needed.
 This property of the estimator will come up below in the third theme (anomaly search).
 
-We have implemented an initial version of the continuous-function correlation function estimator.
-The estimator is built in C within the \texttt{corrfunc} package \citep{Sinha2017}, which performs fast pair-counting on a lattice.
+We have implemented an initial version of the continuous-function correlation function estimator, within the \texttt{corrfunc} package \citep{Sinha2017}, which performs fast pair-counting on a lattice.
 To test the estimator, we have generated lognormal catalogs with a known correlation functions. 
-We expect these to show that, compared to the Landy-Szalay
+We will run our estimator on these mocks and expect these to show that, compared to the \LS\
   estimator, the continuous-function estimator produces an estimate with lower bias and
-  lower variance with respect to the true correlation function.
+  lower variance with respect to the true \cf.
 Given the enforced smoothness, this estimator should be able to not only produce a more accurate correlation function, but do so with fewer basis functions.
 As the error on the inverse covariance matrix scales with the ratio of some power of the number of bins to the number of mock catalogs, our estimator can produce covariance matrices with fewer mock catalogs \citep{Hartlap2007}.
-\textbf{As the cost of cosmological simulations required to build a set of mock catalogs is one of the limiting factors in correlation function analyses; our estimator will significantly reduce this cost by containing more information in fewer basis functions.}
+\textbf{As the cost of cosmological simulations required to build a set of mock catalogs is one of the limiting factors in \cf analyses; our estimator will significantly reduce this cost by containing more information in fewer basis functions.}
 
 Alongside this work, we have revisited the point-process literature (at the intersection of mathematics and statistics) and identified how the biases from binning and edge correction are entering. 
 We will use this understanding to develop an estimator that doesn't suffer from this bias.
@@ -225,22 +224,21 @@ We will combine these two approaches to develop and implement an estimator for g
 
 \subsection{Applications: The BAO Peak and Galaxy Evolution}
 
-The clustering of galaxies is a critical probe of the baryon acoustic feature. 
-This is a signature of Baryon Acoustic Oscillations (BAO) in the early Universe, acoustic waves of photon-baryon fluid that traveled through the Universe. 
-When the Universe cooled to decoupling, extra matter was deposited at the scale corresponding to the distance travelled. 
-Today this overdensity should be at a scale of around 120 Mpc/h, and indeed we see a peak there in the correlation function \citep{Eisenstein2005}. 
-The exact BAO scale can be extracted from the binned \cf by comparing it to theoretical models of the correlation function. 
+The clustering of galaxies is a critical probe of the baryon acoustic oscillation (BAO) feature. 
+This is a matter overdensity caused by acoustic waves of photon-baryon fluid traveling through the early Universe. 
+The feature should appear at scale of around 120 Mpc/h today, and indeed we see a peak there in the \cf \citep{Eisenstein2005}. 
+The exact BAO scale can be extracted from the binned \cf by comparing it to theoretical models of the correlation function (e.g. \citealt{Anderson2014}). 
 With our estimator, we can directly project the galaxy pairs onto these models. 
 Specifically, we will use as one of our basis functions a canonical model of the correlation function with the Planck best-fit cosmological parameters. 
-The other basis functions are derivatives of this model with respect to the parameters we are interested in, in this case the matter density, baryon density and spectral index.
+The other basis functions are derivatives of this model with respect to the parameters we are interested in; we can then update our base model and iterate until we converge on the best-fit model.
 \textbf{This eliminates potential error due to the arbitrary choice of bins, and allows for a direct estimation of the cosmological parameters and the BAO scale.}
 We will compare this method to the traditional technique, and expect to show that this method produces more precise measurements of the sound horizon with fewer components.
 
-Galaxy evolution is one of the biggest open research topics in modern astrophysics.
-The two-point correlation function allows us to ask questions about how the formation of galaxies is related to the evolution of structure in the Universe.
+Another application is to galaxy evolution, one of the biggest open research topics in modern astrophysics.
+The \cf allows us to ask questions about how the formation of galaxies is related to the evolution of structure in the Universe.
 The dependence of galaxy clustering on the properties of galaxies, such as their line luminosity and star formation rate, gives insight into this relation \citep{Zehavi2004}.
-Our proposed estimator will allow us to extract even more information about this dependence. 
-We plan to construct basis functions that contain a dependence on the galaxy property, allowing for a combined encoding of both separation and luminosity. 
+Our estimator will allow us to extract even more information about this dependence. 
+We plan to construct basis functions that contain a dependence on the galaxy luminosity, allowing for a combined encoding of both separation and luminosity. 
 We can then quickly evaluate the estimator at any set of luminosities and produce a continuous correlation function for each. 
 We note that, while continuous, the estimator does not smooth out features in the way that kernel-based estimators do, but preserves and possibly enhances these features.
 We will compare this method to the common subsampling approach; \textbf{we expect to show that this method will allow us to interpret the luminosity dependence in more detail and with higher precision.}
