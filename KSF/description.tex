@@ -22,10 +22,10 @@
 \lhead{\textcolor{darkgrey}{\textsf{Hogg \& Storey-Fisher / \shorttitle}}}
 \rhead{\textcolor{darkgrey}{\textsf{\thepage}}}
 \cfoot{}
-%\newcommand{\KSF}[1]{}
-%\newcommand{\HOGG}[1]{}
-\newcommand{\KSF}[1]{\textcolor{teal}{KSF says: #1}}
-\newcommand{\HOGG}[1]{\textcolor{orange}{HOGG says: #1}}
+\newcommand{\KSF}[1]{}
+\newcommand{\HOGG}[1]{}
+%\newcommand{\KSF}[1]{\textcolor{teal}{KSF says: #1}}
+%\newcommand{\HOGG}[1]{\textcolor{orange}{HOGG says: #1}}
 \newcommand{\cf}{2pcf\xspace}
 \newcommand{\LS}{\acronym{LS}\xspace}
 \newcommand{\inv}{^{-1}}
@@ -126,9 +126,9 @@ But these two issues---systematic effects and multiple hypothesis
 testing---directly combine, because unmodeled or incorrectly modeled
 systematic issues in the data will project onto discoverable
 anomalies.
-So if we are going to search the next generation of surveys for
+If we are going to search the next generation of surveys for
 interesting new departures from baseline theoretical expectations,
-we need to have a very solid statistical plan.
+we need a very solid statistical plan.
 
 This proposal is to build and exercise general-purpose tools that will
 make the next generation of (galaxy, quasar, and intensity-mapping)
@@ -155,7 +155,7 @@ galaxy clustering that obviates binning of objects (galaxies or
 quasars or pixels) or pairs. Instead, it estimates continuous
 functional forms for clustering as a function of scale, galaxy mass,
 color, and so on.
-These continuous functional forms make a better representation of the
+These functions make a better representation of the
 clustering than any binning; therefore this estimator can do more with
 fewer clustering-model components.
 This in turn lets it make more powerful measurements with less data,
@@ -165,10 +165,9 @@ propagation.
 \subsection{The Two-Point Correlation Function}
 
 Galaxy clustering is one of the most important tracers of the large-scale structure of the Universe.
-The distribution of galaxies contains information about the Universe's evolution and fundamental components, as well as the evolution of the galaxies themselves \citealt{Hamilton1988}.
+The distribution of galaxies contains information about the Universe's evolution and fundamental components, as well as the evolution of the galaxies themselves \citep{Hamilton1988}.
 To study the clustering of galaxies, we use observational galaxy surveys that range from hundreds to millions, and soon billions, of galaxies, and are pushing to even higher redshifts.
-\textbf{With the increased size and complexity of next-generation galaxy surveys, the tools currently used to characterize galaxy clustering will not be sufficient}.
-We propose to address this problem by developing new methods for the analysis of galaxy clustering from observational surveys.
+With the increased size and complexity of next-generation galaxy surveys, the tools currently used to characterize galaxy clustering will not be sufficient.
 
 The distribution of galaxies in a volume of sky can be modeled as a spatial point process.
 We can use the statistics of point processes to characterize their clustering, giving us insight into the physical processes that produce this distribution.
@@ -181,11 +180,9 @@ The estimator is then defined as $\xi(r) = [DD(r) - 2DR(r) + RR(r)]/RR(r)$,
 where the terms are normalized vectors of pair counts in each bin, each having length $K$.
 
 While the \LS estimator has better overall variance properties than the naive clustering estimator, it still suffers from several limitations. 
-Choosing the number of bins requires a trade-off between bias and variance.
-Various works have addressed these by improving the random pair counting \citep{Demina2016}, optimizing the combination of pair counts \citep{VargasMagana2013}, and introdudining a maximum likelihood approach \citep{BaxterRozo2013}, but this trade-off remains as it is inherent to binning.
-Furthermore, for any finite binning in separation, this estimator contains a statistical bias when applied to highly clustered data (e.g. \citealt{Kerscher1998}).
-
-The \LS estimator also can't account for properties besides spatial separation.
+First, choosing the number of bins requires a trade-off between bias and variance.
+Various works have addressed these issues by improving the random pair counting \citep{Demina2016}, optimizing the combination of pair counts \citep{VargasMagana2013}, and introducing a maximum likelihood approach \citep{BaxterRozo2013}, but this trade-off remains as it is inherent to binning.
+Furthermore, for any finite binning in separation, this estimator contains a statistical bias when applied to highly clustered data (e.g. \citealt{Kerscher1998}). The \LS estimator also can't account for properties besides spatial separation.
 Another binned dimension is often used to characterize the dependence
 on galaxy properties: the galaxies are divided into subsamples to
 analyze the relationship between their properties and clustering.
@@ -195,8 +192,8 @@ While these estimators have been sufficient for past analyses, an improved estim
 \subsection{The Continuous-Function Estimator}
 
 In order to avoid the issues introduced by finite binning with current estimators, we have developed an approach based on continuous basis functions. 
-Inspired by linear least-squares fitting, we replace the scalar pair counts of \LS with a vector of the values output by the basis function, and the normalization term by a tensor of these values.
-We generalize the \LS estimator above to any set of $K$ basis functions $f$ of the pair, so we now have
+Inspired by linear least-squares fitting, we replace the scalar pair counts of \LS with a vector of the values output by a chosen basis function, and the normalization term by a tensor of these values.
+We generalize the \LS estimator above to any set of $K$ basis functions $f$ of the pair, obtaining
 \begin{eqnarray}\displaystyle
 DD \equiv \sum_{n n'} f(T_n, T_{n'}) &\quad&
 DR \equiv \sum_{n m} f(T_n, T_{m}) \nonumber\\
@@ -211,9 +208,9 @@ From these statistics, we compute the \cf by
 \end{eqnarray}
 where $T_l$ and $T_{l'}$ contain the data values at which to evaluate $\xi$.
 Thus our estimator allows $\xi$ to be evaluated at \emph{any} separation, as well as at any other value of the data property used in the basis functions.
-We have also shown that it is invariant under affine transformations of the basis (rotations and shears in the $f$ space or $a$ space).
+We have also shown that it is invariant under affine transformations of the basis (rotations and shears in the $f$ space).
 
-This generalized two-point estimator removes the need for binning as the basis functions can be continuous.
+This generalized two-point estimator removes the need for binning, as the basis functions can be continuous.
 For the case of tophat (rectangular) basis functions, this reduces to the standard Landy-Szalay estimator.
 A set of basis functions can be chosen specific to the scales, features and properties of interest.
 For example, higher order spline basis functions could be chosen to achieve a smooth statistic. 
@@ -225,17 +222,16 @@ This property of the estimator will come up below in the third theme (anomaly se
 We have implemented an initial version of the continuous-function correlation function estimator.
 The estimator is built in C within the \texttt{corrfunc} package \citep{Sinha2017}, which performs fast pair-counting on a lattice.
 To test the estimator, we have generated lognormal catalogs with a known correlation functions. 
-\textbf{We expect these to show that, compared to the Landy-Szalay
+We expect these to show that, compared to the Landy-Szalay
   estimator, the continuous-function estimator produces an estimate with lower bias and
-  lower variance with respect to the true correlation function.}
+  lower variance with respect to the true correlation function.
 Given the enforced smoothness, this estimator should be able to not only produce a more accurate correlation function, but do so with fewer basis functions.
 As the error on the inverse covariance matrix scales with the ratio of some power of the number of bins to the number of mock catalogs, our estimator can produce covariance matrices with fewer mock catalogs \citep{Hartlap2007}.
-The expensive simulations required to build a set of mock catalogs for each dataset is one of the limiting factors in correlation function analyses.
-Our estimator will significantly reduce this requirement and allow for faster and more accurate analyses.
+\textbf{As the cost of cosmological simulations required to build a set of mock catalogs is one of the limiting factors in correlation function analyses; our estimator will significantly reduce this cost by containing more information in fewer basis functions.}
 
 Alongside this work, we have revisited the point-process literature (at the intersection of mathematics and statistics) and identified how the biases from binning and edge correction are entering. 
 We will use this understanding to develop an estimator that doesn't suffer from this bias.
-We will combine these two approaches to develop and implement an estimator for galaxy clustering that is fundamentally unbiased and can be tailored for specific science use cases.
+We will combine these two approaches to develop and implement an estimator for galaxy clustering that is fundamentally unbiased and utilizes general basis functions.
 
 \subsection{Applications: The BAO Peak and Galaxy Evolution}
 
@@ -282,10 +278,11 @@ Current methods assume simple linear systematics models that don't capture nonli
 While linear corrections are adequate for most of today's surveys, next-generation surveys will have a combination of more complicated window functions, noisier foregrounds, and complex observational and instrumental effects.
 Failure to fully correct for systematics in future analyses will propagate through clustering analyses and give biased results.
 
-One common approach to correcting survey systematics is with regression-based techniques (see e.g. \citealt{Ross2010}). \KSF{At least mention other methods (mode projection and monte carlo)}
+One common approach to correcting survey systematics is with regression-based techniques (see e.g. \citealt{Ross2010}).
 Weights for important systematic parameters are determined by performing a fit, typically linear or quadratic, to adjust for dependencies between galaxy density and each parameter.
 These are combined into a single weight for each galaxy, which are then used in computing the \cf.
 \textbf{The standard technique is unable to account for higher order corrections or interdependence between systematic parameters; these complexities may propagate through analyses and bias galaxy clustering results.}
+Other correction methods, including mode projection and Monte Carlo approaches, address nonlinearities to some extent, but lack flexibility and are unable to handle interacting systematics.
 
 \subsection{Motivating new correction methods: adversarial mock catalogs}
 
@@ -300,7 +297,7 @@ Our testing suite will include toy models as well as catalogs modeled after targ
 We will inject systematic biases in density by introducing density variations in the galaxies based on adversarially complex functions of the metadata.
 The result will be comprehensive testing suites that cover many systematic effects and range from simple combinations to extreme variation.
 \textbf{These adversarial extremes will create discovery potential by showing that systematics may be obscuring physical information.}
-We plan to explore observables that are motivated by current theoretical models, as discussed further in the third theme. \KSF{Connect to anomalies section here!} \HOGG{yes, do that!}
+This connects strongly to our search for anomalies in the third theme; we require robust systematics calibration to uncover anomalous effects.
 
 \subsection{Defeating adversarial systematics with non-parametrics}
 
@@ -329,7 +326,6 @@ This is a well-tested, safe method for kernel choice, and is a reliable machiner
 We expect to show that our \GP\ approach does better at recovering unbiased clustering statistics for a typical level of systematics, compared to traditional methods.
 Further, we will perform this test on catalogs with extreme systematics that could be obscuring interesting clustering features; we expect traditional methods to be unable to detect these features, while our method should reveal this information.
 Our systematics calibration method will improve current measurements by reducing systematic biases and open up more discovery space in galaxy clustering analyses.
-\KSF{Discuss specific survey application: \SDSSIV\ \eBOSS}
 
 \section{Third theme: Searches for anomalies}
 
@@ -581,7 +577,6 @@ skills and therefore better PhD preparations.
 Contexts for using these materials include undergraduate-to-PhD bridge programs, courses for advanced undergraduate and early graduate students, and existing research experience programs. 
 We will test and refine these curricular materials in multi-day workshops for
 students of broad backgrounds in New York City.
-All of the materials we create will be open-source and available online. 
 
 Many of the skills critical for a career in astrophysics are not explicitly taught in the college physics curriculum. 
 These include data analysis, statistics, and data science, which are fundamental to much of modern astronomy.
@@ -589,10 +584,10 @@ Graduate students are expected to pick up these concepts, yet there is a lack of
 To fill this gap, we will create materials that contain exercises and examples following best pedagogical practices, while also serving as reference materials for students and active researchers.
 
 We will use the pedagogical materials to teach intensive workshops on these topics for our target audience of advanced undergraduates; the PI has experience designing effective workshops \citep{Huppenkothen2018}.
-The investigators are well-versed in inquiry-based teaching practices, which are shown to increase engagement and understanding, with a focus on equity and inclusivity \citep{Ball2010}.
+The investigators are well-versed in inquiry-based teaching practices, which are shown to increase understanding, with a focus on equity and inclusivity \citep{Ball2010}.
 We will design the workshops using these practices, to ensure that students are building their knowledge regardless of their prior experience.
-The investigators have connections with groups in New York City to hold these workshops for, through the Institute for Science and Engineer Educators. 
-With feedback from these workshops, we will iterate on the materials, and finally distribute and advertise them online. 
+The investigators have connections with local programs to hold these workshops for, through the Institute for Science and Engineer Educators. 
+With feedback from these workshops, we will iterate on the materials, and release them all online as open-source products.
 
 \section{Implementation and management plan}
 
@@ -730,24 +725,24 @@ That is, this project will make NSF-funded cosmology projects (including
 \SDSSIV, \DESI, and \LSST) more productive, more precise, and more
 capable of making ground-breaking discoveries.
 
-This project also creates new statistical methods and capabilities for the 
-cosmology community.
-We will establish methods for generation, enumeration, testing, and pre-registration of hypotheses that
-will be of general value in cosmology and other areas in the natural
-sciences.
-
 This proposal will also connect and add value to advances in wide-ranging areas of traditional cosmological measurement.
 Recent theoretical work has shown that new effects will become potentially observable with the next increase in precision.
 For example, it's looking likely that we can measure the total mass in
-neutrinos just from observations of large-scale structure and the
-cosmic microwave background, when this is truly a trace component,
-dynamically. \HOGG{CITE}
-This would answer questions that direct mass measurement experiments
-can't answer yet (or will ever be able to, if there are contributions from sterile neutrinos).
+neutrinos just from observations of \LSS\ and the
+\CMB. \HOGG{CITE}
+This would answer questions that direct mass measurement experiments 
+can't yet answer.
 As another example, if the cosmological constant turns out to be a particle rather
-than a term in general relativity, we now know that
-this signature does not appear at percent level or greater (in the
-expansion history and the growth of structure). \HOGG{CITE}
+than a term in general relativity,
+this signature would appear at sub-percent level in the
+expansion history and the growth of structure. \HOGG{CITE}
+\KSF{I'm not sure if Intellectual Merit is the place for examples - would say cut, but does make it less concrete}
+
+Finally, this project creates new statistical methods and capabilities for the 
+cosmology community.
+We will establish methods for generation, enumeration, testing, and pre-registration of hypotheses that
+will be of general value in cosmology and other
+sciences.
 
 \section{Broader impacts}
 
@@ -781,16 +776,18 @@ Storey-Fisher contributed substantially to the writing of this proposal; she is 
 \paragraph{Isn't it ridiculous to look for anomalies in the large-scale structure?}
 No! Okay well to some extent yes. But it is precisely when a theory or model is most successful that it's predictions become most critical to test. Besides, we \emph{do} think that \LCDM\ is an \emph{approximation} to the true theory.
 
-\paragraph{Your clustering estimator seems so general, why are you spending so many words talking about how it relates to simulations?}
-One of the most limiting aspects of \cf analyses is the number of mock catalogs required for error estimation, which are built from expensive cosmological simulations. This depends on the number of bins or basis functions; our estimator reduces this without sacrificing accuracy, significantly reducing cost.
+\paragraph{How could a new estimator help with the cost of simulations?}
+One of the most limiting aspects of \cf analyses is the number of mock catalogs required for error estimation, which are built from cosmological simulations. This depends on the number of bins or basis functions; our estimator reduces this without sacrificing accuracy, significantly reducing cost.
 
 \paragraph{Don't you still have to make choices about your basis functions for your estimator, so you're not totally eliminating binning?}
 Yes! There are still choices. But those choices don't require hard-edged bins, and don't require that we approximate smooth functions with clunky boxes.
 
-\paragraph{Are you saying that the canonical two-point correlation function estimator is wrong?}
-Not yet. We do think it has issues! But all we are addressing in this project is its (current) marriage to top-hat function spaces (zeroth order spline, you might say).
+%\paragraph{Are you saying that the canonical two-point correlation function estimator is wrong?}
+%Not yet. We do think it has issues! But all we are addressing in this project is its (current) marriage to top-hat function spaces (zeroth order spline, you might say).
+\KSF{Propose cutting, address in text enough, and don't want to confuse reader}
 
-\paragraph{Aren't there already methods for dealing with nonlinear systematics?} Yes - while some recent analyses still use linear systematics models, there has been significant work on correcting for nonlinear systematics. But these are less flexible than the approach we are proposing, and none of them deal directly with \emph{combinations} of different systematic effects.
+%\paragraph{Aren't there already methods for dealing with nonlinear systematics?} Yes - while some recent analyses still use linear systematics models, there has been significant work on correcting for nonlinear systematics. But these are less flexible than the approach we are proposing, and none of them deal directly with \emph{combinations} of different systematic effects.
+%\KSF{Propose cutting this, answered in text}
 
 \paragraph{What is the connection between systematics correction and anomaly detection?}
 These are highly related, because an anomaly might be ``explainable'' as a systematics issue, or an uncorrected systematic might appear as an anomaly. So we have to do both well, simultaneously, if we want to be conservative.
